@@ -1,0 +1,30 @@
+@use '@/app/scss/variables' as vars;
+@use "sass:color";
+
+.tab-chip,
+.active,
+.inactive {
+    border: 1px solid vars.$border-color;
+    border-radius: 22px;
+    padding: 0px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    &:hover {
+        background: color.adjust(#fff, $lightness: -3%, $space: hsl);
+
+    }
+}
+
+.active {
+    background-color: #e9f1fc;
+    border-color: #0769de;
+    color: #0769de;
+    &:hover {
+        background: color.adjust(#e9f1fc, $lightness: -2%, $space: hsl);
+
+    }
+}

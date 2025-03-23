@@ -1,0 +1,61 @@
+@use "@/app/scss/variables" as vars;
+@use "sass:color";
+
+.dropdown-select-wrapper {
+  width: fit-content;
+  height: 100%;
+  border: 1px solid vars.$border-color;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  position: relative;
+
+  button {
+    all: unset;
+    cursor: pointer;
+    .dropdown-select-trigger-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      width: fit-content;
+      height: 100%;
+      padding: 0 10px;
+      .trigger-text {
+        font-weight: 500;
+        font-size: 14px;
+      }
+      .trigger-icon {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 50px;
+    width: 120px;
+    z-index: 2;
+    font-size: 14px;
+    border-radius: 6px;
+    background-color: white;
+    border: 1px solid vars.$border-color;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    li {
+      cursor: pointer;
+      padding: 10px 10px;
+
+      &:hover {
+        background: color.adjust(#fff, $lightness: -2%, $space: hsl);
+
+      }
+    }
+    .selected {
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    .title-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        .title {
+            font-size: 26px;
+        }
+        .description {
+            font-size: 14px;
+            font-weight: 500;
+        }
+    }
+
+   
+}

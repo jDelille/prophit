@@ -1,0 +1,53 @@
+.filters-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    
+}
+
+.props-filter {
+    min-width: 230px;
+    // background-color: lightblue;
+    padding-right: 10px;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 44px;
+
+    .selected {
+        font-weight: 500;
+        font-size: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        top: 4px;
+        .clear-all {
+            text-decoration: underline;
+            font-size: 13px;
+        }
+    }
+}
+
+.filters {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 40px;
+    .title {
+        font-weight: 500;
+        font-size: 14px;
+        margin-right: 1rem;
+    }
+    .dropdown-select-wrapper {
+        .trigger-text {
+            font-size: 12px !important;
+        }
+    }
+    .num-of-results {
+        font-weight: 600;
+        font-size: 12px;
+        margin-left: auto;
+    }
+}

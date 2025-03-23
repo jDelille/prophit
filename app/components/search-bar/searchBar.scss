@@ -1,0 +1,82 @@
+@use "@/app/scss/variables" as vars;
+
+form {
+  display: flex;
+  width: fit-content;
+  position: relative;
+  align-items: center;
+  width: fit-content;
+  // border: 1px solid vars.$border-color;
+  max-width: 179px;
+  border-radius: 6px;
+  max-height: 30px;
+  input {
+    all: unset;
+    flex: 1;
+    padding: 0 10px;
+    font-size: 12px;
+    padding-left: 15px;
+    height: 38px;
+    background-color: white;
+    color: #202020;
+    border-radius: 6px;
+    border: 1px solid vars.$border-color;
+
+    &::placeholder {
+      color: #202020;
+
+    }
+    
+  }
+  button {
+    all: unset;
+    display: none;
+  }
+  .dropdown {
+    border: 1px solid vars.$border-color;
+    padding: 5px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: white;
+    position: absolute;
+    width: 300px;
+    top: 42px;
+    z-index: 2;
+    padding: 10px 5px;
+    li {
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        max-height: 38px;
+        &:hover {
+          cursor: pointer;
+        }
+        .headshot-container {
+            border: 1px solid vars.$border-color;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+            .headshot {
+                
+                object-fit: contain;
+            }
+        }
+       
+        .text {
+            display: flex;
+            flex-direction: column;
+            span {
+                font-size: 12px;
+                color: rgb(88, 88, 88);
+            }
+        }
+    }
+  }
+}

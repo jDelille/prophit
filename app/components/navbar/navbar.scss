@@ -1,0 +1,113 @@
+@use "@/app/scss/variables" as vars;
+@use "@/app/scss/breakpoints" as *;
+@use "sass:color";
+
+.navbar-container {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid vars.$border-color;
+  width: 100vw;
+  margin-left: auto;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  .navbar {
+    width: 100%;
+    padding: 0 15rem;
+    margin: 0 auto;
+    display: flex;
+    @include breakpoint(md) {
+      padding: 0 2rem;
+    }
+    .logo {
+      font-weight: bold;
+      font-size: 34px;
+      text-transform: uppercase;
+      font-family: "Allan", serif;
+      color: #322F35;
+      span {
+        color: #34C759;
+      }
+    }
+    .links {
+      display: flex;
+      align-items: center;
+      padding-left: 2rem;
+      ul {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-weight: 600;
+        font-size: 14px;
+        li {
+          cursor: pointer;
+          padding: 5px 8px;
+          border-radius: 6px;
+          &:hover {
+            background-color: #ebeef4;
+          }
+        }
+      }
+    }
+    .user-settings {
+      margin-left: auto;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      svg {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.secondary-navbar-container {
+  border-bottom: 1px solid vars.$border-color;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  position: sticky;
+  top: 60px;
+  z-index: 2;
+  .secondary-navbar {
+    width: 100%;
+    padding: 0 15rem;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    @include breakpoint(md) {
+      padding: 0 2rem;
+    }
+    .sport {
+      border-right: 1px solid vars.$border-color;
+      padding-right: 1.75rem;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .sport-links {
+      display: flex;
+      align-items: center;
+      padding-left: 1.75rem;
+      ul {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        font-size: 14px;
+        font-weight: 600;
+        li {
+          cursor: pointer;
+          &:hover {
+            color: color.adjust(#000, $lightness: 35%, $space: hsl);
+          }
+        }
+      }
+    }
+  }
+}
