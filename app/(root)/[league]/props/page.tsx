@@ -16,7 +16,6 @@ export default async function Props({
   const todaysDate = moment().format("MMM DD, YYYY");
   const query = (await searchParams).query;
   const schedule = await getSchedule("nba");
-  // console.log(playerStats)
 
   return (
     <section className="props-page">

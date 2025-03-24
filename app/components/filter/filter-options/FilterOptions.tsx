@@ -1,24 +1,23 @@
 import React from "react";
-import DropdownSelect from "../reusable/dropdown-select/DropdownSelect";
-import SearchBar from "../search-bar/SearchBar";
+import DropdownSelect from "../../reusable/dropdown-select/DropdownSelect";
+import SearchBar from "../../search-bar/SearchBar";
 import { Schedule } from "@/app/lib/services/getSchedule";
 
 const FilterOptions: React.FC<{ query: string; todaysGames: Schedule }> = ({
   query,
   todaysGames,
 }) => {
+  const todaysDate = Object.keys(todaysGames.events)[0];
 
-
-  const matchupOptions = todaysGames.events.map((game) => {
-    // Extract abbreviations from the teams in the event
+  const matchupOptions = (todaysGames.events[todaysDate] || []).map((game) => {
     const teamAbbreviations = game.teams.map((team) => team.abbrev);
-    
-    // Assuming you want to represent both teams in the matchup with label and value
+
     return {
-      label: `${teamAbbreviations[1]} @ ${teamAbbreviations[0]}`, // Concatenate both abbreviations for the label
-      value: `${teamAbbreviations[1]}-${teamAbbreviations[0]}`, // Create a unique value for the matchup
+      label: `${teamAbbreviations[1]} @ ${teamAbbreviations[0]}`,
+      value: `${teamAbbreviations[1]}-${teamAbbreviations[0]}`,
     };
-  });  
+  });
+
   const positionsOptions = [
     { label: "C", value: "Center" },
     { label: "PG", value: "Point Guard" },
@@ -26,6 +25,7 @@ const FilterOptions: React.FC<{ query: string; todaysGames: Schedule }> = ({
     { label: "SG", value: "Shooting Guard" },
     { label: "PF", value: "Power Forward" },
   ];
+
   const betRatingOptions = [
     { label: "5 stars", value: "5 stars" },
     { label: "4 stars", value: "4 stars" },

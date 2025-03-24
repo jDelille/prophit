@@ -14,12 +14,10 @@ class PropsFilterLogic {
   }
 
   getTodaysGames() {
-    const todaysDate = moment().format("ddd, MMMM, Do");
+    const todaysDate = moment().format("YYYYMMDD");
 
     return {
-      events: Object.values(this.schedule.events)
-        .flat()
-        .filter((game) => game.status?.detail?.includes(todaysDate)),
+      events: { [todaysDate]: this.schedule.events[todaysDate] || [] },
     };
   }
 

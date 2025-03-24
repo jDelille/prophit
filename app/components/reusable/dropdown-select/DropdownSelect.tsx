@@ -25,8 +25,6 @@ const DropdownSelect: React.FC<DropdownSelectProps> = ({
   const router = useRouter();
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
-  console.log(options)
-
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(defaultValue || options[0].value);
 
