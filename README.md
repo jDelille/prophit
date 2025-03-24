@@ -2,6 +2,11 @@
 
 Welcome to **PropHit**, the ultimate sports betting analytics platform designed to help sports enthusiasts and bettors make informed decisions. Dive into player prop values, see projections, analyze advanced stats, and use our customizable algorithms to predict upcoming game outcomes.
 
+<div align="center">
+<img src="./app/assets/demo-pic.jpg" alt="Demo Picture" width="800" />
+</div>
+
+
 ## 🚀 Features
 
 - **Player Prop Values:** View daily prop values for NBA players (points, rebounds, assists) and analyze how often players hit on the over for these props.
