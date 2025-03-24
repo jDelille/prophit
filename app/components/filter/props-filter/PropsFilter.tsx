@@ -5,9 +5,7 @@ import store from "@/app/mobx/store";
 import { observer } from "mobx-react-lite";
 import { usePathname } from "next/navigation";
 import { sportsProps } from "@/app/lib/utils/sportsProps";
-import { SportDropdown } from "../index";
-import FilterOptions from "../filter-options/FilterOptions";
-import PropsFilterLogic from "./propsFilterLogic";
+import { FilterOptions, PropsFilterLogic, SportDropdown } from "../index";
 import { Schedule } from "@/app/lib/services/getSchedule";
 import "../filter.scss";
 

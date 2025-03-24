@@ -1,4 +1,4 @@
-import PropsFilter from "@/app/components/filter/prop-filter/PropsFilter";
+import { PropsFilter } from "@/app/components/filter";
 import PageHeader from "@/app/components/page-header/PageHeader";
 import PlayerCardsLabels from "@/app/components/player-card-labels/PlayerCardsLabels";
 import PlayerList from "@/app/components/player-list/PlayerList";
