@@ -1,0 +1,8 @@
+@use '@/app/scss/variables' as vars;
+
+input {
+    border: 1px solid vars.$border-color;
+    border-radius: 6px;
+    padding: 10px;
+   
+}

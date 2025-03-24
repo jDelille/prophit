@@ -1,0 +1,27 @@
+.body {
+    padding: 1rem;
+    .body-title {
+        font-weight: 500;
+        font-size: 20px;
+    }
+    .input-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 1rem 0;
+        .login-input {
+            height: 45px;
+            font-size: 14px;
+        }
+    }
+    .login-btn {
+        margin: 1rem 0;
+        height: 45px;
+        border: none;
+        border-radius: 6px;
+        font-weight: 500;
+        font-size: 16px;
+        background-color: #34C759;
+        color: white;
+    }
+}

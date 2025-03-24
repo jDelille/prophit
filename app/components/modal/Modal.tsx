@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useState } from "react";
 import './modal.scss';
+import { CloseIcon } from "@/app/icons";
 
 type ModalProps = {
   isOpen: boolean;
@@ -9,6 +10,7 @@ type ModalProps = {
   onClose: (id: string) => void;
   body: React.ReactElement;
   id: string;
+  title: string;
 };
 const Modal: React.FC<ModalProps> = ({
   isOpen,
@@ -16,6 +18,7 @@ const Modal: React.FC<ModalProps> = ({
   onClose,
   body,
   id,
+  title
 }) => {
   const [showModal, setShowModal] = useState<boolean>(isOpen);
 
@@ -42,10 +45,11 @@ const Modal: React.FC<ModalProps> = ({
     <>
       <div className="overlay">
         <div className={showModal ? "modal" : "hide-modal"}>
-          <div className="modal-content">
-            <div className="close" onClick={handleClose}>Close</div>
+          <div className="modal-header">
+            <div className="title">{title}</div>
+            <div className="close" onClick={handleClose}><CloseIcon size={18}/></div>
+            </div>
             <div className="modal-body">{body}</div>
-          </div>
         </div>
         ;
       </div>
