@@ -57,7 +57,6 @@
       margin-left: 47px;
       display: flex;
       align-items: center;
-      // justify-content: space-between;
 
       .column {
         height: 100%;
@@ -65,6 +64,7 @@
         align-items: center;
         justify-content: center;
         width: 100px;
+        flex-direction: column;
       }
 
       .prop,
