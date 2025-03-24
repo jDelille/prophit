@@ -41,7 +41,6 @@ export async function getDraftkingsData(
     selection.participants.forEach((participant: any) => {
       const playerName = participant.name;
 
-
       if (!groupedSelections[playerName]) {
         groupedSelections[playerName] = [];
       }

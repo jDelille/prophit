@@ -79,8 +79,6 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, playerStats }) => {
     return "below-50";
   }
 
-  console.log(playerStats);
-
   return (
     <div className="player-card">
       <div className="player-card" key={id + propType}>

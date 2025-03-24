@@ -21,6 +21,7 @@ const PlayerList: React.FC<PlayerListProps> = observer(() => {
       const statsData = await Promise.all(
         players.map(async (player) => {
           const stats = await projectPlayerStats(player.id, store.prop, player.selections[0]?.points);
+
           return { [player.id]: stats };
         })
       );
@@ -32,7 +33,6 @@ const PlayerList: React.FC<PlayerListProps> = observer(() => {
       setCombinedPlayers(players);
     };
 
-    // console.log(store.prop)
 
     fetchAndCombineData();
   }, [store.prop]);

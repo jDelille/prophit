@@ -11,17 +11,21 @@ type Option = {
 };
 
 type DropdownSelectProps = {
-  options: Option[];
+  options: Option[] | any;
   defaultValue?: string;
   onSelect: (value: string) => void;
+  hasCheckboxes?: boolean;
 };
 const DropdownSelect: React.FC<DropdownSelectProps> = ({
   options,
   defaultValue,
   onSelect,
+  hasCheckboxes
 }) => {
   const router = useRouter();
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+  console.log(options)
 
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(defaultValue || options[0].value);
@@ -74,6 +78,7 @@ const DropdownSelect: React.FC<DropdownSelectProps> = ({
               onClick={() => handleSelect(option.label)}
             >
               {option.icon && <div className="option-icon">{option.icon}</div>}
+              {hasCheckboxes && <div className="checkbox"></div>}
               {option.label}
             </li>
           ))}

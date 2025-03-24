@@ -79,8 +79,6 @@ const projectPlayerStats = async (playerId: string, prop: string, currentPropVal
     const latest5Avg = calculateAveragePPG(combinedPPG, 5);
     const latest10Avg = calculateAveragePPG(combinedPPG, 10);
 
-    // console.log("combined", combinedPPG);
-
     // Get percentage of times player has hit the current over
     const latest3Percentage = calculateHitRatePercentage(combinedPPG, currentPropValue, 3);
     const latest5Percentage = calculateHitRatePercentage(combinedPPG, currentPropValue, 5);
@@ -96,6 +94,7 @@ const projectPlayerStats = async (playerId: string, prop: string, currentPropVal
       gameLogs.seasonTypes[0].summary.stats[0].stats.at(mapPropToStatType(prop)?.index ?? 0)
     );
     const homeGamePoints = getHomeAwayGameIds(gameLogs.events, gameLogs.seasonTypes, true, prop);
+    const awayGamePoints = getHomeAwayGameIds(gameLogs.events, gameLogs.seasonTypes, false, prop);
 
     const projectedPoints = calculateProjectedPoints(
       lastestPPG,

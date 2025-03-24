@@ -3,6 +3,7 @@ import PageHeader from "@/app/components/page-header/PageHeader";
 import PlayerCardsLabels from "@/app/components/player-card-labels/PlayerCardsLabels";
 import PlayerList from "@/app/components/player-list/PlayerList";
 import SearchBar from "@/app/components/search-bar/SearchBar";
+import getSchedule from "@/app/lib/services/getSchedule";
 import moment from "moment";
 
 export default async function Props({
@@ -14,12 +15,13 @@ export default async function Props({
 }) {
   const todaysDate = moment().format("MMM DD, YYYY");
   const query = (await searchParams).query;
+  const schedule = await getSchedule("nba");
   // console.log(playerStats)
 
   return (
     <section className="props-page">
       <PageHeader title="Player Props" todaysDate={todaysDate} />
-      <PropsFilter query={query} />
+      <PropsFilter query={query} schedule={schedule} />
       <PlayerCardsLabels />
       <PlayerList />
     </section>

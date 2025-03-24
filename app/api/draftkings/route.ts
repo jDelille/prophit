@@ -7,7 +7,7 @@ export async function GET(request: Request) {
     const categoryId = url.searchParams.get('categoryId') || '1215'; 
     const subCategoryId = url.searchParams.get('subCategoryId') || '12488';
 
-    const draftkingsURL = `https://sportsbook-nash.draftkings.com/api/sportscontent/dkusaz/v1/leagues/${leagueId}/categories/${categoryId}/subcategories/${subCategoryId}`;
+    const draftkingsURL = `${process.env.DRAFTKINGS_BASE_URL}/leagues/${leagueId}/categories/${categoryId}/subcategories/${subCategoryId}`;
 
     const res = await fetch(draftkingsURL, {
       method: "GET",
