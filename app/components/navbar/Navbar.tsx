@@ -46,9 +46,9 @@ const Navbar: React.FC<NavbarProps> = () => {
           />
           <Button
             label="Upgrade"
-            bgColor="#facd39"
-            textColor="#16191d"
-            borderColor="#facd39"
+            bgColor="#34C759"
+            textColor="#FFF"
+            borderColor="#34C759"
           />
           <SearchIcon size={20} color="#16191d" />
           <ProfileIcon size={25} color="#16191d" />
