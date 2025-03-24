@@ -1,4 +1,5 @@
 import Footer from "../components/footer/Footer";
+import LoginModal from "../components/modal/login-modal/LoginModal";
 import Navbar from "../components/navbar/Navbar";
 import SecondaryNavbar from "../components/navbar/SecondaryNavbar";
 import Sidebar from "../components/sidebar/Sidebar";
@@ -12,6 +13,7 @@ export default function Layout({
       <Navbar />
       <SecondaryNavbar />
       <div className="content">
+        <LoginModal id="login"/>
         {children}
       </div>
       <Footer />

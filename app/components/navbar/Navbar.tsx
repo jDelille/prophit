@@ -5,14 +5,20 @@ import Link from "next/link";
 import Button from "../button/Button";
 import { ProfileIcon, SearchIcon } from "@/app/icons";
 import "./navbar.scss";
+import useModal from "@/app/hooks/useModal";
 
 type NavbarProps = {};
 const Navbar: React.FC<NavbarProps> = () => {
   const leagues = ["NBA", "NFL", "MLB", "NCAAB", "NHL", "Soccer"];
   const router = useRouter();
   const pathname = usePathname();
+  const {openModal} = useModal();
 
   const currentLeague = pathname?.split("/")[1];
+
+  const handleLoginClick = () => {
+    openModal("login")
+  }
 
   return (
     <header className="navbar-container">
@@ -49,6 +55,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             bgColor="#34C759"
             textColor="#FFF"
             borderColor="#34C759"
+            onClick={handleLoginClick}
           />
           <SearchIcon size={20} color="#16191d" />
           <ProfileIcon size={25} color="#16191d" />

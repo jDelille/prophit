@@ -7,6 +7,7 @@ type ButtonProps = {
   bgColor: string;
   textColor: string;
   borderColor: string;
+  onClick?: () => void;
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -14,6 +15,7 @@ const Button: React.FC<ButtonProps> = ({
   bgColor,
   textColor,
   borderColor,
+  onClick
 }) => {
   return (
     <button
@@ -23,6 +25,7 @@ const Button: React.FC<ButtonProps> = ({
         color: textColor,
         borderColor: borderColor,
       }}
+      onClick={onClick}
     >
       {label}
     </button>

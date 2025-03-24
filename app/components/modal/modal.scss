@@ -1,0 +1,15 @@
+@use '@/app/scss/mixins' as mix;
+
+.overlay {
+    @include mix.overlay();
+}
+
+.modal,
+.hide-modal {
+    @include mix.modal();
+}
+
+.hide-modal {
+	transform: translateY(300px);
+	opacity: 0;
+}
