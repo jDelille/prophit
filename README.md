@@ -1,6 +1,8 @@
 # **PropHit**
 
-Welcome to **PropHit**, the ultimate sports betting analytics platform designed to help sports enthusiasts and bettors make informed decisions. Dive into player prop values, see projections, analyze advanced stats, and use our customizable algorithms to predict upcoming game outcomes.
+Welcome to **PropHit**, the ultimate sports betting analytics platform designed to help sports enthusiasts and bettors make informed decisions. Dive into player prop values, see projections, analyze advanced stats, and use our customizable algorithms to predict upcoming game outcomes. **This site is still a work in progress!**
+
+
 
 ## 🚀 Features
 
