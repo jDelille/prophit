@@ -101,11 +101,15 @@
         gap: 1.5rem;
         font-size: 14px;
         font-weight: 600;
-        li {
+        .active-link,
+        .inactive-link {
           cursor: pointer;
           &:hover {
             color: color.adjust(#000, $lightness: 35%, $space: hsl);
           }
+        }
+        .active-link {
+          background-color: red;
         }
       }
     }

@@ -7,6 +7,7 @@ import PlayerCard from "../player-card/PlayerCard";
 import projectPlayerStats from "@/app/lib/stat-projections/pointProjection";
 import { observer } from "mobx-react-lite";
 import "./playerList.scss";
+import { parse } from "path";
 
 type PlayerListProps = {};
 
@@ -16,6 +17,15 @@ const PlayerList: React.FC<PlayerListProps> = observer(() => {
 
   useEffect(() => {
     const fetchAndCombineData = async () => {
+      const cachedData = localStorage.getItem("playersData");
+      if (cachedData) {
+        const parsedData = JSON.parse(cachedData);
+        setCombinedPlayers(parsedData.players);
+        setPlayerStats(parsedData.stats);
+        return;
+      }
+      
+      // if no cached data
       const players = await getTrendingPlayers("basketball", "nba", store.prop);
 
       const statsData = await Promise.all(
@@ -38,6 +48,9 @@ const PlayerList: React.FC<PlayerListProps> = observer(() => {
       const statsObj = Object.assign({}, ...statsData);
       setPlayerStats(statsObj);
       setCombinedPlayers(players);
+
+      const dataToCache = { players, stats: statsObj };
+      localStorage.setItem("playersData", JSON.stringify(dataToCache));
     };
 
     fetchAndCombineData();
