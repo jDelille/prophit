@@ -4,7 +4,6 @@ import {
   calculateProjectedPoints,
 } from "../utils/calculateAveragePPG";
 import { getHomeAwayGameIds } from "../utils/getHomeAwayGameIds";
-import store from "@/app/mobx/store";
 import { calculateHitRatePercentage } from "../utils/calculateHitRatePercentage";
 
 export enum StatType {
@@ -44,25 +43,29 @@ export const getStatIndex = (statName: StatType): number => {
   return statMapping[statName];
 };
 
-export const mapPropToStatType = (prop: string): { statType: StatType; index: number } | null => {
+export const mapPropToStatType = (
+  prop: string
+): { statType: StatType; index: number } | null => {
   const mapping: Record<string, { statType: StatType; index: number }> = {
-    "Pts": { statType: StatType.PTS, index: getStatIndex(StatType.PTS) },
-    "Reb": { statType: StatType.REB, index: getStatIndex(StatType.REB) },
-    "Ast": { statType: StatType.AST, index: getStatIndex(StatType.AST) },
-    
+    Pts: { statType: StatType.PTS, index: getStatIndex(StatType.PTS) },
+    Reb: { statType: StatType.REB, index: getStatIndex(StatType.REB) },
+    Ast: { statType: StatType.AST, index: getStatIndex(StatType.AST) },
   };
 
   return mapping[prop] || null; // Handle unmapped props gracefully
 };
 
-const projectPlayerStats = async (playerId: string, prop: string, currentPropValue: number) => {
+const projectPlayerStats = async (
+  playerId: string,
+  prop: string,
+  currentPropValue: number,
+  sport: string,
+  league: string
+) => {
   try {
-    const response = await axios.get(
-      `https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerId}/gamelog`
-    );
+    const response = await axios.get(`http://localhost:3000/api/espn/gamelog?sport=${sport}&league=${league}&playerId=${playerId}`);
 
     const gameLogs = response.data;
-    // console.log(gameLogs);
 
     const combineAndSortStats = (seasonTypes: any, statIndex: number) => {
       return seasonTypes[0].categories.flatMap(({ events }: any) =>
@@ -71,19 +74,28 @@ const projectPlayerStats = async (playerId: string, prop: string, currentPropVal
     };
 
     const combinedPPG = combineAndSortStats(
-      gameLogs.seasonTypes, 
+      gameLogs.seasonTypes,
       mapPropToStatType(prop)?.index ?? 13
     );
-    // Get latest 3, 5, and 10 games point averages
     const latest3Avg = calculateAveragePPG(combinedPPG, 3);
     const latest5Avg = calculateAveragePPG(combinedPPG, 5);
     const latest10Avg = calculateAveragePPG(combinedPPG, 10);
 
-    // Get percentage of times player has hit the current over
-    const latest3Percentage = calculateHitRatePercentage(combinedPPG, currentPropValue, 3);
-    const latest5Percentage = calculateHitRatePercentage(combinedPPG, currentPropValue, 5);
-    const latest10Percentage = calculateHitRatePercentage(combinedPPG, currentPropValue, 10);
-
+    const latest3Percentage = calculateHitRatePercentage(
+      combinedPPG,
+      currentPropValue,
+      3
+    );
+    const latest5Percentage = calculateHitRatePercentage(
+      combinedPPG,
+      currentPropValue,
+      5
+    );
+    const latest10Percentage = calculateHitRatePercentage(
+      combinedPPG,
+      currentPropValue,
+      10
+    );
 
     const lastestPPG = [
       parseFloat(latest3Avg),
@@ -91,16 +103,27 @@ const projectPlayerStats = async (playerId: string, prop: string, currentPropVal
       parseFloat(latest10Avg),
     ];
     const averagePoints = parseFloat(
-      gameLogs.seasonTypes[0].summary.stats[0].stats.at(mapPropToStatType(prop)?.index ?? 0)
+      gameLogs.seasonTypes[0].summary.stats[0].stats.at(
+        mapPropToStatType(prop)?.index ?? 0
+      )
     );
-    const homeGamePoints = getHomeAwayGameIds(gameLogs.events, gameLogs.seasonTypes, true, prop);
-    const awayGamePoints = getHomeAwayGameIds(gameLogs.events, gameLogs.seasonTypes, false, prop);
+    const homeGamePoints = getHomeAwayGameIds(
+      gameLogs.events,
+      gameLogs.seasonTypes,
+      true,
+      prop
+    );
+    const awayGamePoints = getHomeAwayGameIds(
+      gameLogs.events,
+      gameLogs.seasonTypes,
+      false,
+      prop
+    );
 
     const projectedPoints = calculateProjectedPoints(
       lastestPPG,
       averagePoints,
       homeGamePoints
-
     );
 
     return {
@@ -109,9 +132,9 @@ const projectPlayerStats = async (playerId: string, prop: string, currentPropVal
         latest5Avg,
         latest10Avg,
         projectedPoints,
-        latest3Percentage, 
+        latest3Percentage,
         latest5Percentage,
-        latest10Percentage
+        latest10Percentage,
       },
     };
   } catch (error) {

@@ -3,9 +3,9 @@ import { NextResponse } from "next/server";
 export async function GET(request: Request) {
   try {
     const url = new URL(request.url);
-    const leagueId = url.searchParams.get('leagueId') || '42648'; 
-    const categoryId = url.searchParams.get('categoryId') || '1215'; 
-    const subCategoryId = url.searchParams.get('subCategoryId') || '12488';
+    const leagueId = url.searchParams.get("leagueId") || "42648";
+    const categoryId = url.searchParams.get("categoryId") || "1215";
+    const subCategoryId = url.searchParams.get("subCategoryId") || "12488";
 
     const draftkingsURL = `${process.env.DRAFTKINGS_BASE_URL}/leagues/${leagueId}/categories/${categoryId}/subcategories/${subCategoryId}`;
 
@@ -20,9 +20,7 @@ export async function GET(request: Request) {
       cache: "no-store",
     });
 
-    if (!res.ok) {
-      throw new Error(`Error fetching data: ${res.statusText}`);
-    }
+    if (!res.ok) throw new Error(`Error fetching data: ${res.status} ${res.statusText}`);
 
     const data = await res.json();
     return NextResponse.json(data);

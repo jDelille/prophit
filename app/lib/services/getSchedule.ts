@@ -8,14 +8,9 @@ export interface Schedule {
 }
 
 export default async function getSchedule(league: string): Promise<Schedule> {
-  const res = await fetch(
-    `https://www.espn.com/${league}/schedule/_/date/20250322?_xhr=pageContent&refetchShell=false&offset=-07%3A00&original=date%3D20250322&date=20250322`,
-    { cache: "no-store" }
-  );
+  const res = await fetch(`http://localhost:3000/api/espn/schedule?league=${league}`);
 
-  if (!res.ok) {
-    return { events: {} };
-  }
+  if (!res.ok) return { events: {} };
 
   const data = await res.json();
 

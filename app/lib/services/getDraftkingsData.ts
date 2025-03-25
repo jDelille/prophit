@@ -23,19 +23,15 @@ export async function getDraftkingsData(
   categoryId: string,
   subCategoryId: string
 ): Promise<Record<string, Selection[]>> {
-  const res = await fetch(`/api/draftkings?leagueId=${leagueId}&categoryId=${categoryId}&subCategoryId=${subCategoryId}`, {
-    headers: {
-      "Cache-Control": "no-cache"
-    }
-  });
+  const res = await fetch(
+    `/api/draftkings?leagueId=${leagueId}&categoryId=${categoryId}&subCategoryId=${subCategoryId}`
+  );
 
   if (!res.ok) return {};
 
   const data = await res.json();
 
   const groupedSelections: Record<string, Selection[]> = {};
-
-  // console.log(data)
 
   data.selections.forEach((selection: any) => {
     selection.participants.forEach((participant: any) => {
