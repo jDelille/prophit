@@ -22,7 +22,7 @@ export default async function Props({
         todaysDate={todaysDate}
         description={`${todaysDate} Matchups`}
       />
-      <PropsFilter query={query} schedule={schedule} />
+      <PropsFilter query={query} schedule={schedule} hideFilterOptions />
       <MatchupList />
     </section>
   );

@@ -17,17 +17,19 @@ const PlayerList: React.FC<PlayerListProps> = observer(() => {
 
   useEffect(() => {
     const fetchAndCombineData = async () => {
-      const cachedData = localStorage.getItem("playersData");
+      const cacheKey = `playersData_${store.prop}`; // Unique key based on `store.prop`
+      const cachedData = localStorage.getItem(cacheKey);
+  
       if (cachedData) {
         const parsedData = JSON.parse(cachedData);
         setCombinedPlayers(parsedData.players);
         setPlayerStats(parsedData.stats);
         return;
       }
-      
-      // if no cached data
+  
+      // Fetch fresh data if cache is missing or outdated
       const players = await getTrendingPlayers("basketball", "nba", store.prop);
-
+  
       const statsData = await Promise.all(
         players.map(async (player) => {
           const points = player.selections?.[0]?.points ?? 0;
@@ -38,21 +40,21 @@ const PlayerList: React.FC<PlayerListProps> = observer(() => {
             "basketball",
             "nba"
           );
-
+  
           return { [player.id]: stats };
         })
       );
-
+  
       store.setResults(players.length);
-
+  
       const statsObj = Object.assign({}, ...statsData);
       setPlayerStats(statsObj);
       setCombinedPlayers(players);
-
+  
       const dataToCache = { players, stats: statsObj };
-      localStorage.setItem("playersData", JSON.stringify(dataToCache));
+      localStorage.setItem(cacheKey, JSON.stringify(dataToCache));
     };
-
+  
     fetchAndCombineData();
   }, [store.prop]);
 

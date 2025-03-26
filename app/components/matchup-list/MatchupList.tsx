@@ -27,7 +27,7 @@ const MatchupList: React.FC<MatchupListProps> = () => {
   return (
     <div className="matchup-list">
        {games.map((game) => (
-        <MatchupCard game={game}/>
+        <MatchupCard game={game} key={game.id}/>
        ))}
       
     </div>

@@ -12,13 +12,16 @@ import "../filter.scss";
 type PropsFilterProps = {
   query: string;
   schedule: Schedule;
+  hideFilterOptions?: boolean;
 };
 
 const PropsFilter: React.FC<PropsFilterProps> = observer(
-  ({ query, schedule }) => {
+  ({ query, schedule, hideFilterOptions }) => {
     const pathname = usePathname();
     const currentLeague = pathname?.split("/")[1].toUpperCase();
-    const propOptions = sportsProps[currentLeague || "NBA"] || [];
+    const currentTab = pathname?.split("/")[2].toUpperCase();
+    const propOptions =
+      sportsProps[currentLeague + "_" + currentTab || "NBA_PROPS"] || [];
 
     const propsFilterLogic = new PropsFilterLogic(schedule, currentLeague);
 
@@ -47,12 +50,14 @@ const PropsFilter: React.FC<PropsFilterProps> = observer(
             />
           ))}
         </div>
-        <div className="filters">
-          <FilterOptions query={query} todaysGames={todaysGames} />
-          <p className="num-of-results">
-            {store.results} of {store.results}
-          </p>
-        </div>
+        {!hideFilterOptions && (
+          <div className="filters">
+            <FilterOptions query={query} todaysGames={todaysGames} />
+            <p className="num-of-results">
+              {store.results} of {store.results}
+            </p>
+          </div>
+        )}
       </div>
     );
   }
