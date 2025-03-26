@@ -32,7 +32,6 @@ const PropsFilter: React.FC<PropsFilterProps> = observer(
     };
 
     const todaysGames = propsFilterLogic.getTodaysGames();
-    console.log(todaysGames);
 
     return (
       <div className="filters-container">

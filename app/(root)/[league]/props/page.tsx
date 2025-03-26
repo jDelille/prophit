@@ -16,10 +16,11 @@ export default async function Props({
   const todaysDate = moment().format("MMM DD, YYYY");
   const query = (await searchParams).query;
   const schedule = await getSchedule("nba");
+  
 
   return (
     <section className="props-page">
-      <PageHeader title="Player Props" todaysDate={todaysDate} />
+      <PageHeader title="Player Props" todaysDate={todaysDate} description={`Trending NBA Props for ${todaysDate}`} />
       <PropsFilter query={query} schedule={schedule} />
       <PlayerCardsLabels />
       <PlayerList />

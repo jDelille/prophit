@@ -1,0 +1,27 @@
+.matchup-card {
+    padding: 10px;
+    .team {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 40px;;
+        .info {
+            width: 275px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            img {
+                max-width: 32px;
+            }
+            .name {
+                font-size: 14px;
+                font-weight: 500;
+            }
+            .score {
+                margin-left: auto;
+                font-weight: 600;
+                font-size: 14px;
+            }
+        }
+    }
+}

@@ -28,7 +28,7 @@
       font-family: "Allan", serif;
       color: #322F35;
       span {
-        color: #34C759;
+        color: vars.$accent-color;
       }
     }
     .links {
@@ -101,15 +101,25 @@
         gap: 1.5rem;
         font-size: 14px;
         font-weight: 600;
+        position: relative;
         .active-link,
         .inactive-link {
           cursor: pointer;
+          position: relative;
           &:hover {
             color: color.adjust(#000, $lightness: 35%, $space: hsl);
           }
         }
         .active-link {
-          background-color: red;
+          &::after {
+            content: "";
+            position: absolute;
+            height: 4px;
+            width: 100%;
+            background-color: vars.$accent-color;
+            bottom: -15px;
+            left: 0;
+          }
         }
       }
     }
