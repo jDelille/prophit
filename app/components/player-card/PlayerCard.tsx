@@ -89,7 +89,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, playerStats }) => {
             )}
           />
 
-          <PlayerCardColumn value="Draftkings" />
+          <PlayerCardColumn value="Analytics" />
         </div>
       </div>
     </div>

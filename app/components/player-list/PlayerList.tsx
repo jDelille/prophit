@@ -6,8 +6,8 @@ import store from "@/app/mobx/store";
 import PlayerCard from "../player-card/PlayerCard";
 import projectPlayerStats from "@/app/lib/stat-projections/pointProjection";
 import { observer } from "mobx-react-lite";
+import playersStore from "@/app/mobx/playersStore";
 import "./playerList.scss";
-import { parse } from "path";
 
 type PlayerListProps = {};
 
@@ -17,51 +17,45 @@ const PlayerList: React.FC<PlayerListProps> = observer(() => {
 
   useEffect(() => {
     const fetchAndCombineData = async () => {
-      const cacheKey = `playersData_${store.prop}`; // Unique key based on `store.prop`
-      const cachedData = localStorage.getItem(cacheKey);
-  
-      if (cachedData) {
-        const parsedData = JSON.parse(cachedData);
-        setCombinedPlayers(parsedData.players);
-        setPlayerStats(parsedData.stats);
+      const players = await getTrendingPlayers(
+        "basketball",
+        "nba",
+        playersStore.prop
+      );
+
+      if (!players || players.length === 0) {
+        console.warn("No players found");
         return;
       }
-  
-      // Fetch fresh data if cache is missing or outdated
-      const players = await getTrendingPlayers("basketball", "nba", store.prop);
-  
+
       const statsData = await Promise.all(
         players.map(async (player) => {
           const points = player.selections?.[0]?.points ?? 0;
           const stats = await projectPlayerStats(
             player.id,
-            store.prop,
+            playersStore.prop,
             points,
             "basketball",
             "nba"
           );
-  
           return { [player.id]: stats };
         })
       );
-  
-      store.setResults(players.length);
-  
       const statsObj = Object.assign({}, ...statsData);
-      setPlayerStats(statsObj);
+
       setCombinedPlayers(players);
-  
-      const dataToCache = { players, stats: statsObj };
-      localStorage.setItem(cacheKey, JSON.stringify(dataToCache));
+      setPlayerStats(statsObj);
     };
-  
+
     fetchAndCombineData();
-  }, [store.prop]);
+  }, [playersStore.prop]);
+
+  console.log(combinedPlayers);
 
   return (
     <div className="player-list">
       {combinedPlayers.map((player) => {
-        if (player.selections.length > 1) {
+        if (player.selections?.length > 1) {
           return (
             <PlayerCard
               player={player}

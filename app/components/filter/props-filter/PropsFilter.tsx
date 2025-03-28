@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { sportsProps } from "@/app/lib/utils/sportsProps";
 import { FilterOptions, PropsFilterLogic, SportDropdown } from "../index";
 import { Schedule } from "@/app/lib/services/getSchedule";
+import playersStore from "@/app/mobx/playersStore";
 import "../filter.scss";
 
 type PropsFilterProps = {
@@ -32,6 +33,7 @@ const PropsFilter: React.FC<PropsFilterProps> = observer(
     const handleSelectTab = (prop: string) => {
       propsFilterLogic.handleSelectTab(prop);
       setSelectedTab(prop);
+      playersStore.setProp(prop)
     };
 
     const todaysGames = propsFilterLogic.getTodaysGames();
