@@ -109,3 +109,14 @@
       }
     }
   }
+
+  .player-skeleton-cards {
+    display: flex;
+    flex-direction: column;
+  }
+  .player-card-skeleton {
+    width: 100%;
+    .skeleton-container {
+      width: 100%;
+    }
+  }

@@ -8,15 +8,18 @@ import projectPlayerStats from "@/app/lib/stat-projections/pointProjection";
 import { observer } from "mobx-react-lite";
 import playersStore from "@/app/mobx/playersStore";
 import "./playerList.scss";
+import PlayerCardSkeleton from "../player-card/PlayerCardSkeleton";
 
 type PlayerListProps = {};
 
 const PlayerList: React.FC<PlayerListProps> = observer(() => {
   const [combinedPlayers, setCombinedPlayers] = useState<any[]>([]);
   const [playerStats, setPlayerStats] = useState<Record<string, any>>({});
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchAndCombineData = async () => {
+      setIsLoading(true)
       const players = await getTrendingPlayers(
         "basketball",
         "nba",
@@ -25,6 +28,7 @@ const PlayerList: React.FC<PlayerListProps> = observer(() => {
 
       if (!players || players.length === 0) {
         console.warn("No players found");
+        setIsLoading(false)
         return;
       }
 
@@ -45,26 +49,30 @@ const PlayerList: React.FC<PlayerListProps> = observer(() => {
 
       setCombinedPlayers(players);
       setPlayerStats(statsObj);
+      setIsLoading(false)
     };
 
     fetchAndCombineData();
   }, [playersStore.prop]);
 
-  console.log(combinedPlayers);
-
   return (
     <div className="player-list">
-      {combinedPlayers.map((player) => {
-        if (player.selections?.length > 1) {
-          return (
-            <PlayerCard
-              player={player}
-              key={player.id + player.propType}
-              playerStats={playerStats[player.id]}
-            />
-          );
-        }
-      })}
+      {isLoading ? (
+        <PlayerCardSkeleton />
+      ): (
+        combinedPlayers.map((player) => {
+          if (player.selections?.length > 1) {
+            return (
+              <PlayerCard
+                player={player}
+                key={player.id + player.propType}
+                playerStats={playerStats[player.id]}
+              />
+            );
+          }
+        })
+      )}
+      
     </div>
   );
 });
