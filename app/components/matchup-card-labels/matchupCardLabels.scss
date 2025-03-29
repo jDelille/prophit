@@ -1,0 +1,18 @@
+.matchup-card-labels {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 12px;
+  margin-top: 2rem;
+  text-transform: uppercase;
+  .games-label {
+    width: 370px;
+  }
+  .labels {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 102px;
+    width: 100%;
+  }
+}

@@ -4,15 +4,19 @@ interface Game {
 }
 
 export interface Schedule {
-  events: { [date: string]: Game[] };
+  sectionList: {
+    events: {
+      id: string;
+    }[];
+  }[];
 }
 
 export default async function getSchedule(league: string): Promise<Schedule> {
-  const res = await fetch(`http://localhost:3000/api/fox/scoreboard?league=${league}`);
+  const res = await fetch(
+    `http://localhost:3000/api/fox/scoreboard?league=${league}`
+  );
 
-  console.log(res)
-
-  if (!res.ok) return { events: {} };
+  if (!res.ok) return { sectionList: [{ events: [] }] };
 
   const data = await res.json();
 

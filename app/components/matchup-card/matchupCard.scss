@@ -1,5 +1,9 @@
 .matchup-card {
     padding: 10px 0;
+    display: flex;
+    .teams {
+        width: 370px;
+    }
     .team {
         display: flex;
         align-items: center;
@@ -11,17 +15,36 @@
             align-items: center;
             gap: 10px;
             img {
-                max-width: 32px;
+                max-width: 25px;
             }
             .name {
                 font-size: 14px;
                 font-weight: 500;
+                position: relative;
+                span {
+                    font-size: 10px;
+                    position: absolute;
+                    top: -3px;
+                    right: -45px;
+                    width: 40px;
+                    color: gray;
+                }
             }
             .score {
                 margin-left: auto;
                 font-weight: 600;
                 font-size: 14px;
             }
+        }
+    }
+    .matchup-data {
+        width: 100%;
+        margin-left: 100px;
+        display: flex;
+        align-items: center;
+        .odds {
+            font-weight: 500;
+            font-size: 14px;
         }
     }
 }
