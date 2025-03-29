@@ -2,13 +2,13 @@
 
 import React, { useEffect, useState } from "react";
 import getTrendingPlayers from "@/app/lib/services/getTrendingPlayers";
-import store from "@/app/mobx/store";
 import PlayerCard from "../player-card/PlayerCard";
 import projectPlayerStats from "@/app/lib/stat-projections/pointProjection";
 import { observer } from "mobx-react-lite";
 import playersStore from "@/app/mobx/playersStore";
-import "./playerList.scss";
 import PlayerCardSkeleton from "../player-card/PlayerCardSkeleton";
+import store from "@/app/mobx/store";
+import "./playerList.scss";
 
 type PlayerListProps = {};
 
@@ -19,7 +19,8 @@ const PlayerList: React.FC<PlayerListProps> = observer(() => {
 
   useEffect(() => {
     const fetchAndCombineData = async () => {
-      setIsLoading(true)
+
+      setIsLoading(true);
       const players = await getTrendingPlayers(
         "basketball",
         "nba",
@@ -28,7 +29,7 @@ const PlayerList: React.FC<PlayerListProps> = observer(() => {
 
       if (!players || players.length === 0) {
         console.warn("No players found");
-        setIsLoading(false)
+        setIsLoading(false);
         return;
       }
 
@@ -49,30 +50,36 @@ const PlayerList: React.FC<PlayerListProps> = observer(() => {
 
       setCombinedPlayers(players);
       setPlayerStats(statsObj);
-      setIsLoading(false)
+      setIsLoading(false);
     };
 
     fetchAndCombineData();
   }, [playersStore.prop]);
 
+  useEffect(() => {
+    if (!isLoading) {
+      const filteredPlayers = combinedPlayers.filter(
+        (player) => player.selections?.length > 1
+      );
+      store.setResults(filteredPlayers.length);
+    }
+  }, [isLoading, combinedPlayers]);
+
   return (
     <div className="player-list">
       {isLoading ? (
         <PlayerCardSkeleton />
-      ): (
-        combinedPlayers.map((player) => {
-          if (player.selections?.length > 1) {
-            return (
-              <PlayerCard
-                player={player}
-                key={player.id + player.propType}
-                playerStats={playerStats[player.id]}
-              />
-            );
-          }
-        })
+      ) : (
+        combinedPlayers
+          .filter((player) => player.selections?.length > 1)
+          .map((player) => (
+            <PlayerCard
+              player={player}
+              key={player.id + player.propType}
+              playerStats={playerStats[player.id]}
+            />
+          ))
       )}
-      
     </div>
   );
 });
