@@ -36,7 +36,7 @@ const PropsFilter: React.FC<PropsFilterProps> = observer(
       playersStore.setProp(prop)
     };
 
-    const todaysGames = propsFilterLogic.getTodaysGames();
+    // const todaysGames = propsFilterLogic.getTodaysGames();
 
     return (
       <div className="filters-container">
@@ -54,7 +54,7 @@ const PropsFilter: React.FC<PropsFilterProps> = observer(
         </div>
         {!hideFilterOptions && (
           <div className="filters">
-            <FilterOptions query={query} todaysGames={todaysGames} />
+            {/* <FilterOptions query={query} todaysGames={todaysGames} /> */}
             <p className="num-of-results">
               {store.results} of {store.results}
             </p>
