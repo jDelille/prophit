@@ -1,4 +1,5 @@
 @use "sass:color";
+@use "@/app/scss/breakpoints" as *;
 
 .footer {
   height: fit-content;
@@ -12,6 +13,9 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  @include breakpoint(xs) {
+    padding: 2rem 15px;
+  }
   .logo {
     font-weight: bold;
     font-size: 34px;
@@ -27,12 +31,17 @@
     justify-content: space-between;
     width: 50%;
     max-width: 708px;
+    @include breakpoint(xs) {
+      width: unset;
+      flex-wrap: wrap;
+    }
     ul {
         font-size: 14px;
         display: flex;
         flex-direction: column;
         gap: 3px;
         font-weight: 400;
+       
         li {
             cursor: pointer;
             &:hover {
@@ -53,5 +62,8 @@
     text-align: center;
     width: 50%;
     max-width: 700px;
+    @include breakpoint(xs) {
+      width: unset;
+    }
   }
 }

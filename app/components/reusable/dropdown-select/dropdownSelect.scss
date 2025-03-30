@@ -1,4 +1,5 @@
 @use "@/app/scss/variables" as vars;
+@use "@/app/scss/breakpoints" as break;
 @use "sass:color";
 
 .dropdown-select-wrapper {
@@ -9,7 +10,9 @@
   align-items: center;
   border-radius: 6px;
   position: relative;
-
+  @include break.breakpoint(xs) {
+    height: 32px;
+  }
   button {
     all: unset;
     cursor: pointer;

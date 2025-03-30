@@ -24,7 +24,7 @@ export default async function Props({
         todaysDate={todaysDate}
         description={`Trending NBA Props for ${todaysDate}`}
       />
-      <PropsFilter query={query} schedule={schedule} />
+      <PropsFilter query={query} schedule={schedule}  />
       <PlayerCardsLabels />
       <PlayerList />
     </section>

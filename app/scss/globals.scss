@@ -42,5 +42,8 @@ body {
     @include breakpoint(sm) {
       padding: 2rem;
     }
+    @include breakpoint(xs) {
+      padding: 2rem 15px;
+    }
   }
 }

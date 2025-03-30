@@ -18,7 +18,7 @@
     padding: 0 15rem;
     margin: 0 auto;
     display: flex;
-    @include breakpoint(md) {
+    @include breakpoint(xs) {
       padding: 0 2rem;
     }
     .logo {
@@ -79,6 +79,9 @@
     height: 100%;
     display: flex;
     @include breakpoint(md) {
+      padding: 0 2rem;
+    }
+    @include breakpoint(xs) {
       padding: 0 2rem;
     }
     .sport {

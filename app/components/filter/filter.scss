@@ -1,53 +1,85 @@
+@use "@/app/scss/breakpoints" as *;
+@use "@/app/scss/variables" as vars;
+
 .filters-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  @include breakpoint(xs) {
+    gap: 10px;
+  }
 }
 
 .props-filter {
-    min-width: 230px;
-    // background-color: lightblue;
-    padding-right: 10px;
-    margin-top: 2rem;
+  min-width: 230px;
+  padding-right: 10px;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 44px;
+  @include breakpoint(xs) {
+    margin-top: 1rem;
+  }
+  .selected {
+    font-weight: 500;
+    font-size: 16px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 1rem;
-    height: 44px;
-
-    .selected {
-        font-weight: 500;
-        font-size: 16px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-        top: 4px;
-        .clear-all {
-            text-decoration: underline;
-            font-size: 13px;
-        }
+    position: relative;
+    top: 4px;
+    .clear-all {
+      text-decoration: underline;
+      font-size: 13px;
     }
+  }
 }
 
 .filters {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    height: 40px;
-    .title {
-        font-weight: 500;
-        font-size: 14px;
-        margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  .title {
+    font-weight: 500;
+    font-size: 14px;
+    margin-right: 1rem;
+    @include breakpoint(xs) {
+      display: none;
     }
-    .dropdown-select-wrapper {
-        .trigger-text {
-            font-size: 12px !important;
-        }
+  }
+  .dropdown-select-wrapper {
+    .trigger-text {
+      font-size: 12px !important;
     }
-    .num-of-results {
-        font-weight: 600;
-        font-size: 12px;
-        margin-left: auto;
+  }
+  .num-of-results {
+    font-weight: 600;
+    font-size: 12px;
+    margin-left: auto;
+  }
+  .desktop {
+    @include breakpoint(xs) {
+      display: none;
     }
+  }
+  .mobile {
+    display: none;
+    @include breakpoint(xs) {
+      display: flex;
+    }
+    button {
+      all: unset;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      border: 1px solid vars.$border-color;
+      padding: 7px 15px;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+  }
 }

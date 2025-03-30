@@ -1,5 +1,11 @@
+@use "@/app/scss/breakpoints" as *;
+
+
 .player-list {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    @include breakpoint(xs) {
+      margin-top: 1rem;
+    }
   }

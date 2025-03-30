@@ -1,122 +1,23 @@
 @use "sass:color";
+@use "@/app/scss/breakpoints" as *;
+@use "@/app/scss/variables" as vars;
 
 .player-card {
-    background-color: #fff;
-    position: relative;
-    width: 100%;
-    // min-height: 59px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    // padding: 10px 0;
-    border-radius: 12px;
-    &:hover {
-      background: #F3F5F9;
-
-    }
-    .player-headshot {
-      background-color: #f3f5f9;
-      height: 40px;
-      width: 40px;
-      min-width: 40px;
-      border-radius: 50%;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      img {
-        min-width: 59px;
-        position: relative;
-        object-fit: cover;
-      }
-   
-    }
-    .info {
-      display: flex;
-      flex-direction: column;
-      width: 220px;
-      
-      .name {
-        font-size: 14px;
-        font-weight: 500;
-      }
-      .player-info {
-        font-size: 12px;
-        color: gray;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-      }
-    }
-  
-    .projections {
-      width: 100%;
-      height: 50px;
-      margin-left: 47px;
-      display: flex;
-      align-items: center;
-
-      .column {
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100px;
-        flex-direction: column;
-      }
-
-      .prop,
-      .proj {
-        flex-direction: column;
-        .Over {
-          color: #0da30d;
-        }
-        .Under {
-          color: #c01313;
-        }
-      }
-      .med-font {
-        font-size: 14px;
-        font-weight: 500;
-      }
-      .positive {
-        // color: #0da30d;
-      }
-      .negative {
-        // color: #c01313;
-      }
-      .small-font {
-        font-size: 12px;
-        font-weight: 500;
-        
-      }
-
-      .below-50 {
-        background-color: #FFECEB;
-        color: #C9372C;
-      }
-
-      .above-70 {
-        background-color: #EDF8F0;
-        color: #328F68;
-      }
-
-      .mid-range {
-        background-color: #EBEDF2;
-        color: #525A67;
-      }
-    }
-  }
-
-  .player-skeleton-cards {
+  background-color: #fff;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  border-radius: 12px;
+  @include breakpoint(xs) {
     display: flex;
     flex-direction: column;
+    align-items: baseline;
+    border-radius: 0;
   }
-  .player-card-skeleton {
-    width: 100%;
-    .skeleton-container {
-      width: 100%;
-    }
+  &:hover {
+    background: #f3f5f9;
   }
+}

@@ -6,7 +6,7 @@ import PlayerCard from "../player-card/PlayerCard";
 import projectPlayerStats from "@/app/lib/stat-projections/pointProjection";
 import { observer } from "mobx-react-lite";
 import playersStore from "@/app/mobx/playersStore";
-import PlayerCardSkeleton from "../player-card/PlayerCardSkeleton";
+import PlayerCardSkeleton from "../player-card/player-card-skeleton/PlayerCardSkeleton";
 import store from "@/app/mobx/store";
 import "./playerList.scss";
 

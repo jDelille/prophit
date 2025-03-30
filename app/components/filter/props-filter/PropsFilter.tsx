@@ -54,7 +54,7 @@ const PropsFilter: React.FC<PropsFilterProps> = observer(
         </div>
         {!hideFilterOptions && (
           <div className="filters">
-            {/* <FilterOptions query={query} todaysGames={todaysGames} /> */}
+            <FilterOptions query={query}  />
             <p className="num-of-results">
               {store.results} of {store.results}
             </p>

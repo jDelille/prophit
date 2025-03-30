@@ -1,3 +1,6 @@
+@use "@/app/scss/breakpoints" as *;
+
+
 .player-cards-labels-container {
     height: 50px;
     display: flex;
@@ -6,6 +9,9 @@
     font-size: 12px;
     margin-top: 2rem;
     text-transform: uppercase;
+    @include breakpoint(xs) {
+        display: none;
+    }
     .player-label {
         width: 230px;
     }
