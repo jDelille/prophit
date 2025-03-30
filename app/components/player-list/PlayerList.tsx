@@ -19,7 +19,6 @@ const PlayerList: React.FC<PlayerListProps> = observer(() => {
 
   useEffect(() => {
     const fetchAndCombineData = async () => {
-
       setIsLoading(true);
       const players = await getTrendingPlayers(
         "basketball",
@@ -33,6 +32,7 @@ const PlayerList: React.FC<PlayerListProps> = observer(() => {
         return;
       }
 
+
       const statsData = await Promise.all(
         players.map(async (player) => {
           const points = player.selections?.[0]?.points ?? 0;
@@ -40,6 +40,7 @@ const PlayerList: React.FC<PlayerListProps> = observer(() => {
             player.id,
             playersStore.prop,
             points,
+            player.selections?.[0] ? player.selections?.[0].venueRole as string : "HomePlayer",
             "basketball",
             "nba"
           );

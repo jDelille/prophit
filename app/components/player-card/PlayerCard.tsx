@@ -48,11 +48,12 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, playerStats }) => {
               parseFloat(player.selections[0]?.points?.toString() ?? "0"),
               playerStats.points.projectedPoints
             )}
+            label={logic.getProjectedDifference().className}
           />
 
           <PlayerCardColumn
             value={logic.getProjectedDifference().formattedValue}
-            className={logic.getProjectedDifference().className}
+            
           />
 
           <PlayerCardColumn value={player.selections[0].statistic.value} />

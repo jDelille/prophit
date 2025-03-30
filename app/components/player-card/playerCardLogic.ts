@@ -34,8 +34,8 @@ export default class PlayerCardLogic {
   }
 
   formatDifference(value: number): { formattedValue: string; className: string } {
-    if (value > 0) return { formattedValue: `+${value.toFixed(1)}`, className: "positive" };
-    if (value < 0) return { formattedValue: `${value.toFixed(1)}`, className: "negative" };
+    if (value > 0) return { formattedValue: `+${value.toFixed(1)}`, className: "Over" };
+    if (value < 0) return { formattedValue: `${value.toFixed(1)}`, className: "Under" };
     return { formattedValue: `${value.toFixed(1)}`, className: "neutral" };
   }
 
@@ -49,7 +49,7 @@ export default class PlayerCardLogic {
     return "below-50";
   }
 
-  getProjectedDifference(): { formattedValue: string; className: string } {
+   getProjectedDifference(): { formattedValue: string; className: string } {
     const projectedPoints = this.playerStats.points.projectedPoints;
     const propValue = parseFloat(this.player.selections[0]?.points?.toString() ?? "0");
     return this.formatDifference(projectedPoints - propValue);

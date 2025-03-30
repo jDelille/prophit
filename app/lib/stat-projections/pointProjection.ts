@@ -52,20 +52,25 @@ export const mapPropToStatType = (
     Ast: { statType: StatType.AST, index: getStatIndex(StatType.AST) },
   };
 
-  return mapping[prop] || null; // Handle unmapped props gracefully
+  return mapping[prop] || null;
 };
 
 const projectPlayerStats = async (
   playerId: string,
   prop: string,
   currentPropValue: number,
+  venueRole: string,
   sport: string,
   league: string
 ) => {
   try {
-    const response = await axios.get(`http://localhost:3000/api/espn/gamelog?sport=${sport}&league=${league}&playerId=${playerId}`);
+    const response = await axios.get(
+      `http://localhost:3000/api/espn/gamelog?sport=${sport}&league=${league}&playerId=${playerId}`
+    );
 
     const gameLogs = response.data;
+
+    console.log(venueRole)
 
     const combineAndSortStats = (seasonTypes: any, statIndex: number) => {
       return seasonTypes[0].categories.flatMap(({ events }: any) =>
@@ -123,7 +128,7 @@ const projectPlayerStats = async (
     const projectedPoints = calculateProjectedPoints(
       lastestPPG,
       averagePoints,
-      homeGamePoints
+      venueRole === "HomePlayer" ? homeGamePoints : awayGamePoints
     );
 
     return {
