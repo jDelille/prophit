@@ -100,6 +100,12 @@ const projectPlayerStats = async (
       10
     );
 
+    const seasonPercentage = calculateHitRatePercentage(
+      combinedPPG,
+      currentPropValue,
+      combinedPPG.length
+    )
+
     const lastestPPG = [
       parseFloat(latest3Avg),
       parseFloat(latest5Avg),
@@ -110,7 +116,7 @@ const projectPlayerStats = async (
         mapPropToStatType(prop)?.index ?? 0
       )
     );
-    
+
     const homeGamePoints = getHomeAwayGameIds(
       gameLogs.events,
       gameLogs.seasonTypes,
@@ -139,6 +145,7 @@ const projectPlayerStats = async (
         latest3Percentage,
         latest5Percentage,
         latest10Percentage,
+        seasonPercentage
       },
     };
   } catch (error) {

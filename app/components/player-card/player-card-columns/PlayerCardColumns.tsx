@@ -63,7 +63,13 @@ const PlayerCardColumns: React.FC<PlayerCardColumnsProps> = ({
         label="L-10"
       />
 
-      <PlayerCardColumn value="NULL" label="SZN" />
+      <PlayerCardColumn
+        className={logic.getPercentageClass(
+          playerStats.points.seasonPercentage
+        )}
+        value={playerStats.points.seasonPercentage + "%"}
+        label="SZN"
+      />
 
       <PlayerCardColumn
         value={logic.isOverOrUnder(

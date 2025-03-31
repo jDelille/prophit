@@ -3,6 +3,7 @@ export function calculateHitRatePercentage(
   currentPropValue: number,
   numOfGames: number
 ) {
+
   const latestGames = combinePPG.slice(0, numOfGames);
 
   const countAboveThreshold = latestGames.filter(

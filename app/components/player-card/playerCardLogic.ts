@@ -9,6 +9,7 @@ export type PlayerStats = {
     latest3Percentage: number;
     latest5Percentage: number;
     latest10Percentage: number;
+    seasonPercentage: number;
   };
 };
 
