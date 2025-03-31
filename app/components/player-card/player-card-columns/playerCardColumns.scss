@@ -35,6 +35,7 @@
   .small-font {
     font-size: 12px;
     font-weight: 500;
+    color: #525a67;
   }
 
   .below-50 {
@@ -50,5 +51,11 @@
   .mid-range {
     background-color: #ebedf2;
     color: #525a67;
+  }
+
+  .hide-mobile {
+    @include breakpoint(xs) {
+      display: none;
+    }
   }
 }

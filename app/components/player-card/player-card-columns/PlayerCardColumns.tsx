@@ -2,7 +2,7 @@ import React from "react";
 import { Player } from "../PlayerCard";
 import PlayerCardLogic, { PlayerStats } from "../playerCardLogic";
 import PlayerCardColumn from "./PlayerCardColumn";
-import './playerCardColumns.scss';
+import "./playerCardColumns.scss";
 
 type PlayerCardColumnsProps = {
   player: Player;
@@ -16,31 +16,35 @@ const PlayerCardColumns: React.FC<PlayerCardColumnsProps> = ({
 
   return (
     <div className="projections">
-      <PlayerCardColumn
-        value={player.selections[0]?.points}
-        label={player.propType}
-      />
+      <div className="hide-mobile">
+        <PlayerCardColumn
+          value={player.selections[0]?.points}
+          label={player.propType}
+        />
 
-      <PlayerCardColumn
-        value={playerStats.points.projectedPoints}
-        className={logic.isOverOrUnder(
-          parseFloat(player.selections[0]?.points?.toString() ?? "0"),
-          playerStats.points.projectedPoints
-        )}
-        label={logic.getProjectedDifference().className}
-      />
+        <PlayerCardColumn
+          value={playerStats.points.projectedPoints}
+          className={logic.isOverOrUnder(
+            parseFloat(player.selections[0]?.points?.toString() ?? "0"),
+            playerStats.points.projectedPoints
+          )}
+          label={logic.getProjectedDifference().className}
+        />
 
-      <PlayerCardColumn value={logic.getProjectedDifference().formattedValue} />
+        <PlayerCardColumn
+          value={logic.getProjectedDifference().formattedValue}
+        />
+        <PlayerCardColumn value={player.selections[0].statistic.value} />
 
-      <PlayerCardColumn value={player.selections[0].statistic.value} />
-
-      <PlayerCardColumn value="NULL" />
+        <PlayerCardColumn value="NULL" />
+      </div>
 
       <PlayerCardColumn
         value={playerStats.points.latest3Percentage + "%"}
         className={logic.getPercentageClass(
           playerStats.points.latest3Percentage
         )}
+        label="L-3"
       />
 
       <PlayerCardColumn
@@ -48,6 +52,7 @@ const PlayerCardColumns: React.FC<PlayerCardColumnsProps> = ({
         className={logic.getPercentageClass(
           playerStats.points.latest5Percentage
         )}
+        label="L-5"
       />
 
       <PlayerCardColumn
@@ -55,9 +60,10 @@ const PlayerCardColumns: React.FC<PlayerCardColumnsProps> = ({
         className={logic.getPercentageClass(
           playerStats.points.latest10Percentage
         )}
+        label="L-10"
       />
 
-      <PlayerCardColumn value="NULL" />
+      <PlayerCardColumn value="NULL" label="SZN" />
 
       <PlayerCardColumn
         value={logic.isOverOrUnder(

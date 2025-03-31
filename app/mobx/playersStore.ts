@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 
 class PlayersStore {
   playersData = new Map();
-  prop: string = ""; 
+  prop: string = "Pts"; 
   lastFetchedProp = "";
 
   constructor() {

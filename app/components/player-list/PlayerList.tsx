@@ -32,6 +32,7 @@ const PlayerList: React.FC<PlayerListProps> = observer(() => {
         return;
       }
 
+      console.log("prop: ", playersStore.prop)
 
       const statsData = await Promise.all(
         players.map(async (player) => {

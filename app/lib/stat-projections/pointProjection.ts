@@ -70,8 +70,6 @@ const projectPlayerStats = async (
 
     const gameLogs = response.data;
 
-    console.log(venueRole)
-
     const combineAndSortStats = (seasonTypes: any, statIndex: number) => {
       return seasonTypes[0].categories.flatMap(({ events }: any) =>
         events.map(({ stats }: any) => stats.at(statIndex))
@@ -112,6 +110,7 @@ const projectPlayerStats = async (
         mapPropToStatType(prop)?.index ?? 0
       )
     );
+    
     const homeGamePoints = getHomeAwayGameIds(
       gameLogs.events,
       gameLogs.seasonTypes,

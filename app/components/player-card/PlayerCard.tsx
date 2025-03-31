@@ -26,7 +26,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, playerStats }) => {
   return (
     <div className="player-card" key={player.id + player.propType}>
       <PlayerCardHeader player={player} />
-      {/* <PlayerCardColumns player={player} playerStats={playerStats} /> */}
+      <PlayerCardColumns player={player} playerStats={playerStats} />
     </div>
   );
 };
