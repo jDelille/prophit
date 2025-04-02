@@ -5,3 +5,4 @@ export { default as SortIcon } from './SortIcon';
 export { default as CloseIcon } from './CloseIcon';
 export { default as ChartIcon } from './ChartIcon';
 export { default as FilterIcon } from './FilterIcon';
+export { default as InfoIcon } from './InfoIcon';
