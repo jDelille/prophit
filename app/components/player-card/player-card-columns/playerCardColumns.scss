@@ -8,14 +8,15 @@
   align-items: center;
   @include breakpoint(xs) {
     margin: 0;
+    height: 40px;
   }
   .column {
     height: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
-    width: 100px;
     flex-direction: column;
+    padding: 10px 15px;
+    width: 100px;
   }
 
   .prop,
@@ -29,28 +30,33 @@
     }
   }
   .med-font {
-    font-size: 14px;
-    font-weight: 500;
-  }
-  .small-font {
     font-size: 12px;
     font-weight: 500;
+    display: flex;
+    justify-content: center;
+  }
+  .small-font {
+    font-size: 10px;
+    font-weight: 600;
     color: #525a67;
+    display: flex;
+    justify-content: center;
+
   }
 
   .below-50 {
-    background-color: #ffeceb;
+    // background-color: #ffeceb;
     color: #c9372c;
   }
 
   .above-70 {
-    background-color: #edf8f0;
+    // background-color: #edf8f0;
     color: #328f68;
   }
 
   .mid-range {
-    background-color: #ebedf2;
-    color: #525a67;
+    // background-color: #ebedf2;
+    color: #ca8d09;
   }
 
   .hide-mobile {

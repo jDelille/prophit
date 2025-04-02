@@ -10,6 +10,7 @@ export type PlayerStats = {
     latest5Percentage: number;
     latest10Percentage: number;
     seasonPercentage: number;
+    venueHitRatePercentage: number;
   };
 };
 
@@ -45,7 +46,7 @@ export default class PlayerCardLogic {
   }
 
   getPercentageClass(percentage: number): string {
-    if (percentage > 70) return "above-70";
+    if (percentage > 69) return "above-70";
     if (percentage >= 60) return "mid-range";
     return "below-50";
   }

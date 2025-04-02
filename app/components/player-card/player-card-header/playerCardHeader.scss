@@ -9,19 +9,24 @@
   
   @include breakpoint(xs) {
     width: 100%;
-    padding: 10px 0;
+    padding: 10px 15px;
     border-bottom: 1px solid vars.$border-color;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+    
+
   }
   .player-headshot {
     background-color: #f3f5f9;
     height: 40px;
     width: 40px;
-    border-radius: 50%;
+    border-radius: 6px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    border: 1px solid vars.$border-color;
     @include breakpoint(xs) {
       width: 35px;
       height: 35px;
@@ -39,7 +44,7 @@
     display: flex;
     flex-direction: column;
     .name {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 500;
     }
     .player-info {

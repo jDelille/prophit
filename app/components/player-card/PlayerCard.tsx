@@ -23,9 +23,13 @@ type PlayerCardProps = {
 };
 
 const PlayerCard: React.FC<PlayerCardProps> = ({ player, playerStats }) => {
+
   return (
     <div className="player-card" key={player.id + player.propType}>
       <PlayerCardHeader player={player} />
+      <div className="mobile-projection">
+        <p>Proj. {playerStats.points.projectedPoints}</p>
+      </div>
       <PlayerCardColumns player={player} playerStats={playerStats} />
     </div>
   );

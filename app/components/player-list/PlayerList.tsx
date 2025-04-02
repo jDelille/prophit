@@ -32,8 +32,6 @@ const PlayerList: React.FC<PlayerListProps> = observer(() => {
         return;
       }
 
-      console.log("prop: ", playersStore.prop)
-
       const statsData = await Promise.all(
         players.map(async (player) => {
           const points = player.selections?.[0]?.points ?? 0;

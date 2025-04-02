@@ -4,7 +4,7 @@
 .player-list {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
     @include breakpoint(xs) {
       margin-top: 1rem;
     }

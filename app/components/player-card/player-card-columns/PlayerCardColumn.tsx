@@ -13,8 +13,8 @@ const PlayerCardColumn: React.FC<PlayerCardColumnProps> = ({
 }) => {
   return (
     <div className={`column ${className}`}>
-      <p className="med-font">{value}</p>
       <p className="small-font">{label}</p>
+      <p className="med-font">{value}</p>
     </div>
   );
 };

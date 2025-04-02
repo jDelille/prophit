@@ -3,7 +3,7 @@ import {
   calculateAveragePPG,
   calculateProjectedPoints,
 } from "../utils/calculateAveragePPG";
-import { getHomeAwayGameIds } from "../utils/getHomeAwayGameIds";
+import { getHomeAwayGameIds, getHomeAwayHitPercentage } from "../utils/getHomeAwayGameIds";
 import { calculateHitRatePercentage } from "../utils/calculateHitRatePercentage";
 
 export enum StatType {
@@ -123,6 +123,7 @@ const projectPlayerStats = async (
       true,
       prop
     );
+
     const awayGamePoints = getHomeAwayGameIds(
       gameLogs.events,
       gameLogs.seasonTypes,
@@ -136,6 +137,14 @@ const projectPlayerStats = async (
       venueRole === "HomePlayer" ? homeGamePoints : awayGamePoints
     );
 
+    const venueHitRatePercentage = getHomeAwayHitPercentage(gameLogs.events,
+      gameLogs.seasonTypes,
+      venueRole === "HomePlayer" ? true : false,
+      prop,
+      currentPropValue
+    )
+
+
     return {
       points: {
         latest3Avg,
@@ -145,7 +154,8 @@ const projectPlayerStats = async (
         latest3Percentage,
         latest5Percentage,
         latest10Percentage,
-        seasonPercentage
+        seasonPercentage,
+        venueHitRatePercentage
       },
     };
   } catch (error) {

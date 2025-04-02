@@ -3,6 +3,7 @@ import { Player } from "../PlayerCard";
 import PlayerCardLogic, { PlayerStats } from "../playerCardLogic";
 import PlayerCardColumn from "./PlayerCardColumn";
 import "./playerCardColumns.scss";
+import playersStore from "@/app/mobx/playersStore";
 
 type PlayerCardColumnsProps = {
   player: Player;
@@ -44,6 +45,14 @@ const PlayerCardColumns: React.FC<PlayerCardColumnsProps> = ({
         className={logic.getPercentageClass(
           playerStats.points.latest3Percentage
         )}
+        label="H2H"
+      />
+
+      <PlayerCardColumn
+        value={playerStats.points.latest3Percentage + "%"}
+        className={logic.getPercentageClass(
+          playerStats.points.latest3Percentage
+        )}
         label="L-3"
       />
 
@@ -71,13 +80,22 @@ const PlayerCardColumns: React.FC<PlayerCardColumnsProps> = ({
         label="SZN"
       />
 
-      <PlayerCardColumn
-        value={logic.isOverOrUnder(
-          parseFloat(player.selections[0]?.points?.toString() ?? "0"),
-          playerStats.points.projectedPoints
-        )}
-      />
+      <div className="hide-mobile">
+        <PlayerCardColumn
+          value={logic.isOverOrUnder(
+            parseFloat(player.selections[0]?.points?.toString() ?? "0"),
+            playerStats.points.projectedPoints
+          )}
+        />
+      </div>
 
+      <PlayerCardColumn
+        className={logic.getPercentageClass(
+          playerStats.points.venueHitRatePercentage
+        )}
+        label="Venue"
+        value={playerStats.points.venueHitRatePercentage + "%"}
+      />
       <PlayerCardColumn value="Analytics" />
     </div>
   );
