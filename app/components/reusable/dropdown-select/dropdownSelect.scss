@@ -10,6 +10,7 @@
   align-items: center;
   border-radius: 6px;
   position: relative;
+  background-color: white;
   @include break.breakpoint(xs) {
     height: 32px;
   }

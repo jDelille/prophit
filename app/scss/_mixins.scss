@@ -1,25 +1,5 @@
 @import './variables';
 
-@mixin note {
-  width: $noteWidth;
-  height: $noteHeight;
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  font-size: 12px;
-  position: relative;
-  z-index: 999;
-  cursor: pointer;
-  position: relative;
-  bottom: 1px;
-  &:hover {
-    transform: scale(1.3);
-  }
-}
-
 @mixin overlay() {
 	justify-content: center;
 	align-items: center;
@@ -49,3 +29,28 @@
 	opacity: 1;
 	height: fit-content;
 }
+
+@mixin custom-scrollbar($width: 10px, $track-color: #F3F5F9, $thumb-color: #F3F5F9, $thumb-hover: #555) {
+	/* Webkit browsers */
+	::-webkit-scrollbar {
+	  width: $width;
+	}
+  
+	::-webkit-scrollbar-track {
+	  background: $track-color;
+	  border-radius: 10px;
+	}
+  
+	::-webkit-scrollbar-thumb {
+	  background: $thumb-color;
+	  border-radius: 10px;
+	}
+  
+	::-webkit-scrollbar-thumb:hover {
+	  background: $thumb-hover;
+	}
+  
+	/* Firefox */
+	scrollbar-width: thin;
+	scrollbar-color: $thumb-color $track-color;
+  }

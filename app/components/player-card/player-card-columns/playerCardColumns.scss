@@ -6,6 +6,7 @@
   margin-left: 47px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   @include breakpoint(xs) {
     margin: 0;
     height: 40px;

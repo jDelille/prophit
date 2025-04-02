@@ -24,6 +24,9 @@ type PlayerCardProps = {
 
 const PlayerCard: React.FC<PlayerCardProps> = ({ player, playerStats }) => {
 
+  console.log(player)
+
+
   return (
     <div className="player-card" key={player.id + player.propType}>
       <PlayerCardHeader player={player} />

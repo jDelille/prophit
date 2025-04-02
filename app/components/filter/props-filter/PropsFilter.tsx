@@ -42,6 +42,7 @@ const PropsFilter: React.FC<PropsFilterProps> = observer(
       <div className="filters-container">
         <div className="props-filter">
           <SportDropdown currentLeague={currentLeague} />
+          <div className="prop-options-list">
           {propOptions.map((prop, index) => (
             <TabChip
               key={index}
@@ -51,6 +52,7 @@ const PropsFilter: React.FC<PropsFilterProps> = observer(
               onSelectTab={handleSelectTab}
             />
           ))}
+          </div>
         </div>
         {!hideFilterOptions && (
           <div className="filters">

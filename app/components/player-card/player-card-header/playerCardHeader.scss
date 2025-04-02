@@ -61,8 +61,13 @@
       display: none;
       @include breakpoint(xs) {
         display: flex;
+        align-items: center;
         font-size: 12px;
         font-weight: 500;
+        gap: 5px;
+      }
+      .odds {
+        font-size: 11px;
       }
     }
   }

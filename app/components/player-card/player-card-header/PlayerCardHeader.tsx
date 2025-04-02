@@ -30,6 +30,7 @@ const PlayerCardHeader: React.FC<PlayerCardHeaderProps> = ({ player }) => {
         </div>
         <div className="prop">
           {player.selections[0]?.points} {getPropName(player.propType)}
+          <p className="odds">({player.selections[0].odds})</p>
         </div>
       </div>
     </div>

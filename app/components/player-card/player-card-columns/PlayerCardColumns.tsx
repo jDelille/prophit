@@ -96,7 +96,6 @@ const PlayerCardColumns: React.FC<PlayerCardColumnsProps> = ({
         label="Venue"
         value={playerStats.points.venueHitRatePercentage + "%"}
       />
-      <PlayerCardColumn value="Analytics" />
     </div>
   );
 };

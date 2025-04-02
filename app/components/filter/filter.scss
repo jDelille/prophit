@@ -1,5 +1,6 @@
 @use "@/app/scss/breakpoints" as *;
 @use "@/app/scss/variables" as vars;
+@use "@/app/scss/mixins" as mix;
 
 .filters-container {
   display: flex;
@@ -21,19 +22,32 @@
   @include breakpoint(xs) {
     margin-top: 1rem;
   }
-  .selected {
-    font-weight: 500;
-    font-size: 16px;
+  .prop-options-list {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    height: 54px;
     position: relative;
-    top: 4px;
-    .clear-all {
-      text-decoration: underline;
-      font-size: 13px;
+    top: 5px;
+    gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    @include mix.custom-scrollbar(12px, #F3F5F9, #dedfe0, #555);
+
+    .selected {
+      font-weight: 500;
+      font-size: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      top: 4px;
+      .clear-all {
+        text-decoration: underline;
+        font-size: 13px;
+      }
     }
   }
+
 }
 
 .filters {
@@ -80,6 +94,7 @@
       border-radius: 4px;
       font-weight: 500;
       cursor: pointer;
+      background-color: white;
     }
   }
 }

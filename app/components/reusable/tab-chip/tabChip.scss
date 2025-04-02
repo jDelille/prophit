@@ -14,6 +14,8 @@
   height: 100%;
   display: flex;
   align-items: center;
+  background-color: white;
+  min-width: fit-content;
   &:hover {
     background: color.adjust(#fff, $lightness: -3%, $space: hsl);
   }

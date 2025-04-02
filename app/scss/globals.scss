@@ -28,7 +28,6 @@ body {
 .layout {
   display: flex;
   flex-direction: column;
-  // background-color: #F3F5F9;
   height: 100vh;
   height: fit-content;
   overflow-x: hidden;
@@ -36,7 +35,6 @@ body {
 
   .content {
     margin: 0 auto;
-    padding-top: 2rem;
     width: 100%;
     padding: 2rem 15rem;
     background-color: #F3F5F9;
@@ -44,7 +42,7 @@ body {
       padding: 2rem;
     }
     @include breakpoint(xs) {
-      padding: 2rem 15px;
+      padding: 1rem 15px;
     }
   }
 }
