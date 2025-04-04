@@ -21,14 +21,30 @@
     @include breakpoint(xs) {
       padding: 0 2rem;
     }
+    .hide-mobile {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      @include breakpoint(xs) {
+        display: none;
+      }
+
+    }
     .logo {
       font-weight: bold;
       font-size: 34px;
       text-transform: uppercase;
       font-family: "Allan", serif;
-      color: #322F35;
+      color: #322f35;
       span {
         color: vars.$accent-color;
+      }
+    }
+   
+    .mobile-logo {
+      display: none;
+      @include breakpoint(xs) {
+        display: flex;
       }
     }
     .links {
@@ -57,6 +73,17 @@
       gap: 1rem;
       align-items: center;
       svg {
+        cursor: pointer;
+      }
+    }
+
+    .hamburger-menu {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      display: none;
+      @include breakpoint(xs) {
+        display: flex;
         cursor: pointer;
       }
     }

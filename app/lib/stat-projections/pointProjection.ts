@@ -5,6 +5,7 @@ import {
 } from "../utils/calculateAveragePPG";
 import { getHomeAwayGameIds, getHomeAwayHitPercentage } from "../utils/getHomeAwayGameIds";
 import { calculateHitRatePercentage } from "../utils/calculateHitRatePercentage";
+import { getBaseUrl } from "../getBaseUrl";
 
 export enum StatType {
   MIN = "MIN",
@@ -64,8 +65,9 @@ const projectPlayerStats = async (
   league: string
 ) => {
   try {
+    const baseUrl = getBaseUrl();
     const response = await axios.get(
-      `http://localhost:3000/api/espn/gamelog?sport=${sport}&league=${league}&playerId=${playerId}`
+      `${baseUrl}/api/espn/gamelog?sport=${sport}&league=${league}&playerId=${playerId}`
     );
 
     const gameLogs = response.data;

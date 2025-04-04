@@ -28,13 +28,13 @@ const SecondaryNavbar: React.FC<SecondaryNavbarProps> = () => {
         <div className="sport-links">
           <ul>
             <li>NBA Home</li>
-            <li>Odds</li>
+            {/* <li>Odds</li> */}
             <li className={getActiveLinkClassname("props")} onClick={() => handleLinkClick("props")}>Props</li>
             <li className={getActiveLinkClassname("matchups")} onClick={() => handleLinkClick("matchups")}>Matchups</li>
-            <li>Tools</li>
+            {/* <li>Tools</li>
             <li>Research</li>
             <li>Teams</li>
-            <li>Leaderboards</li>
+            <li>Leaderboards</li> */}
           </ul>
         </div>
       </div>
