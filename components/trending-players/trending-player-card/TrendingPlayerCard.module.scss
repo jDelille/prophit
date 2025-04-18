@@ -1,0 +1,31 @@
+.trendingPlayerCard {
+  display: flex;
+  align-items: center;
+  .flex {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    .playerHeadshot {
+      max-width: 40px;
+    }
+    .flexCol {
+        display: flex;
+        flex-direction: column;
+        .playerName {
+            font-size: 16px;
+        }
+        .playerTeam {
+            font-size: 14px;
+        }
+        .playerPosition {
+            font-size: 14px;
+        }
+    }
+   
+  }
+
+ 
+
+}
+
+

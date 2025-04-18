@@ -1,14 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import { TrendingPlayersListVM } from './TrendingPlayersListVM';
-import { TrendingPlayer } from '@/types';
+import React, { useEffect, useState } from "react";
+import { TrendingPlayersListVM } from "./TrendingPlayersListVM";
+import { TrendingPlayer } from "@/types";
+import TrendingPlayerCard from "./trending-player-card/TrendingPlayerCard";
+import styles from './TrendingPlayersList.module.scss';
 
-type TrendingPlayersListProps = {
- 
- }
- const TrendingPlayersList: React.FC<TrendingPlayersListProps> = () => {
-
+type TrendingPlayersListProps = {};
+const TrendingPlayersList: React.FC<TrendingPlayersListProps> = () => {
   const [players, setPlayers] = useState<TrendingPlayer[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -22,8 +21,8 @@ type TrendingPlayersListProps = {
         await vm.fetchTrendingPlayers();
         setPlayers(vm.getPlayers());
       } catch (err) {
-        setError('Failed to fetch players.');
-        console.log(err)
+        setError("Failed to fetch players.");
+        console.log(err);
       } finally {
         setLoading(false);
       }
@@ -36,16 +35,9 @@ type TrendingPlayersListProps = {
   if (error) return <div>{error}</div>;
 
   return (
-    <div className="trending-players-list">
+    <div className={styles.trendingPlayersList}>
       {players.length > 0 ? (
-        players.map(player => (
-          <div key={player.id}>
-            <h3>{player.name}</h3>
-            <img src={player.headshot} alt={player.name} />
-            <p>{player.team}</p>
-            <p>{player.position}</p>
-          </div>
-        ))
+        players.map((player) => <TrendingPlayerCard player={player} key={player.id} />)
       ) : (
         <div>No players found</div>
       )}
