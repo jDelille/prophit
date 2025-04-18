@@ -23,6 +23,7 @@ type TrendingPlayersListProps = {
         setPlayers(vm.getPlayers());
       } catch (err) {
         setError('Failed to fetch players.');
+        console.log(err)
       } finally {
         setLoading(false);
       }

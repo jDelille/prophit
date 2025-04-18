@@ -32,8 +32,8 @@ export async function getDraftkingsData(
           marketId: selection.marketId,
           venueRole: participant.venueRole,
           statistic: {
-            prefix: participant.statistic.prefix,
-            value: participant.statistic.value,
+            prefix: participant.statistic?.prefix,
+            value: participant.statistic?.value,
           },
         });
       });
