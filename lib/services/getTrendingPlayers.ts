@@ -1,5 +1,5 @@
-import { Selection, TrendingPlayer } from "@/types";
-import { getDraftkingsData } from "./getDraftkingsData";
+import { TrendingPlayer } from "@/types";
+import { getPropDraftKingsData } from "../utils/propMetadata";
 
 export default async function getTrendingPlayers(
   sport: string,
@@ -12,22 +12,7 @@ export default async function getTrendingPlayers(
 
   const data = await res.json();
 
-  let draftkingsData: Record<string, Selection[]> = {};
-
-  switch (prop) {
-    case "Reb":
-      draftkingsData = await getDraftkingsData("42648", "1216", "12492");
-      break;
-    case "Pts":
-      draftkingsData = await getDraftkingsData("42648", "1215", "12488");
-      break;
-    case "Ast":
-      draftkingsData = await getDraftkingsData("42648", "1217", "12495");
-      break;
-    default:
-      draftkingsData = await getDraftkingsData("42648", "1215", "12488");
-      break;
-  }
+  const draftkingsData = await getPropDraftKingsData(prop, sport);
 
   return data.athletes.map((athlete: any) => {
     const playerName = athlete.athlete.displayName;
