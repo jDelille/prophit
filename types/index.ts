@@ -1,2 +1,3 @@
-export * from './draftkingsSelection';
-export * from './trendingPlayers';
+export * from './draftkings-selection';
+export * from './trending-players';
+export * from './stat-type';

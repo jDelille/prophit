@@ -1,4 +1,4 @@
-import { Selection } from "./draftkingsSelection";
+import { Selection } from "./draftkings-selection";
 
 export type TrendingPlayer = {
     id: string;
