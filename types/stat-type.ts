@@ -21,7 +21,6 @@ export enum MLBStatType {
 }
 
 export type StatType = NBAStatType | MLBStatType;
-export type League = "nba" | "mlb";
 
 // --- NBA Stat Index Mapping ---
 const nbaStatIndexMap: Record<NBAStatType, number> = {
@@ -54,7 +53,7 @@ type StatMapping = {
 
 export const mapPropToStat = (
   prop: string,
-  league: League
+  league: string
 ): StatMapping | null => {
   if (league === "nba") {
     const nbaMap: Record<string, StatMapping> = {

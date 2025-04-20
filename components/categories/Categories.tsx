@@ -1,22 +1,16 @@
 import React from "react";
 import styles from "./Categories.module.scss";
+import { getCategoriesByLeague } from "@/constants/propCategories";
 
 type CategoriesProps = {
   prop: string;
   setProp: (prop: string) => void;
+  league: string;
 };
 
-const Categories: React.FC<CategoriesProps> = ({ prop, setProp }) => {
-  const categoryList = [
-    {
-      id: 6719,
-      name: "Hits O/U",
-    },
-    {
-      id: 17321,
-      name: "Total Bases",
-    },
-  ];
+const Categories: React.FC<CategoriesProps> = ({ prop, setProp, league}) => {
+
+  const categoryList = getCategoriesByLeague(league);
 
   return (
     <div className={styles.categories}>

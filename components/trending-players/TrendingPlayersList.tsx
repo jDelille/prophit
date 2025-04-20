@@ -17,7 +17,7 @@ const TrendingPlayersList: React.FC<TrendingPlayersListProps> = ({setProp, prop}
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const vm = new TrendingPlayersListVM("baseball", "mlb", prop);
+    const vm = new TrendingPlayersListVM("basketball", "nba", prop);
 
     const fetchPlayers = async () => {
       try {
