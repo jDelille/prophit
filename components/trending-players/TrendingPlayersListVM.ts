@@ -25,6 +25,10 @@ export class TrendingPlayersListVM {
     getPlayers(): TrendingPlayer[] {
         return this.playerList;
     }
+
+    setProp(prop: string) {
+        this.prop = prop;
+    }
     
 
 }

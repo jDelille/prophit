@@ -21,13 +21,13 @@ export async function getPropDraftKingsData(
     case "baseball":
       switch (prop) {
         case "HR":
-          return await getDraftkingsData("84240", "743", "17319");
-        case "Hits":
-          return await getDraftkingsData("84240", "743", "17320");
-        case "RBI":
+          return await getDraftkingsData("84240", "743", "6719");
+        case "Hits O/U":
+          return await getDraftkingsData("84240", "743", "6719");
+        case "Total Bases":
           return await getDraftkingsData("84240", "743", "17322");
         default:
-          return await getDraftkingsData("84240", "743", "17319");
+          return await getDraftkingsData("84240", "743", "6719");
       }
 
     default:
