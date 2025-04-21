@@ -1,12 +1,19 @@
 import React from "react";
 import styles from "./TrendingPlayerCard.module.scss";
 import { TrendingPlayer } from "@/types";
+import { PlayerStats } from "@/types/player-stats";
 
 type TrendingPlayerCardProps = {
   player: TrendingPlayer;
+  playerStats: PlayerStats;
 };
 
-const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({ player }) => {
+const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
+  player,
+  playerStats,
+}) => {
+  console.log(playerStats);
+
   return (
     <div className={styles.trendingPlayerCard} key={player.id}>
       <div className={styles.flex}>
@@ -22,6 +29,11 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({ player }) => {
             <p className={styles.playerPosition}>{player.position}</p>
           </div>
         </div>
+      </div>
+      <div className={styles.flex}>
+        <div className={styles.value}>{playerStats.values.latest3Avg}</div>
+        <div className={styles.value}>{playerStats.values.latest5Avg}</div>
+        <div className={styles.value}>{playerStats.values.latest10Avg}</div>
       </div>
     </div>
   );

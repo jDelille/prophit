@@ -1,11 +1,12 @@
 import axios from "axios";
 import { getBaseURL } from "../../getBaseURL";
 import { mapPropToStat } from "@/types";
+import { calculateAveragePPG } from "@/lib/utils/nba/calculateAveragePPG";
 
 const playerStatProjections = async (
   playerId: string,
   prop: string,
-  currentPropValue: string,
+  currentPropValue: number,
   venueRole: string,
   sport: string,
   league: string
@@ -18,10 +19,8 @@ const playerStatProjections = async (
 
   const gamelogs = response.data;
 
-  console.log(gamelogs);
-
   const combineAndSortStats = (seasonTypes: any, statIndex: number) => {
-    return seasonTypes[0].categories.flatMap(({ events }: any) =>
+    return seasonTypes[1].categories.flatMap(({ events }: any) =>
       events.map(({ stats }: any) => stats.at(statIndex))
     );
   };
@@ -30,4 +29,19 @@ const playerStatProjections = async (
     gamelogs.seasonTypes,
     mapPropToStat(prop, league)?.index ?? 13
   );
-};
+
+  const latest3Avg = calculateAveragePPG(combinedPPG, 3);
+  const latest5Avg = calculateAveragePPG(combinedPPG, 5);
+  const latest10Avg = calculateAveragePPG(combinedPPG, 10);
+
+  return {
+    values: {
+      latest3Avg,
+      latest5Avg,
+      latest10Avg
+    }
+  } 
+} 
+
+
+export default playerStatProjections;

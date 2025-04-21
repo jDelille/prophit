@@ -8,8 +8,7 @@ type CategoriesProps = {
   league: string;
 };
 
-const Categories: React.FC<CategoriesProps> = ({ prop, setProp, league}) => {
-
+const Categories: React.FC<CategoriesProps> = ({ prop, setProp, league }) => {
   const categoryList = getCategoriesByLeague(league);
 
   return (

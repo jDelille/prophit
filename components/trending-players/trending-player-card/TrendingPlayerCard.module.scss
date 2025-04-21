@@ -1,6 +1,7 @@
 .trendingPlayerCard {
   display: flex;
   align-items: center;
+  gap: 1rem;
   .flex {
     display: flex;
     align-items: center;
@@ -20,6 +21,9 @@
         .playerPosition {
             font-size: 14px;
         }
+    }
+    .value {
+      border: 1px solid black;
     }
    
   }

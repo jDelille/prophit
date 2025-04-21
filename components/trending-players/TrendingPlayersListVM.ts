@@ -1,34 +1,49 @@
 import getTrendingPlayers from "@/lib/services/getTrendingPlayers";
+import playerStatProjections from "@/lib/services/nba/player-stat-projections/playerStatProjections";
 import { TrendingPlayer } from "@/types";
+import { PlayerStats } from "@/types/player-stats";
 
 export class TrendingPlayersListVM {
-    sport: string = "";
-    league: string = "";
-    prop: string = "";
-    playerList: TrendingPlayer[] = [];
+  sport: string;
+  league: string;
+  prop: string;
 
-    constructor (sport: string, league: string, prop: string) {
-        this.sport = sport;
-        this.league = league;
-        this.prop = prop;
+  constructor(sport: string, league: string, prop: string) {
+    this.sport = sport;
+    this.league = league;
+    this.prop = prop;
+  }
+
+  async fetchPlayersAndStats(): Promise<{
+    players: TrendingPlayer[];
+    playerStats: PlayerStats[];
+  }> {
+    const players = await getTrendingPlayers(this.sport, this.league, this.prop);
+
+    if (!players || players.length === 0) {
+      return { players: [], playerStats: [] };
     }
 
-    async fetchTrendingPlayers(): Promise<void> {
-        const data = await getTrendingPlayers(this.sport, this.league, this.prop);
-        this.setTrendingPlayers(data);
-    }
+    const statsData = await Promise.all(
+      players.map(async (player) => {
+        const points = player.selections?.[0]?.points ?? 0;
+        const venueRole = player.selections?.[0]?.venueRole ?? "HomePlayer";
 
-    setTrendingPlayers(players: TrendingPlayer[]): void {
-        this.playerList = players;
-    }
+        const stats = await playerStatProjections(
+          player.id,
+          this.prop,
+          points,
+          venueRole,
+          this.sport,
+          this.league
+        );
 
-    getPlayers(): TrendingPlayer[] {
-        return this.playerList;
-    }
+        return { [player.id]: stats };
+      })
+    );
 
-    setProp(prop: string) {
-        this.prop = prop;
-    }
-    
+    const playerStats = Object.assign({}, ...statsData);
 
+    return { players, playerStats };
+  }
 }
