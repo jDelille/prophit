@@ -2,6 +2,7 @@ import axios from "axios";
 import { getBaseURL } from "../../getBaseURL";
 import { mapPropToStat } from "@/types";
 import { calculateAveragePPG } from "@/lib/utils/nba/calculateAveragePPG";
+import { calculateHitRatePercentage } from "@/lib/utils/calculateHitRatePercentage";
 
 const playerStatProjections = async (
   playerId: string,
@@ -34,11 +35,32 @@ const playerStatProjections = async (
   const latest5Avg = calculateAveragePPG(combinedPPG, 5);
   const latest10Avg = calculateAveragePPG(combinedPPG, 10);
 
+  console.log(currentPropValue)
+
+  const latest3Percentage = calculateHitRatePercentage(
+    combinedPPG,
+    currentPropValue,
+    3
+  );
+  const latest5Percentage = calculateHitRatePercentage(
+    combinedPPG,
+    currentPropValue,
+    5
+  );
+  const latest10Percentage = calculateHitRatePercentage(
+    combinedPPG,
+    currentPropValue,
+    10
+  );
+
   return {
     values: {
       latest3Avg,
       latest5Avg,
-      latest10Avg
+      latest10Avg,
+      latest3Percentage,
+      latest5Percentage,
+      latest10Percentage,
     }
   } 
 } 

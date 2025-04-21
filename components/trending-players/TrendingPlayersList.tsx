@@ -47,7 +47,11 @@ const TrendingPlayersList: React.FC<TrendingPlayersListProps> = ({ prop }) => {
     <div className={styles.trendingPlayersList}>
       {players.length > 0 ? (
         players.map((player) => (
-          <TrendingPlayerCard player={player} key={player.id} playerStats={playerStats[player.id]} />
+          <TrendingPlayerCard
+            player={player}
+            key={player.id}
+            playerStats={playerStats[player.id]}
+          />
         ))
       ) : (
         <div>No players found</div>
