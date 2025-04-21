@@ -1,0 +1,18 @@
+.labels {
+    display: flex;
+    gap: 1rem;
+    padding: 0 1rem;
+    .label {
+        width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: 14px;
+        &:nth-of-type(1) {
+            width: 250px;
+            justify-content: flex-start;
+        }
+    }
+}

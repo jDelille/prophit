@@ -2,10 +2,11 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  .flex {
+  .playerInfo {
     display: flex;
     align-items: center;
     gap: 5px;
+    width: 250px;
     .playerHeadshot {
       max-width: 40px;
     }
@@ -15,17 +16,31 @@
         .playerName {
             font-size: 16px;
         }
-        .playerTeam {
+        .flex {
+          display: flex;
+          gap: 10px;
+          .playerTeam {
             font-size: 14px;
         }
         .playerPosition {
             font-size: 14px;
         }
+        }
     }
+ 
+   
+  }
+
+  .values {
+    display: flex;
+    gap: 1rem;
     .value {
       border: 1px solid black;
+      width: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-   
   }
 
  

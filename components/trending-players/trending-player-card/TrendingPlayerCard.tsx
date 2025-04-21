@@ -12,11 +12,10 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
   player,
   playerStats,
 }) => {
-  console.log(playerStats);
 
   return (
     <div className={styles.trendingPlayerCard} key={player.id}>
-      <div className={styles.flex}>
+      <div className={styles.playerInfo}>
         <img
           src={player.headshot}
           alt={player.name}
@@ -30,7 +29,7 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
           </div>
         </div>
       </div>
-      <div className={styles.flex}>
+      <div className={styles.values}>
         <div className={styles.value}>{playerStats.values.latest3Avg}</div>
         <div className={styles.value}>{playerStats.values.latest5Avg}</div>
         <div className={styles.value}>{playerStats.values.latest10Avg}</div>
