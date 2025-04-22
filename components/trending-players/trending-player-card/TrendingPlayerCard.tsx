@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./TrendingPlayerCard.module.scss";
 import { TrendingPlayer } from "@/types";
 import { PlayerStats } from "@/types/player-stats";
+import playerStore from "@/store/playerStore";
 
 type TrendingPlayerCardProps = {
   player: TrendingPlayer;
@@ -22,11 +23,18 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
     return;
   }
 
+  const handleAddPlayerToStore = () => {
+    playerStore.setPlayer(player)
+    setIsOpen(true)
+  }
+
+  console.log(player)
+
   return (
     <div
       className={styles.trendingPlayerCard}
       key={player.id}
-      onClick={() => setIsOpen(true)}
+      onClick={handleAddPlayerToStore}
     >
       <div className={styles.playerInfo}>
         <img

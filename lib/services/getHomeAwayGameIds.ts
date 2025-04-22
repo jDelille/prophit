@@ -31,8 +31,6 @@ export function getHomeAwayGameIds(
     );
   };
 
-  console.log(seasonTypes)
-
   const regularSeason = seasonTypes.find((season: { displayName: string }) =>
     season.displayName === '2024-25 Regular Season'
   );
@@ -41,8 +39,6 @@ export function getHomeAwayGameIds(
     regularSeason,
     mapPropToStat(prop, league)?.index ?? 13
   );
-
-  console.log(stats)
 
   const homeAvgPPG = calculateAveragePPG(stats, stats.length);
 

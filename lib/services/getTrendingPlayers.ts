@@ -17,6 +17,9 @@ export default async function getTrendingPlayers(
   return data.athletes.map((athlete: any) => {
     const playerName = athlete.athlete.displayName;
 
+    
+
+    console.log(athlete)
     const selections = draftkingsData[playerName] || [];
 
     return {

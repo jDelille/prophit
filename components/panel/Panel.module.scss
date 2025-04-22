@@ -1,6 +1,33 @@
 .panel {
     width: 60vw;
     height: 100vh;
-    background-color: orange;
     padding: 2rem;
+    border-left: 1px solid lightgray;
+    background-color: white;
+    .playerHeader {
+        .playerImgContainer {
+            display: flex;
+            align-items: center;
+            position: relative;
+            &::after {
+                content: "";
+                position: absolute;
+                background-color: blue;
+                width: 100px;
+                height: 100px;
+                z-index: 1;
+            }
+            .teamLogo {
+                max-width: 130px;
+                z-index: 2;
+            }
+            .headshot {
+                max-width: 225px;
+                position: absolute;
+                top: 0px;
+                left: 30px;
+                z-index: 2;
+            }
+        }
+    }
 }

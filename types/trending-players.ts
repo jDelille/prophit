@@ -9,6 +9,7 @@ export type TrendingPlayer = {
     type: string;
     position: string;
     team: string;
+    teamLogo: string;
     selections?: Selection[];
   };
   
