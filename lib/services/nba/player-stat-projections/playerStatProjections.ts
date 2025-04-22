@@ -1,8 +1,9 @@
 import axios from "axios";
 import { getBaseURL } from "../../getBaseURL";
 import { mapPropToStat } from "@/types";
-import { calculateAveragePPG } from "@/lib/utils/nba/calculateAveragePPG";
+import { calculateAveragePPG, calculateProjectedPoints } from "@/lib/utils/nba/calculateAveragePPG";
 import { calculateHitRatePercentage } from "@/lib/utils/calculateHitRatePercentage";
+import { getHomeAwayGameIds } from "../../getHomeAwayGameIds";
 
 const playerStatProjections = async (
   playerId: string,
@@ -33,9 +34,41 @@ const playerStatProjections = async (
 
   const latest3Avg = calculateAveragePPG(combinedPPG, 3);
   const latest5Avg = calculateAveragePPG(combinedPPG, 5);
-  const latest10Avg = calculateAveragePPG(combinedPPG, 10);
+  const latest15Avg = calculateAveragePPG(combinedPPG, 15);
 
-  console.log(currentPropValue)
+  const lastestPPG = [
+    parseFloat(latest3Avg),
+    parseFloat(latest5Avg),
+    parseFloat(latest15Avg),
+  ];
+
+  const averagePoints = parseFloat(
+    gamelogs.seasonTypes[0].summary.stats[0].stats.at(
+      mapPropToStat(prop, league)?.index ?? 0
+    )
+  );
+
+  const homeGamePoints = getHomeAwayGameIds(
+    gamelogs.events,
+    gamelogs.seasonTypes,
+    true,
+    prop,
+    league
+  );
+
+  const awayGamePoints = getHomeAwayGameIds(
+    gamelogs.events,
+    gamelogs.seasonTypes,
+    false,
+    prop,
+    league
+  );
+
+  const projectedPoints = calculateProjectedPoints(
+    lastestPPG,
+    averagePoints,
+    venueRole === "HomePlayer" ? homeGamePoints : awayGamePoints
+  );
 
   const latest3Percentage = calculateHitRatePercentage(
     combinedPPG,
@@ -47,20 +80,25 @@ const playerStatProjections = async (
     currentPropValue,
     5
   );
-  const latest10Percentage = calculateHitRatePercentage(
+  const latest15Percentage = calculateHitRatePercentage(
     combinedPPG,
     currentPropValue,
-    10
+    15
   );
+
+  const projectionDifference = parseInt(projectedPoints) - currentPropValue;
 
   return {
     values: {
       latest3Avg,
       latest5Avg,
-      latest10Avg,
+      latest15Avg,
       latest3Percentage,
       latest5Percentage,
-      latest10Percentage,
+      latest15Percentage,
+      projectedPoints,
+      projectionDifference
+      
     }
   } 
 } 

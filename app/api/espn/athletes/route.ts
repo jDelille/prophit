@@ -6,7 +6,7 @@ export async function GET(request: Request) {
     const sport = url.searchParams.get("sport");
     const league = url.searchParams.get("league");
 
-    const espnURL = `https://site.web.api.espn.com/apis/common/v3/sports/${sport}/${league}/statistics/byathlete?region=us&lang=en&contentorigin=espn&isqualified=true&page=1&limit=20`;
+    const espnURL = `https://site.web.api.espn.com/apis/common/v3/sports/${sport}/${league}/statistics/byathlete?region=us&lang=en&contentorigin=espn&isqualified=true&page=1&limit=25`;
 
     const res = await fetch(espnURL, {
       method: "GET",

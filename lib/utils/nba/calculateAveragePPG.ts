@@ -14,6 +14,7 @@ export const calculateProjectedPoints = (
   averagePoints: number,
   homeGamePoints: number | undefined
 ) => {
+
   const recentAndSeasonAvg =
     latestPPG[0] * 0.4 +
     latestPPG[1] * 0.3 +

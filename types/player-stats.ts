@@ -2,12 +2,13 @@ export type PlayerStats = {
     values: {
       latest3Avg: string;
       latest5Avg: string;
-      latest10Avg: string;
+      latest15Avg: string;
       projectedPoints: number;
       latest3Percentage: number;
       latest5Percentage: number;
-      latest10Percentage: number;
+      latest15Percentage: number;
       seasonPercentage: number;
       venueHitRatePercentage: number;
+      projectionDifference: number;
     };
   };
