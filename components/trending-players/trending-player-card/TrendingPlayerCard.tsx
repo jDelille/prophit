@@ -6,11 +6,13 @@ import { PlayerStats } from "@/types/player-stats";
 type TrendingPlayerCardProps = {
   player: TrendingPlayer;
   playerStats: PlayerStats;
+  setIsOpen: (val: boolean) => void;
 };
 
 const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
   player,
   playerStats,
+  setIsOpen,
 }) => {
   if (player?.selections?.[0]?.points === undefined) {
     return;
@@ -21,7 +23,11 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
   }
 
   return (
-    <div className={styles.trendingPlayerCard} key={player.id}>
+    <div
+      className={styles.trendingPlayerCard}
+      key={player.id}
+      onClick={() => setIsOpen(true)}
+    >
       <div className={styles.playerInfo}>
         <img
           src={player.headshot}
