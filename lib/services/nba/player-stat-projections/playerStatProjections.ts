@@ -86,6 +86,12 @@ const playerStatProjections = async (
     15
   );
 
+  const seasonPercentage = calculateHitRatePercentage(
+    combinedPPG,
+    currentPropValue,
+    combinedPPG.length
+  )
+
   const projectionDifference = parseInt(projectedPoints) - currentPropValue;
 
   return {
@@ -97,7 +103,8 @@ const playerStatProjections = async (
       latest5Percentage,
       latest15Percentage,
       projectedPoints,
-      projectionDifference
+      projectionDifference,
+      seasonPercentage
       
     }
   } 

@@ -7,7 +7,7 @@ export type PlayerStats = {
       latest3Percentage: number;
       latest5Percentage: number;
       latest15Percentage: number;
-      seasonPercentage: number;
+      seasonPercentage: string;
       venueHitRatePercentage: number;
       projectionDifference: number;
     };

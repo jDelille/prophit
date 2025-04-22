@@ -12,8 +12,11 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
   player,
   playerStats,
 }) => {
+  if (player?.selections?.[0]?.points === undefined) {
+    return;
+  }
 
-  if(player?.selections?.[0]?.points === undefined) {
+  if (playerStats.values.seasonPercentage === "0") {
     return;
   }
 
@@ -36,10 +39,21 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
       <div className={styles.values}>
         <div className={styles.value}>{player?.selections?.[0].points}</div>
         <div className={styles.value}>{playerStats.values.projectedPoints}</div>
-        <div className={styles.value}>{playerStats.values.projectionDifference}</div>
-        <div className={styles.value}>{playerStats.values.latest3Percentage}%</div>
-        <div className={styles.value}>{playerStats.values.latest5Percentage}%</div>
-        <div className={styles.value}>{playerStats.values.latest15Percentage}%</div>
+        <div className={styles.value}>
+          {playerStats.values.projectionDifference}
+        </div>
+        <div className={styles.value}>
+          {playerStats.values.latest3Percentage}%
+        </div>
+        <div className={styles.value}>
+          {playerStats.values.latest5Percentage}%
+        </div>
+        <div className={styles.value}>
+          {playerStats.values.latest15Percentage}%
+        </div>
+        <div className={styles.value}>
+          {playerStats.values.seasonPercentage}%
+        </div>
       </div>
     </div>
   );
