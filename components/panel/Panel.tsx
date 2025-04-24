@@ -57,7 +57,7 @@ const Panel: React.FC<PanelProps> = ({ isOpen, setIsOpen }) => {
         <div className={styles.playerHeader}>
           <div className={styles.playerImgContainer}>
             <img
-              src={playerStore.player.teamLogo}
+              src={playerStore.player.teamData.team.logos[0].href}
               className={styles.teamLogo}
               alt=""
             />
@@ -66,8 +66,14 @@ const Panel: React.FC<PanelProps> = ({ isOpen, setIsOpen }) => {
               className={styles.headshot}
               alt=""
             />
+            <div
+              className={styles.teamColorBanner}
+              style={{
+                backgroundColor: `#${playerStore.player.teamData.team.color}`,
+              }}
+            ></div>
           </div>
-          {/* <h2>{playerStore.player.name}</h2> */}
+          <div className={styles.playerNameContainer}></div>
         </div>
       </div>
     </div>

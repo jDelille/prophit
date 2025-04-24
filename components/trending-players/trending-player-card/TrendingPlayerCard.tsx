@@ -45,7 +45,7 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
         <div className={styles.flexCol}>
           <h3 className={styles.playerName}>{player.name}</h3>
           <div className={styles.flex}>
-            <p className={styles.playerTeam}>{player.team}</p>
+            <p className={styles.playerTeam}>{player.teamData.team.shortDisplayName}</p>
             <p className={styles.playerPosition}>{player.position}</p>
           </div>
         </div>

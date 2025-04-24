@@ -1,33 +1,38 @@
 .panel {
-    width: 60vw;
-    height: 100vh;
-    padding: 2rem;
-    border-left: 1px solid lightgray;
-    background-color: white;
-    .playerHeader {
-        .playerImgContainer {
-            display: flex;
-            align-items: center;
-            position: relative;
-            &::after {
-                content: "";
-                position: absolute;
-                background-color: blue;
-                width: 100px;
-                height: 100px;
-                z-index: 1;
-            }
-            .teamLogo {
-                max-width: 130px;
-                z-index: 2;
-            }
-            .headshot {
-                max-width: 225px;
-                position: absolute;
-                top: 0px;
-                left: 30px;
-                z-index: 2;
-            }
-        }
+  width: 60vw;
+  height: 100vh;
+  padding: 2rem;
+  border-left: 1px solid lightgray;
+  background-color: white;
+  .playerHeader {
+    .playerImgContainer {
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      height: 160px;
+      .teamLogo {
+        max-width: 130px;
+        z-index: 2;
+        position: absolute;
+        top: 5px;
+        left: -5px;
+      }
+      .headshot {
+        max-width: 225px;
+        position: absolute;
+        top: 0px;
+        left: 30px;
+        z-index: 2;
+      }
+      .teamColorBanner {
+        width: 200px;
+        height: 205px;
+        position: absolute;
+        left: 38px;
+ 
+        transform: rotate(11.47deg);
+      }
     }
+  }
 }

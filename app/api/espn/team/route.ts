@@ -7,7 +7,7 @@ export async function GET(request: Request) {
     const league = url.searchParams.get("league");
     const teamId = url.searchParams.get("teamId");
 
-    const espnURL = `https://site.web.api.espn.com/apis/site/v2/sports/${sport}/${league}/teams/${teamId}:`;
+    const espnURL = `https://site.web.api.espn.com/apis/site/v2/sports/${sport}/${league}/teams/${teamId}`;
 
     const res = await fetch(espnURL, {
       method: "GET",

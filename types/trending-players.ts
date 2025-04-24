@@ -1,4 +1,5 @@
 import { Selection } from "./draftkings-selection";
+import { TeamData } from "./team-data";
 
 export type TrendingPlayer = {
     id: string;
@@ -8,8 +9,7 @@ export type TrendingPlayer = {
     value: string;
     type: string;
     position: string;
-    team: string;
-    teamLogo: string;
     selections?: Selection[];
+    teamData: TeamData;
   };
   
