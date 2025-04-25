@@ -4,26 +4,23 @@ export const extractCombinedStats = (
     seasonTypes: any[],
     prop: string,
     league: string,
-    seasonType: "postseason" | "regular"
-  ) => {
+    includedSeasons: ("postseason" | "regular")[]
+  ): number[] => {
     const statIndex = mapPropToStat(prop, league)?.index ?? 13;
   
-    const targetSeason = seasonTypes.find((s) =>
-      seasonType === "postseason"
-        ? s.displayName.toLowerCase().includes("postseason")
-        : s.displayName.toLowerCase().includes("regular")
+    const targetSeasons = seasonTypes.filter((s) =>
+      includedSeasons.some((seasonType) =>
+        seasonType === "postseason"
+          ? s.displayName.toLowerCase().includes("postseason")
+          : s.displayName.toLowerCase().includes("regular")
+      )
     );
   
-    if (!targetSeason || !targetSeason.categories) return [];
-  
-    // Grab only categories with event-based game logs
-    const eventCategory = targetSeason.categories.find(
-      (c: any) => c.type === "event"
-    );
-  
-    if (!eventCategory) return [];
-  
-    return eventCategory.events.map(({ stats }: any) => stats.at(statIndex));
+    return targetSeasons.flatMap((season) => {
+      const eventCategory = season.categories?.find((c: any) => c.type === "event");
+      if (!eventCategory) return [];
+      return eventCategory.events.map(({ stats }: any) => stats.at(statIndex));
+    });
   };
 
   export const extractSeasonAverage = (
