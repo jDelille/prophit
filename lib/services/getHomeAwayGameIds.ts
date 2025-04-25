@@ -69,6 +69,7 @@ export function getHomeAwayHitPercentage(
     );
   };
 
+
   const stats = combineAndSortStats(
     seasonTypes[0],
     mapPropToStat(prop, league)?.index ?? 13

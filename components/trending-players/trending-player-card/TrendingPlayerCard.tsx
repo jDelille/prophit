@@ -28,8 +28,6 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
     setIsOpen(true)
   }
 
-  console.log(player)
-
   return (
     <div
       className={styles.trendingPlayerCard}
