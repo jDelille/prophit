@@ -14,7 +14,8 @@ const playerStatProjections = async (
   currentPropValue: number,
   venueRole: string,
   sport: string,
-  league: string
+  league: string,
+  isPostSeason?: boolean
 ) => {
   const gamelogs = await fetchPlayerGameLog(playerId, sport, league);
 
@@ -24,12 +25,21 @@ const playerStatProjections = async (
     league,
     ["regular", "postseason"]
   );
+
   const seasonAverage = extractSeasonAverage(
     gamelogs.seasonTypes,
     prop,
     league,
     "regular"
   );
+
+  const postseasonAverage = extractSeasonAverage(
+    gamelogs.seasonTypes,
+    prop,
+    league,
+    "postseason"
+  )
+
   const { latest3Avg, latest5Avg, latest15Avg } =
     getLatestPPGAverages(combinedStats);
 
@@ -41,12 +51,9 @@ const playerStatProjections = async (
     league
   );
 
-  console.log(playerId + "l-15: ", latest15Avg);
-  console.log(playerId + "l-5: ", latest5Avg);
-
   const { projectedPoints, projectionDifference } = getProjectedPoints(
     [parseFloat(latest3Avg), parseFloat(latest5Avg), parseFloat(latest15Avg)],
-    seasonAverage,
+    postseasonAverage,
     venueStats,
     currentPropValue
   );
@@ -56,6 +63,7 @@ const playerStatProjections = async (
     latest5Percentage,
     latest15Percentage,
     seasonPercentage,
+    postseasonPercentage
   } = getHitRates(combinedStats, currentPropValue);
 
   return {
@@ -69,6 +77,7 @@ const playerStatProjections = async (
       projectedPoints,
       projectionDifference,
       seasonPercentage,
+      postseasonPercentage
     },
   };
 };

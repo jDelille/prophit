@@ -6,5 +6,6 @@ export const getHitRates = (stats: number[], value: number) => {
     latest5Percentage: calculateHitRatePercentage(stats, value, 5),
     latest15Percentage: calculateHitRatePercentage(stats, value, 15),
     seasonPercentage: calculateHitRatePercentage(stats, value, stats.length),
+    postseasonPercentage: calculateHitRatePercentage(stats, value, stats.length)
   };
 };

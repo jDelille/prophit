@@ -17,7 +17,7 @@ export default function Home() {
       <Categories setProp={setProp} prop={prop} league={"nba"} />
       <Labels labels={labelList} />
       <TrendingPlayersList setProp={setProp} prop={prop} setIsOpen={setIsOpen}/>
-      <Panel isOpen={isOpen} setIsOpen={setIsOpen} />
+      {/* <Panel isOpen={isOpen} setIsOpen={setIsOpen} /> */}
     </div>
   );
 }
