@@ -1,29 +1,31 @@
 .trendingPlayerCard {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  // gap: 1rem;
   .playerInfo {
     display: flex;
     align-items: center;
     gap: 5px;
     width: 250px;
+    margin-right: 1rem;
     .playerHeadshot {
       max-width: 40px;
     }
     .flexCol {
         display: flex;
         flex-direction: column;
+        width: 226px;
         .playerName {
-            font-size: 16px;
+            font-size: 14px;
         }
         .flex {
           display: flex;
           gap: 10px;
           .playerTeam {
-            font-size: 14px;
+            font-size: 13px;
         }
         .playerPosition {
-            font-size: 14px;
+            font-size: 13px;
         }
         }
     }
@@ -33,13 +35,20 @@
 
   .values {
     display: flex;
-    gap: 1rem;
+    white-space: nowrap;
+    justify-content: space-between;
+    width: 100%;
     .value {
       border: 1px solid black;
       width: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+    .pick {
+      width: 90px;
+      font-size: 14px;
+      font-weight: 600;
     }
   }
 

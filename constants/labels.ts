@@ -15,7 +15,9 @@ export const getLabelsByLeague = (league: string): Labels[] => {
             {id: 5, name: "L-3"},
             {id: 6, name: "L-5"},
             {id: 7, name: "L-15"},
-            {id: 8, name: "Season"}
+            {id: 8, name: "Season"},
+            {id: 9, name: "Pick"},
+            {id: 10, name: "Analyze"}
         ]
     }
 

@@ -24,9 +24,14 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
   }
 
   const handleAddPlayerToStore = () => {
-    playerStore.setPlayer(player)
-    setIsOpen(true)
-  }
+    playerStore.setPlayer(player);
+    setIsOpen(true);
+  };
+
+  console.log(player);
+
+  const isOver = playerStats.values.propPick === "Over";
+  const selection = isOver ? player.selections[0] : player.selections[1];
 
   return (
     <div
@@ -43,7 +48,9 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
         <div className={styles.flexCol}>
           <h3 className={styles.playerName}>{player.name}</h3>
           <div className={styles.flex}>
-            <p className={styles.playerTeam}>{player.teamData.team.shortDisplayName}</p>
+            <p className={styles.playerTeam}>
+              {player.teamData.team.shortDisplayName}
+            </p>
             <p className={styles.playerPosition}>{player.position}</p>
           </div>
         </div>
@@ -66,6 +73,11 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
         <div className={styles.value}>
           {playerStats.values.seasonPercentage}%
         </div>
+        <div className={styles.pick}>
+            {isOver ? "O" : "U"} {selection?.points}{" "}
+            <span className={styles.odds}>({selection?.odds})</span>
+        </div>
+        <div className={styles.analyze}>icon</div>
       </div>
     </div>
   );

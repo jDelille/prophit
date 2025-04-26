@@ -66,6 +66,8 @@ const playerStatProjections = async (
     postseasonPercentage
   } = getHitRates(combinedStats, currentPropValue);
 
+  const propPick = parseFloat(projectionDifference) >= 1 ? "Over" : "Under";
+
   return {
     values: {
       latest3Avg,
@@ -77,7 +79,8 @@ const playerStatProjections = async (
       projectedPoints,
       projectionDifference,
       seasonPercentage,
-      postseasonPercentage
+      postseasonPercentage,
+      propPick
     },
   };
 };

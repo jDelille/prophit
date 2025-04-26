@@ -9,8 +9,11 @@ type LabelsProps = {
 const Labels: React.FC<LabelsProps> = ({ labels }) => {
   return (
     <div className={styles.labels}>
-      {labels.map((label) => (
-        <div key={label.id} className={styles.label}>
+      {labels.map((label, i) => (
+        <div
+          key={label.id}
+          className={`${styles.label} ${i === 0 ? styles.firstLabel : styles.otherLabel}`}
+        >
           {label.name}
         </div>
       ))}
