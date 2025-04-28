@@ -1,5 +1,6 @@
 import { TrendingPlayer } from "@/types";
 import { getPropDraftKingsData } from "../utils/propMetadata";
+import getTeamStats from "./getTeamStats";
 
 export default async function getTrendingPlayers(
   sport: string,
@@ -20,6 +21,15 @@ export default async function getTrendingPlayers(
       const teamRes = await fetch(`/api/espn/team?sport=${sport}&league=${league}&teamId=${athlete.athlete.teamId}`);
       const teamData = teamRes.ok ? await teamRes.json() : null;
 
+      const playerTeamId = teamData.team.id;
+      const competitors = teamData.team.nextEvent?.[0]?.competitions?.[0]?.competitors || [];
+
+      const opponentTeamId = competitors.find(
+        (competitor: any) => competitor.team.id !== playerTeamId
+      )?.team.id;
+
+      const teamStats = await getTeamStats(sport, league, opponentTeamId);
+
       const selections = draftkingsData[playerName] || [];
 
       return {
@@ -31,6 +41,8 @@ export default async function getTrendingPlayers(
         position: athlete.athlete?.position?.abbreviation ?? '',
         teamData, 
         selections,
+        teamStats
+
       };
     })
   );

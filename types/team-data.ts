@@ -25,6 +25,9 @@ export type TeamData = {
         slug: string;
         standingSummary: string;
         uid: string;
+        nextEvent: {
+            shortName: string;
+        }[]
     }
   
 }

@@ -20,6 +20,7 @@ export class TrendingPlayersListVM {
   }> {
     const players = await getTrendingPlayers(this.sport, this.league, this.prop);
 
+
     if (!players || players.length === 0) {
       return { players: [], playerStats: [] };
     }

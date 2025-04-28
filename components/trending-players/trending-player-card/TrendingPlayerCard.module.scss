@@ -65,19 +65,23 @@
         border-right: 1px solid #EBEEF4;
         padding-right: 1rem;
       }
-      &:nth-of-type(3) {
+      &:nth-of-type(3),
+      &:nth-of-type(4) {
         width: 100px;
         display: flex;
         align-items: center;
         justify-content: center;
+      }
+      &:nth-of-type(4) {
+        padding: 0;
         border-right: 1px solid #EBEEF4;
         padding-right: 1rem;
-
       }
-      &:nth-of-type(7) {
-        border-right: 1px solid #EBEEF4;
-
+      &:nth-of-type(5) {
+        width: 100px;
       }
+    
+    
     
     }
     .above60 {
@@ -97,7 +101,7 @@
       justify-content: center;
       font-weight: 600;
       gap: 3px;
-      padding-left: 1rem;
+      padding-left: 3rem;
       span {
         font-size: 12px;
       }
@@ -107,6 +111,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding-left: 3rem;
       button {
         all: unset;
         border: 1px solid #c7c8c9;

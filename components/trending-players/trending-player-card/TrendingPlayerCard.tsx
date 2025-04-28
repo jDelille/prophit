@@ -24,6 +24,9 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
     return;
   }
 
+  console.log(player)
+
+
   const handleAddPlayerToStore = () => {
     playerStore.setPlayer(player);
     setIsOpen(true);
@@ -58,7 +61,7 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
           <div className={styles.flex}>
             <p className={styles.playerPosition}>{player.position}</p>
             <p className={styles.playerTeam}>
-              {player.teamData.team.shortDisplayName}
+              {player.teamData.team.nextEvent[0].shortName}
             </p>
           </div>
         </div>
@@ -76,6 +79,12 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
           {`${playerStats.values.projectionDifference >= 0 ? "+" : ""}${
             playerStats.values.projectionDifference
           }`}
+        </div>
+        <div className={styles.value}>
+          RATING
+        </div>
+        <div className={styles.value}>
+          {player.teamStats.ranks[0]}
         </div>
         <div
           className={`${styles.value} ${getPercentageClass(

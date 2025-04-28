@@ -12,4 +12,5 @@ export type TrendingPlayer = {
   selections?: Selection[];
   teamData: TeamData;
   propType: string;
+  teamStats: any;
 };
