@@ -1,59 +1,126 @@
 .trendingPlayerCard {
   display: flex;
   align-items: center;
-  // gap: 1rem;
+  position: relative;
+  height: 59px;
   .playerInfo {
     display: flex;
     align-items: center;
-    gap: 5px;
-    width: 250px;
+    gap: 10px;
+    min-width: 250px;
     margin-right: 1rem;
-    .playerHeadshot {
-      max-width: 40px;
+    .imageContainer {
+      background-color: #f3f5f9;
+      width: 40px;
+      height: 40px;
+      border-radius: 22px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .playerHeadshot {
+        max-width: 52px;
+        object-fit: contain;
+      }
     }
+
     .flexCol {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      .playerName {
+        font-size: 14px;
+      }
+      .flex {
         display: flex;
-        flex-direction: column;
-        width: 226px;
-        .playerName {
-            font-size: 14px;
-        }
-        .flex {
-          display: flex;
-          gap: 10px;
-          .playerTeam {
-            font-size: 13px;
-        }
-        .playerPosition {
-            font-size: 13px;
-        }
-        }
+        gap: 5px;
+        font-size: 12px;
+      }
     }
- 
-   
   }
 
   .values {
     display: flex;
     white-space: nowrap;
-    justify-content: space-between;
     width: 100%;
+    // gap: 1rem;
+    height: 100%;
     .value {
-      border: 1px solid black;
-      width: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 80px;
+      height: 100%;
+      font-weight: 500;
+      font-size: 14px;
+      flex-direction: column;
+      gap: 5px;
+      span {
+        font-size: 12px;
+        font-weight: 500;
+      }
+      
+      &:nth-of-type(1) {
+        border-right: 1px solid #EBEEF4;
+        padding-right: 1rem;
+      }
+      &:nth-of-type(3) {
+        width: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-right: 1px solid #EBEEF4;
+        padding-right: 1rem;
+
+      }
+      &:nth-of-type(7) {
+        border-right: 1px solid #EBEEF4;
+
+      }
+    
+    }
+    .above60 {
+      background-color: #EFFAF4;
+    }
+    .between50And60 {
+      background-color: #F3F5F9;
+    }
+    .below50 {
+      background-color: #FFE1E0;
     }
     .pick {
       width: 90px;
       font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-weight: 600;
+      gap: 3px;
+      padding-left: 1rem;
+      span {
+        font-size: 12px;
+      }
+    }
+    .analyze {
+      width: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      button {
+        all: unset;
+        border: 1px solid #c7c8c9;
+        width: 25px;
+        height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        svg {
+          cursor: pointer;
+          
+        }
+      }
     }
   }
-
- 
-
 }
-
-

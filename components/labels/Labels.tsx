@@ -10,10 +10,7 @@ const Labels: React.FC<LabelsProps> = ({ labels }) => {
   return (
     <div className={styles.labels}>
       {labels.map((label, i) => (
-        <div
-          key={label.id}
-          className={`${styles.label} ${i === 0 ? styles.firstLabel : styles.otherLabel}`}
-        >
+        <div key={label.id} className={styles.label}>
           {label.name}
         </div>
       ))}

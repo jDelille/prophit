@@ -1,29 +1,38 @@
 .labels {
+  display: flex;
+  // gap: 1rem;
+  padding: 0 1rem;
+  width: 1394px;
+  margin: 1rem auto;
+  .label {
+    width: 50px;
     display: flex;
-    gap: 1rem;
-    padding: 0 1rem;
-    width: 1404px;
-    margin: 0 auto;
-    justify-content: space-between;
-    .label {
-        width: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 600;
-        text-transform: uppercase;
-        font-size: 12px;
-        &:nth-of-type(9) {
-            width: 90px;
-        }
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    &:nth-of-type(1) {
+      width: 250px;
+      justify-content: flex-start;
+      margin-right: 1rem;
     }
-    .firstLabel {
-        width: 250px;
-        justify-content: flex-start;
+    &:nth-of-type(2),
+    &:nth-of-type(4),
+    &:nth-of-type(11) {
+        padding-right: 1rem;
     }
-    .otherLabel {
-        background-color: orange;
-
+    &:nth-of-type(2),
+    &:nth-of-type(3),
+    &:nth-of-type(5),
+    &:nth-of-type(6),
+    &:nth-of-type(7),
+    &:nth-of-type(8) {
+        width: 80px;
     }
-    
+    &:nth-of-type(4),
+    &:nth-of-type(9) {
+        width: 100px;
+    }
+  }
 }

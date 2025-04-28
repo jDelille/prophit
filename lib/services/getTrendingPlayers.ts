@@ -26,7 +26,7 @@ export default async function getTrendingPlayers(
         id: athlete.athlete.id,
         name: playerName,
         headshot: athlete.athlete?.headshot?.href || '',
-        propType: prop.toUpperCase(),
+        propType: prop,
         value: athlete.categories[1]?.totals?.[0] ?? null,
         position: athlete.athlete?.position?.abbreviation ?? '',
         teamData, 
