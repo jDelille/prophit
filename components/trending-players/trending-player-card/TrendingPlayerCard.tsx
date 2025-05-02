@@ -4,6 +4,7 @@ import { TrendingPlayer } from "@/types";
 import { PlayerStats } from "@/types/player-stats";
 import playerStore from "@/store/playerStore";
 import { PipeChartIcon } from "@/icons";
+import PercentageBar from "@/components/percentage-bar/PercentageBar";
 
 type TrendingPlayerCardProps = {
   player: TrendingPlayer;
@@ -13,7 +14,6 @@ type TrendingPlayerCardProps = {
 const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
   player,
   playerStats,
-  
 }) => {
   if (player?.selections?.[0]?.points === undefined) {
     return;
@@ -25,7 +25,6 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
 
   const handleAddPlayerToStore = () => {
     playerStore.setPlayer(player);
-    
   };
 
   const getPercentageClass = (percentage: number) => {
@@ -37,15 +36,15 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
   const getOUClass = (isOver: boolean) => {
     if (isOver) return styles.over;
     if (!isOver) return styles.under;
-  }
+  };
 
   const isOver = playerStats.values.propPick === "Over";
   const selection = isOver ? player.selections[0] : player.selections[1];
 
   function getOrdinalSuffix(rank: number): string {
     const j = rank % 10,
-          k = rank % 100;
-  
+      k = rank % 100;
+
     if (j === 1 && k !== 11) return `${rank}st`;
     if (j === 2 && k !== 12) return `${rank}nd`;
     if (j === 3 && k !== 13) return `${rank}rd`;
@@ -55,8 +54,8 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
   const getRankClass = (rank: number) => {
     if (rank < 10) return styles.highRank;
     if (rank > 10 && rank < 20) return styles.mediumRank;
-    if (rank >= 20) return styles.lowRank; 
-  }
+    if (rank >= 20) return styles.lowRank;
+  };
 
   const getRatingClass = (rating: number) => {
     if (rating >= 70) return styles.goodRating;
@@ -102,7 +101,9 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
         </div>
         <div className={styles.value}>
           {playerStats.values.projectedPoints}{" "}
-          <span className={getOUClass(isOver)}>{playerStats.values.propPick}</span>
+          <span className={getOUClass(isOver)}>
+            {playerStats.values.propPick}
+          </span>
         </div>
         <div className={styles.value}>
           {`${playerStats.values.projectionDifference >= 0 ? "+" : ""}${
@@ -110,31 +111,35 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
           }`}
         </div>
         <div className={styles.value}>
-          <div className={getRatingClass(playerStats.values.rating)}>{getRatingLabel(playerStats.values.rating)}</div>
+          <div className={getRatingClass(playerStats.values.rating)}>
+            {getRatingLabel(playerStats.values.rating)}
+          </div>
         </div>
-        <div className={styles.value} >
-          <p className={getRankClass(player.teamStats.ranks[0])}>{getOrdinalSuffix(player.teamStats.ranks[0])}</p>
+        <div className={styles.value}>
+          <p className={getRankClass(player.teamStats.ranks[0])}>
+            {getOrdinalSuffix(player.teamStats.ranks[0])}
+          </p>
         </div>
         <div
           className={`${styles.value} ${getPercentageClass(
             playerStats.values.latest3Percentage
           )}`}
         >
-          {playerStats.values.latest3Percentage}%
+          <PercentageBar percentage={playerStats.values.latest3Percentage} />
         </div>
         <div
           className={`${styles.value} ${getPercentageClass(
             playerStats.values.latest5Percentage
           )}`}
         >
-          {playerStats.values.latest5Percentage}%
+          <PercentageBar percentage={playerStats.values.latest5Percentage} />{" "}
         </div>
         <div
           className={`${styles.value} ${getPercentageClass(
             playerStats.values.latest15Percentage
           )}`}
         >
-          {playerStats.values.latest15Percentage}%
+          <PercentageBar percentage={playerStats.values.latest15Percentage} />
         </div>
         <div
           className={`${styles.value} ${getPercentageClass(

@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
     gap: 15px;
-    min-width: 250px;
+    min-width: 240px;
     margin-right: 1rem;
     .imageContainer {
       background-color: #f3f5f9;
@@ -83,63 +83,75 @@
         align-items: center;
         justify-content: center;
       }
-      &:nth-of-type(4) {
+      &:nth-of-type(4)
+       {
         padding: 0;
         border-right: 1px solid #EBEEF4;
         padding-right: 1rem;
+        
       }
       &:nth-of-type(5) {
         width: 100px;
+        
       }
+
+      &:nth-of-type(9) {
+        border-right: 1px solid #EBEEF4;
+
+      }
+
+   
 
       .goodRating,
       .averageRating,
       .weakRating {
         color: #155724;
         background-color: #d4edda;
-        border-color: #c3e6cb;
+        border: 1px solid #c3e6cb;
         padding: 3px 6px;
-        border-radius: 4px;
-        font-size: 12px;
+        border-radius: 3px;
+        font-size: 11px;
         width: 65px;
         display: flex;
         align-items: center;
         justify-content: center;
+        text-transform: uppercase;
+        font-weight: 600;
       }
 
       .averageRating {
         color: #856404;
         background-color: #fff3cd;
-        border-color: #ffeeba;
+        border: 1px solid #ffeeba;
       }
 
       .weakRating {
         color: #721c24;
         background-color: #f8d7da;
-        border-color: #f5c6cb;
+        border: 1px solid #f5c6cb;
       }
     
     
     
     }
-    .above60 {
-      background-color: #d4edda;
-    }
-    .between50And60 {
-      background-color: #eeeeee;
-    }
-    .below50 {
-      background-color: #f8d7da;
-    }
+    // .above60 {
+    //   background-color: #d4edda;
+    // }
+    // .between50And60 {
+    //   background-color: #eeeeee;
+    // }
+    // .below50 {
+    //   background-color: #f8d7da;
+    // }
     .pick {
-      width: 90px;
+      width: 85px;
       font-size: 13px;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       font-weight: 500;
-      gap: 3px;
-      padding-left: 3rem;
+      margin-left: 2rem;
+      
       span {
         font-size: 12px;
       }
@@ -149,7 +161,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding-left: 3rem;
+      padding-left: 1rem;
       button {
         all: unset;
         border: 1px solid #c7c8c9;
