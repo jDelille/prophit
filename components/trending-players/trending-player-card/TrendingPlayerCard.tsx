@@ -38,8 +38,29 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
     return styles.below50;
   };
 
+  const getOUClass = (isOver: boolean) => {
+    if (isOver) return styles.over;
+    if (!isOver) return styles.under;
+  }
+
   const isOver = playerStats.values.propPick === "Over";
   const selection = isOver ? player.selections[0] : player.selections[1];
+
+  function getOrdinalSuffix(rank: number): string {
+    const j = rank % 10,
+          k = rank % 100;
+  
+    if (j === 1 && k !== 11) return `${rank}st`;
+    if (j === 2 && k !== 12) return `${rank}nd`;
+    if (j === 3 && k !== 13) return `${rank}rd`;
+    return `${rank}th`;
+  }
+
+  const getRankClass = (rank: number) => {
+    if (rank < 10) return styles.highRank;
+    if (rank > 10 && rank < 20) return styles.mediumRank;
+    if (rank >= 20) return styles.lowRank; 
+  }
 
   return (
     <div
@@ -59,7 +80,7 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
         <div className={styles.flexCol}>
           <h3 className={styles.playerName}>{player.name}</h3>
           <div className={styles.flex}>
-            <p className={styles.playerPosition}>{player.position}</p>
+            <p className={styles.playerPosition}>{player.position} -</p>
             <p className={styles.playerTeam}>
               {player.teamData.team.nextEvent[0].shortName}
             </p>
@@ -73,7 +94,7 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
         </div>
         <div className={styles.value}>
           {playerStats.values.projectedPoints}{" "}
-          <span>{playerStats.values.propPick}</span>
+          <span className={getOUClass(isOver)}>{playerStats.values.propPick}</span>
         </div>
         <div className={styles.value}>
           {`${playerStats.values.projectionDifference >= 0 ? "+" : ""}${
@@ -83,8 +104,8 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
         <div className={styles.value}>
           RATING
         </div>
-        <div className={styles.value}>
-          {player.teamStats.ranks[0]}
+        <div className={styles.value} >
+          <p className={getRankClass(player.teamStats.ranks[0])}>{getOrdinalSuffix(player.teamStats.ranks[0])}</p>
         </div>
         <div
           className={`${styles.value} ${getPercentageClass(
