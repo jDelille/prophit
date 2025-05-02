@@ -8,13 +8,12 @@ import { PipeChartIcon } from "@/icons";
 type TrendingPlayerCardProps = {
   player: TrendingPlayer;
   playerStats: PlayerStats;
-  setIsOpen: (val: boolean) => void;
 };
 
 const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
   player,
   playerStats,
-  setIsOpen,
+  
 }) => {
   if (player?.selections?.[0]?.points === undefined) {
     return;
@@ -26,7 +25,7 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
 
   const handleAddPlayerToStore = () => {
     playerStore.setPlayer(player);
-    setIsOpen(true);
+    
   };
 
   const getPercentageClass = (percentage: number) => {

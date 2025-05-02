@@ -10,10 +10,9 @@ import { PlayerStats } from "@/types/player-stats";
 type TrendingPlayersListProps = {
   prop: string;
   setProp: (prop: string) => void;
-  setIsOpen: (val: boolean) => void;
 };
 
-const TrendingPlayersList: React.FC<TrendingPlayersListProps> = ({ prop, setIsOpen }) => {
+const TrendingPlayersList: React.FC<TrendingPlayersListProps> = ({ prop }) => {
   const [players, setPlayers] = useState<TrendingPlayer[]>([]);
   const [playerStats, setPlayerStats] = useState<Record<string, any>>({});
   const [loading, setLoading] = useState(true);
@@ -52,7 +51,7 @@ const TrendingPlayersList: React.FC<TrendingPlayersListProps> = ({ prop, setIsOp
             player={player}
             key={player.id}
             playerStats={playerStats[player.id]}
-            setIsOpen={setIsOpen}
+            
           />
         ))
       ) : (
