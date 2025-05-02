@@ -61,12 +61,14 @@
       }
 
       .over,
-      .highRank {
+      .lowRank
+      {
         color: #1F845A;
       }
 
       .under,
-      .lowRank {
+      .highRank 
+       {
         color: #C9372C;
       }
       
@@ -89,26 +91,53 @@
       &:nth-of-type(5) {
         width: 100px;
       }
+
+      .goodRating,
+      .averageRating,
+      .weakRating {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+        padding: 3px 6px;
+        border-radius: 4px;
+        font-size: 12px;
+        width: 65px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .averageRating {
+        color: #856404;
+        background-color: #fff3cd;
+        border-color: #ffeeba;
+      }
+
+      .weakRating {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+      }
     
     
     
     }
     .above60 {
-      background-color: #EFFAF4;
+      background-color: #d4edda;
     }
     .between50And60 {
-      background-color: #F3F5F9;
+      background-color: #eeeeee;
     }
     .below50 {
-      background-color: #FFE1E0;
+      background-color: #f8d7da;
     }
     .pick {
       width: 90px;
-      font-size: 14px;
+      font-size: 13px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 600;
+      font-weight: 500;
       gap: 3px;
       padding-left: 3rem;
       span {

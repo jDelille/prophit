@@ -11,5 +11,6 @@ export type PlayerStats = {
       venueHitRatePercentage: number;
       projectionDifference: number;
       propPick: string;
+      rating: number;
     };
   };

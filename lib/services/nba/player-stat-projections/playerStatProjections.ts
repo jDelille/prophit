@@ -15,6 +15,7 @@ const playerStatProjections = async (
   venueRole: string,
   sport: string,
   league: string,
+  oppRank: string,
   isPostSeason?: boolean
 ) => {
   const gamelogs = await fetchPlayerGameLog(playerId, sport, league);
@@ -38,7 +39,7 @@ const playerStatProjections = async (
     prop,
     league,
     "postseason"
-  )
+  );
 
   const { latest3Avg, latest5Avg, latest15Avg } =
     getLatestPPGAverages(combinedStats);
@@ -63,10 +64,27 @@ const playerStatProjections = async (
     latest5Percentage,
     latest15Percentage,
     seasonPercentage,
-    postseasonPercentage
+    postseasonPercentage,
   } = getHitRates(combinedStats, currentPropValue);
 
-  const propPick = parseFloat(projectionDifference) >= 1 ? "Over" : "Under";
+  const propPick = parseFloat(projectionDifference) >= 0.1 ? "Over" : "Under";
+
+  const projDiff = Math.max(Math.min(parseFloat(projectionDifference), 10), -10);
+  const projectionScore = ((projDiff + 10) / 20) * 100; // -10 => 0, +10 => 100
+  
+  const opponentScore = ((parseInt(oppRank) - 1) / 29) * 100; // rank 1 => 0, rank 30 => 100
+  
+  const l3 = parseFloat(latest3Percentage);
+  const l5 = parseFloat(latest5Percentage);
+  const l15 = parseFloat(latest15Percentage);
+  const season = parseFloat(seasonPercentage);
+  const hitRateScore = l3 * 0.4 + l5 * 0.3 + l15 * 0.2 + season * 0.1;
+  
+  const rating =
+    Math.round(projectionScore * 0.4 +
+    opponentScore * 0.2 +
+    hitRateScore * 0.4);
+
 
   return {
     values: {
@@ -80,7 +98,8 @@ const playerStatProjections = async (
       projectionDifference,
       seasonPercentage,
       postseasonPercentage,
-      propPick
+      propPick,
+      rating
     },
   };
 };

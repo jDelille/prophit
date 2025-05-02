@@ -24,9 +24,6 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
     return;
   }
 
-  console.log(player)
-
-
   const handleAddPlayerToStore = () => {
     playerStore.setPlayer(player);
     setIsOpen(true);
@@ -61,6 +58,18 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
     if (rank > 10 && rank < 20) return styles.mediumRank;
     if (rank >= 20) return styles.lowRank; 
   }
+
+  const getRatingClass = (rating: number) => {
+    if (rating >= 70) return styles.goodRating;
+    if (rating >= 50) return styles.averageRating;
+    return styles.weakRating;
+  };
+
+  const getRatingLabel = (rating: number): "Strong" | "Average" | "Weak" => {
+    if (rating >= 70) return "Strong";
+    if (rating >= 50) return "Average";
+    return "Weak";
+  };
 
   return (
     <div
@@ -102,7 +111,7 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
           }`}
         </div>
         <div className={styles.value}>
-          RATING
+          <div className={getRatingClass(playerStats.values.rating)}>{getRatingLabel(playerStats.values.rating)}</div>
         </div>
         <div className={styles.value} >
           <p className={getRankClass(player.teamStats.ranks[0])}>{getOrdinalSuffix(player.teamStats.ranks[0])}</p>

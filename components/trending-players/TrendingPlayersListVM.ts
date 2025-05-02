@@ -37,7 +37,8 @@ export class TrendingPlayersListVM {
           points,
           venueRole,
           this.sport,
-          this.league
+          this.league,
+          player.teamStats.ranks[0]
         );
 
         return { [player.id]: stats };
