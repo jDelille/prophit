@@ -19,8 +19,15 @@
       align-items: center;
       justify-content: center;
       .playerHeadshot {
-        max-width: 52px;
+        max-width: 57px;
         object-fit: contain;
+      }
+      .teamLogo {
+        position: absolute;
+        max-width: 16px;
+        max-height: 16px;
+        bottom: 8px;
+        left: 0;
       }
     }
 

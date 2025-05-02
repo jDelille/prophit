@@ -82,6 +82,7 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
             alt={player.name}
             className={styles.playerHeadshot}
           />
+          <img src={player.teamData.team.logos[0].href} alt="" className={styles.teamLogo}/>
         </div>
 
         <div className={styles.flexCol}>
