@@ -7,7 +7,7 @@ const Navbar: React.FC<NavbarProps> = () => {
   return (
     <div className={styles.navbar}>
         <div className={styles.navbarContent}>
-            <div className={styles.logo}>PROPHIT</div>
+            <div className={styles.logo}>PROP<span>HIT</span></div>
             <ul className={styles.links}>
                 <li>NBA</li>
                 <li>MLB</li>

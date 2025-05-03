@@ -12,14 +12,18 @@
         padding: 0 1rem;
         gap: 2rem;
         .logo {
-            font-weight: 500;
-            font-size: 22px;
+            font-weight: 600;
+            font-size: 25px;    
+
+            span {
+                color: #4caf50;
+            }
         }
         .links {
             list-style: none;
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 2rem;
             font-weight: 600;
             font-size: 14px;
         }

@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   description: "A sports prop bet analyzer",
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
