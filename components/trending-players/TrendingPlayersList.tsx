@@ -10,9 +10,10 @@ import { PlayerStats } from "@/types/player-stats";
 type TrendingPlayersListProps = {
   prop: string;
   setProp: (prop: string) => void;
+  setPropCount: (count: number) => void;
 };
 
-const TrendingPlayersList: React.FC<TrendingPlayersListProps> = ({ prop }) => {
+const TrendingPlayersList: React.FC<TrendingPlayersListProps> = ({ prop, setPropCount }) => {
   const [players, setPlayers] = useState<TrendingPlayer[]>([]);
   const [playerStats, setPlayerStats] = useState<Record<string, any>>({});
   const [loading, setLoading] = useState(true);
@@ -26,9 +27,10 @@ const TrendingPlayersList: React.FC<TrendingPlayersListProps> = ({ prop }) => {
       setError(null);
 
       try {
-        const { players, playerStats } = await vm.fetchPlayersAndStats();
+        const { players, playerStats, propCount } = await vm.fetchPlayersAndStats();
         setPlayers(players);
         setPlayerStats(playerStats);
+        setPropCount(propCount)
       } catch (e) {
         console.error(e);
         setError("Failed to fetch players or stats.");
@@ -38,6 +40,7 @@ const TrendingPlayersList: React.FC<TrendingPlayersListProps> = ({ prop }) => {
     };
 
     fetchData();
+
   }, [prop]);
 
   if (loading) return <div>Loading...</div>;

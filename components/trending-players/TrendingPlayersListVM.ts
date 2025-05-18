@@ -7,24 +7,39 @@ export class TrendingPlayersListVM {
   sport: string;
   league: string;
   prop: string;
+  propCount: number;
 
   constructor(sport: string, league: string, prop: string) {
     this.sport = sport;
     this.league = league;
     this.prop = prop;
+    this.propCount = 0;
+  }
+
+  private setPropCount(count: number) {
+    this.propCount = count;
   }
 
   async fetchPlayersAndStats(): Promise<{
     players: TrendingPlayer[];
     playerStats: PlayerStats[];
+    propCount: number;
   }> {
-    const players = await getTrendingPlayers(this.sport, this.league, this.prop);
-
+    const players = await getTrendingPlayers(
+      this.sport,
+      this.league,
+      this.prop
+    );
 
     if (!players || players.length === 0) {
-      return { players: [], playerStats: [] };
+      return { players: [], playerStats: [], propCount: 0 };
     }
 
+    const validPlayers = players.filter(
+      (player) => player?.selections?.[0]?.points !== undefined
+    );
+
+    this.setPropCount(validPlayers.length);
 
     const statsData = await Promise.all(
       players.map(async (player) => {
@@ -47,6 +62,6 @@ export class TrendingPlayersListVM {
 
     const playerStats = Object.assign({}, ...statsData);
 
-    return { players, playerStats };
+    return { players, playerStats, propCount: this.propCount };
   }
 }

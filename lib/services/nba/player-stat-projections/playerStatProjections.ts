@@ -83,7 +83,7 @@ const playerStatProjections = async (
   const rating =
     Math.round(projectionScore * 0.4 +
     opponentScore * 0.2 +
-    hitRateScore * 0.4);
+    hitRateScore * 0.5);
 
 
   return {

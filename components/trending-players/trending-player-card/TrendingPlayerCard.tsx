@@ -133,7 +133,7 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
             playerStats.values.latest5Percentage
           )}`}
         >
-          <PercentageBar percentage={playerStats.values.latest5Percentage} />{" "}
+          <PercentageBar percentage={playerStats.values.latest5Percentage} />
         </div>
         <div
           className={`${styles.value} ${getPercentageClass(

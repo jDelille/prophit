@@ -20,7 +20,7 @@ export type Labels = {
         { id: 9, name: "L-15", canSort: true },
         { id: 10, name: "Season", canSort: true },
         { id: 11, name: "Pick" },
-        { id: 12, name: "Analyze" }
+        { id: 12, name: "Analyze" },
       ]
     };
   
