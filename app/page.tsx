@@ -14,12 +14,18 @@ export default function Home() {
   const labelList = getLabelsByLeague("nba");
 
   return (
-    <div>
-      <Navbar />
+    <div className="page">
+      <div className="side">
+        <Navbar />
+      </div>
+      <div className="main">
+       <TrendingPlayersList setProp={setProp} prop={prop} setPropCount={setPropCount}  /> 
+      </div>
+   
       {/* <Categories setProp={setProp} prop={prop} league={"nba"} /> */}
-      <Header propCount={propCount} />
+      {/* <Header propCount={propCount} />
       <Labels labels={labelList} />
-      <TrendingPlayersList setProp={setProp} prop={prop} setPropCount={setPropCount}  />
+      */}
     </div>
   );
 }
