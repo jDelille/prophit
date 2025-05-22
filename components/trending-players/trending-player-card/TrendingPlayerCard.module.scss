@@ -3,15 +3,13 @@
   align-items: center;
   position: relative;
   height: 59px;
-  // border: 1px solid orangered;
   .playerInfo {
     display: flex;
     align-items: center;
     gap: 15px;
     min-width: 240px;
-    margin-right: 1rem;
     // border: 1px solid red;
-
+    margin-right: 1.5rem;
     .imageContainer {
       background-color: #f3f5f9;
       width: 40px;
@@ -46,7 +44,7 @@
         display: flex;
         gap: 5px;
         font-size: 12px;
-     
+        color: #aaaaaa;
       }
     }
   }
@@ -56,7 +54,10 @@
     white-space: nowrap;
     width: 100%;
     height: 100%;
-    justify-content: space-between;
+    gap: 1rem;
+    margin-left: 1rem;
+    // justify-content: space-between;
+
     .value {
       display: flex;
       align-items: center;
@@ -66,52 +67,56 @@
       font-weight: 500;
       font-size: 13px;
       flex-direction: column;
-      // border: 1px so lid lime;
+      // border: 1px solid red;
+
       span {
         font-size: 12px;
       }
 
       .over,
-      .lowRank
-      {
-        color: #1F845A;
+      .lowRank {
+        color: #1f845a;
       }
 
       .under,
-      .highRank 
-       {
-        color: #C9372C;
+      .highRank {
+        color: #c9372c;
       }
-      
+
       &:nth-of-type(1) {
-        border-right: 1px solid #EBEEF4;
+        border-right: 1px solid #ebeef4;
         padding-right: 1rem;
       }
-      
+
+      &:nth-of-type(3) {
+        position: relative;
+        left: -5px;
+      }
+
       &:nth-of-type(4) {
         width: 100px;
         display: flex;
         align-items: center;
         justify-content: center;
       }
-      &:nth-of-type(4)
-       {
+      &:nth-of-type(4) {
         padding: 0;
-        border-right: 1px solid #EBEEF4;
+        border-right: 1px solid #ebeef4;
         padding-right: 1rem;
-        
       }
       &:nth-of-type(5) {
         width: 100px;
-        
+        p {
+          position: relative;
+          left: -5px;
+        }
       }
 
       &:nth-of-type(9) {
-        border-right: 1px solid #EBEEF4;
-
+        border-right: 1px solid #ebeef4;
+        position: relative;
+        left: -4px;
       }
-
-   
 
       .goodRating,
       .averageRating,
@@ -128,6 +133,8 @@
         justify-content: center;
         text-transform: uppercase;
         font-weight: 600;
+        position: relative;
+        left: -5px;
       }
 
       .averageRating {
@@ -141,28 +148,16 @@
         background-color: #f8d7da;
         border: 1px solid #f5c6cb;
       }
-    
-    
-    
     }
-    // .above60 {
-    //   background-color: #d4edda;
-    // }
-    // .between50And60 {
-    //   background-color: #eeeeee;
-    // }
-    // .below50 {
-    //   background-color: #f8d7da;
-    // }
     .pick {
-      width: 85px;
+      width: 75px;
       font-size: 13px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       font-weight: 500;
       margin-left: 2rem;
-      
+      // border: 1px solid red;
       span {
         font-size: 12px;
       }
@@ -173,6 +168,8 @@
       align-items: center;
       justify-content: center;
       padding-left: 1rem;
+      // border: 1px solid red;
+
       button {
         all: unset;
         border: 1px solid #c7c8c9;
@@ -184,7 +181,6 @@
         border-radius: 4px;
         svg {
           cursor: pointer;
-          
         }
       }
     }

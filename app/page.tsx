@@ -19,9 +19,16 @@ export default function Home() {
         <Navbar />
       </div>
       <div className="main">
-       {/* <TrendingPlayersList setProp={setProp} prop={prop} setPropCount={setPropCount}  />  */}
+        <Header />
+        <Labels labels={labelList} />
+
+        <TrendingPlayersList
+          setProp={setProp}
+          prop={prop}
+          setPropCount={setPropCount}
+        />
       </div>
-   
+
       {/* <Categories setProp={setProp} prop={prop} league={"nba"} /> */}
       {/* <Header propCount={propCount} />
       <Labels labels={labelList} />
