@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Oswald } from "next/font/google";
 import '../scss/globals.scss';
 
-const poppins = Poppins({
+const oswald = Oswald({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"], 
-  variable: "--font-poppins", 
+  variable: "--font-oswald", 
 });
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={poppins.variable}>
+    <html lang="en" className={oswald.variable}>
       <body >
         {children}
       </body>
