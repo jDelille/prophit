@@ -9,9 +9,10 @@ import { usePathname } from "next/navigation";
 type HeaderProps = {
   setProp: (val: string) => void;
   activeProp: string;
+  options: string[];
 };
 
-const Header: React.FC<HeaderProps> = ({ setProp, activeProp }) => {
+const Header: React.FC<HeaderProps> = ({ setProp, activeProp, options }) => {
   const titleRef = useRef<HTMLDivElement>(null);
   const filtersRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
@@ -46,23 +47,15 @@ const Header: React.FC<HeaderProps> = ({ setProp, activeProp }) => {
     };
   }, [pathname]);
 
-  const today = new Date().toLocaleDateString("en-US", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
 
   return (
     <div className={styles.header}>
       <div className={styles.title} ref={titleRef}>
         <p>{pathname.replace("/", "")}</p>
-        {/* <p>{today}</p> Uncomment this if you want to display the full date */}
       </div>
 
-      {/* Wrap Filters in a div to target it for animation */}
       <div ref={filtersRef}>
-        <Filters setProp={setProp} activeProp={activeProp}  />
+        <Filters setProp={setProp} activeProp={activeProp} options={options} />
       </div>
     </div>
   );

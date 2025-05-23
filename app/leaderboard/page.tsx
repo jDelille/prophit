@@ -9,13 +9,9 @@ type PageProps = {};
 
 
 const options = [
-  "Top",
-  "MLB",
-  "NBA",
-  "NFL",
-  "NHL",
-  "Golf",
-  "F1"
+  "Props",
+  "Parlays",
+  "Game Picks"
 ];
 
 const Page: React.FC<PageProps> = () => {

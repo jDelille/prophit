@@ -4,33 +4,26 @@ import styles from "./Filters.module.scss";
 type FiltersProps = {
   setProp: (val: string) => void;
   activeProp: string;
+  options: string[];
 };
 
-const props = [
-  "All",
-  "Points",
-  "Rebounds",
-  "Assists",
-  "3 Pointers",
-  "Steals",
-  "Blocks",
-  "Points + Assists",
-  "Points + Rebounds",
-  "Rebounds + Assists",
-  "Points + Assists + Rebounds"
-]
 
-const Filters: React.FC<FiltersProps> = ({setProp, activeProp}) => {
-
+const Filters: React.FC<FiltersProps> = ({ setProp, activeProp, options}) => {
   const handlePropClick = (prop: string) => {
-    setProp(prop)
-  }
+    setProp(prop);
+  };
 
   return (
     <div className={styles.filter}>
       <ul>
-        {props.map((prop) => (
-          <li key={prop} onClick={() => handlePropClick(prop)} className={activeProp === prop ? styles.active : ""}>{prop}</li>
+        {options.map((option) => (
+          <li
+            key={option}
+            onClick={() => handlePropClick(option)}
+            className={activeProp === option ? styles.active : ""}
+          >
+            {option}
+          </li>
         ))}
       </ul>
     </div>

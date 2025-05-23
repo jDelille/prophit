@@ -1,7 +1,6 @@
 "use client";
 
 import Header from "@/components/header/Header";
-import Labels from "@/components/labels/Labels";
 import { getLabelsByLeague } from "@/constants/labels";
 import React, { useState } from "react";
 
@@ -9,13 +8,8 @@ type PageProps = {};
 
 
 const options = [
-  "Top",
-  "MLB",
-  "NBA",
-  "NFL",
-  "NHL",
-  "Golf",
-  "F1"
+ "Parlay Calculator",
+ "Hedging Calculator"
 ];
 
 const Page: React.FC<PageProps> = () => {

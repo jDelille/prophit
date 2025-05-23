@@ -6,6 +6,22 @@ import { getLabelsByLeague } from "@/constants/labels";
 import React, { useState } from "react";
 
 type PageProps = {};
+
+
+const options = [
+  "All",
+  "Points",
+  "Rebounds",
+  "Assists",
+  "3 Pointers",
+  "Steals",
+  "Blocks",
+  "Points + Assists",
+  "Points + Rebounds",
+  "Rebounds + Assists",
+  "Points + Assists + Rebounds",
+];
+
 const Page: React.FC<PageProps> = () => {
   const [prop, setProp] = useState<string>("Points");
   const [propCount, setPropCount] = useState(0);
@@ -13,7 +29,7 @@ const Page: React.FC<PageProps> = () => {
   return (
     <div className="page">
       <div className="main">
-        <Header setProp={setProp} activeProp={prop} />
+        <Header setProp={setProp} activeProp={prop} options={options} />
 
         <Labels labels={labelList} />
       </div>
