@@ -21,12 +21,12 @@ export default function Home() {
       <div className="main">
         <Header setProp={setProp} activeProp={prop} />
         <Labels labels={labelList} />
-
+{/* 
         <TrendingPlayersList
           
           prop={prop}
           setPropCount={setPropCount}
-        />
+        /> */}
       </div>
 
       {/* <Categories setProp={setProp} prop={prop} league={"nba"} /> */}

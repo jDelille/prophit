@@ -12,25 +12,21 @@ const Header: React.FC<HeaderProps> = ({ setProp, activeProp }) => {
   const titleRef = useRef<HTMLDivElement>(null);
   const filtersRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const tl = gsap.timeline();
+useEffect(() => {
+  const tl = gsap.timeline();
 
-    // Title slides down
-    tl.from(titleRef.current, {
-      y: -40,
-      opacity: 0,
-      duration: 0.5,
-      ease: "power2.out",
-    });
-
-    // Filters fade in and slide slightly
-    tl.from(filtersRef.current, {
-      y: -20,
-      opacity: 0,
-      duration: 0.6,
-      ease: "power2.out",
-    });
-  }, []);
+  tl.from(titleRef.current, {
+    y: -40,
+    opacity: 0,
+    duration: 0.5,
+    ease: "power2.out",
+  }).from(filtersRef.current, {
+    y: -20,
+    opacity: 0,
+    duration: 0.5,
+    ease: "power2.out",
+  }, "<"); 
+}, []);
 
   const today = new Date().toLocaleDateString("en-US", {
     weekday: "long",

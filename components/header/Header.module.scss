@@ -1,3 +1,6 @@
+@use '../../scss/variables.scss' as var;
+
+
 .header {
   display: flex;
   margin-bottom: 3rem;
@@ -11,7 +14,7 @@
       text-transform: uppercase;
       font-size: 30px;
       font-weight: 500;
-      color: #2c2c2c;
+      color: var.$white;
       position: relative;
       top: -10px;
       
