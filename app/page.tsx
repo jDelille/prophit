@@ -9,18 +9,12 @@ import Navbar from "@/components/navbar/Navbar";
 import Header from "@/components/header/Header";
 
 export default function Home() {
-  const [prop, setProp] = useState<string>("Points");
-  const [propCount, setPropCount] = useState(0);
-  const labelList = getLabelsByLeague("nba");
+
 
   return (
     <div className="page">
-      <div className="side">
-        <Navbar  />
-      </div>
+
       <div className="main">
-        <Header setProp={setProp} activeProp={prop} />
-        <Labels labels={labelList} />
 {/* 
         <TrendingPlayersList
           

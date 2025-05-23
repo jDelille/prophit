@@ -30,7 +30,7 @@ const Filters: React.FC<FiltersProps> = ({setProp, activeProp}) => {
     <div className={styles.filter}>
       <ul>
         {props.map((prop) => (
-          <li onClick={() => handlePropClick(prop)} className={activeProp === prop ? styles.active : ""}>{prop}</li>
+          <li key={prop} onClick={() => handlePropClick(prop)} className={activeProp === prop ? styles.active : ""}>{prop}</li>
         ))}
       </ul>
     </div>
