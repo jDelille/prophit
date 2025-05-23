@@ -9,8 +9,12 @@
     position: relative;
     top: -10px;
     color: #aaaaaa;
+    font-weight: 500;
     li {
         cursor: pointer;
+          &:hover {
+        color: #2c2c2c;
+      }
     }
     .active {
       color: #2c2c2c;

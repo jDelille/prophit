@@ -9,7 +9,6 @@ import { PlayerStats } from "@/types/player-stats";
 
 type TrendingPlayersListProps = {
   prop: string;
-  setProp: (prop: string) => void;
   setPropCount: (count: number) => void;
 };
 

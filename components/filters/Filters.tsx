@@ -1,24 +1,37 @@
-import React from 'react';
-import styles from './Filters.module.scss';
+import React, { Dispatch, SetStateAction } from "react";
+import styles from "./Filters.module.scss";
 
 type FiltersProps = {
- 
- }
-const Filters: React.FC<FiltersProps> = () => {
+  setProp: (val: string) => void;
+  activeProp: string;
+};
+
+const props = [
+  "All",
+  "Points",
+  "Rebounds",
+  "Assists",
+  "3 Pointers",
+  "Steals",
+  "Blocks",
+  "Points + Assists",
+  "Points + Rebounds",
+  "Rebounds + Assists",
+  "Points + Assists + Rebounds"
+]
+
+const Filters: React.FC<FiltersProps> = ({setProp, activeProp}) => {
+
+  const handlePropClick = (prop: string) => {
+    setProp(prop)
+  }
+
   return (
     <div className={styles.filter}>
       <ul>
-        <li>All</li>
-        <li className={styles.active}>Points</li>
-        <li>Rebounds</li>
-        <li>Assists</li>
-        <li>3 Pointers</li>
-        <li>Steals</li>
-        <li>Blocks</li>
-        <li>Points + Assists</li>
-        <li>Points + Rebounds</li>
-        <li>Rebounds + Assists</li>
-        <li>Points + Rebounds + Assists</li>
+        {props.map((prop) => (
+          <li onClick={() => handlePropClick(prop)} className={activeProp === prop ? styles.active : ""}>{prop}</li>
+        ))}
       </ul>
     </div>
   );
