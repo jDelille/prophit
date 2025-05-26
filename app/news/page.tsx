@@ -1,19 +1,13 @@
 "use client";
 
 import Header from "@/components/header/Header";
-import Labels from "@/components/labels/Labels";
+import News from "@/components/news/News";
 import { getLabelsByLeague } from "@/constants/labels";
 import React, { useState } from "react";
 
 type PageProps = {};
 
-
-const options = [
-  "Top Headlines",
-  "Todays Top Odds",
-  "Injuries",
-  "Favorites"
-];
+const options = ["Top Headlines", "Todays Top Odds", "Injuries", "Favorites"];
 
 const Page: React.FC<PageProps> = () => {
   const [prop, setProp] = useState<string>("Points");
@@ -23,6 +17,7 @@ const Page: React.FC<PageProps> = () => {
     <div className="page">
       <div className="main">
         <Header setProp={setProp} activeProp={prop} options={options} />
+        <News />
       </div>
     </div>
   );

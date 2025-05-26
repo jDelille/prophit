@@ -1,0 +1,21 @@
+@use "../../scss/variables.scss" as var;
+
+.newsContainer {
+  overflow-y: scroll;
+  height: 82vh;
+
+  .articles {
+    display: flex;
+    gap: 10px;
+    .article {
+      // padding: 1rem;
+      width: 258;
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 14px;
+      border: 1px solid red;
+    }
+  }
+}
