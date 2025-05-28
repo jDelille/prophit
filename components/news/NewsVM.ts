@@ -8,18 +8,20 @@ export class NewsVM {
   }
 
   async fetchNews() {
-    const res = await fetch(
-      `/api/espn/news?sport=${this.sport}&league=${this.league}`
-    );
+    const nbaRes = await fetch(`/api/espn/news?sport=${this.sport}&league=${this.league}`);
+    const mlbRes = await fetch(`/api/espn/news?sport=baseball&league=mlb`);
+    const nflRes = await fetch(`/api/espn/news?sport=football&league=nfl`);
 
-    if (!res.ok) {
+    if (!nbaRes.ok || !mlbRes.ok) {
       throw new Error("Failed to fetch news");
     }
 
-    const news = await res.json();
+    const nbaNews = await nbaRes.json();
+    const mlbNews = await mlbRes.json();
+    const nflNews = await nflRes.json();
 
     return {
-      news
+      news: [...nbaNews.articles, ...mlbNews.articles, ...nflNews.articles],
     };
   }
 }

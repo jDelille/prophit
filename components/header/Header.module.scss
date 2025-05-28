@@ -6,9 +6,24 @@
   margin-bottom: 3rem;
   width: 1394px;
   overflow: hidden;
-  border-bottom: 1px solid #ebeef4;
+  
   align-items: center;
   gap: 4rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding-top: 3rem;
+  background-color: var.$black;
+  margin-bottom: 2rem;
+  padding-bottom: 3rem;
+  &::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    background-color: #464646;
+    bottom: 2.8rem;
+  }
   .title {
     p {
       text-transform: uppercase;

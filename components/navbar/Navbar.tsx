@@ -86,7 +86,7 @@ const Navbar: React.FC<NavbarProps> = () => {
           </Link>
         </li>
         <li>
-          <Link href={"/news"} className={isActiveLink("/news")}>
+          <Link href={"/news/top_headlines"} className={isActiveLink("/news")}>
             News
           </Link>
         </li>

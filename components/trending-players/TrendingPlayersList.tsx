@@ -29,7 +29,7 @@ const TrendingPlayersList: React.FC<TrendingPlayersListProps> = ({ prop, setProp
         const { players, playerStats, propCount } = await vm.fetchPlayersAndStats();
         setPlayers(players);
         setPlayerStats(playerStats);
-        setPropCount(propCount)
+        // setPropCount(propCount)
       } catch (e) {
         console.error(e);
         setError("Failed to fetch players or stats.");

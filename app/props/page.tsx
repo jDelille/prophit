@@ -2,11 +2,11 @@
 
 import Header from "@/components/header/Header";
 import Labels from "@/components/labels/Labels";
+import TrendingPlayersList from "@/components/trending-players/TrendingPlayersList";
 import { getLabelsByLeague } from "@/constants/labels";
 import React, { useState } from "react";
 
 type PageProps = {};
-
 
 const options = [
   "All",
@@ -30,8 +30,8 @@ const Page: React.FC<PageProps> = () => {
     <div className="page">
       <div className="main">
         <Header setProp={setProp} activeProp={prop} options={options} />
-
         <Labels labels={labelList} />
+        <TrendingPlayersList setPropCount={propCount} prop={prop} />
       </div>
     </div>
   );

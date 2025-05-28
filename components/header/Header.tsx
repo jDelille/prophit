@@ -51,7 +51,7 @@ const Header: React.FC<HeaderProps> = ({ setProp, activeProp, options }) => {
   return (
     <div className={styles.header}>
       <div className={styles.title} ref={titleRef}>
-        <p>{pathname.replace("/", "")}</p>
+        <p>{pathname.split("/")[1]}</p>
       </div>
 
       <div ref={filtersRef}>

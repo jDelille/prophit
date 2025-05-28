@@ -153,11 +153,11 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
           {isOver ? "O" : "U"} {selection?.points}{" "}
           <span className={styles.odds}> ({selection?.odds})</span>
         </div>
-        <div className={styles.analyze}>
+        {/* <div className={styles.analyze}>
           <button>
             <PipeChartIcon size={20} color="black" />
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

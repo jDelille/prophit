@@ -1,5 +1,4 @@
 export type NewsTypes = {
-    articles: {
         categories: {
             athlete: {
                 id: number;
@@ -34,4 +33,3 @@ export type NewsTypes = {
             story: string
         }
     }[];
-  };
