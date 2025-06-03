@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./PercentageBar.module.scss";
 
+
 type PercentageBarProps = {
   percentage: number;
 };
@@ -15,10 +16,10 @@ const PercentageBar: React.FC<PercentageBarProps> = ({ percentage }) => {
           width: `${percentage}%`,
           backgroundColor:
             percentage >= 70
-              ? "#4caf50" // green
+              ? "#1F7D53" // green
               : percentage >= 40
-              ? "#ff9800" // orange
-              : "#f44336", // red
+              ? "#F97300" // orange
+              : "#DA0037", // red
         }}
       ></div>
       </div>

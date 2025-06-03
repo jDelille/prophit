@@ -1,5 +1,5 @@
-import axios from "axios";
 import { getBaseURL } from "../services/getBaseURL";
+
 
 export const fetchPlayerGameLog = async (
   playerId: string,
@@ -7,8 +7,9 @@ export const fetchPlayerGameLog = async (
   league: string
 ) => {
   const baseURL = getBaseURL();
-  const response = await axios.get(
+  const res = await fetch(
     `${baseURL}/api/espn/gamelog?sport=${sport}&league=${league}&playerId=${playerId}`
   );
-  return response.data;
+  if (!res.ok) throw new Error("Failed to fetch gamelog");
+  return res.json();
 };

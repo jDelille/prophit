@@ -15,7 +15,7 @@ const playerStatProjections = async (
   venueRole: string,
   sport: string,
   league: string,
-  oppRank: string,
+  oppRank?: string,
   isPostSeason?: boolean
 ) => {
   const gamelogs = await fetchPlayerGameLog(playerId, sport, league);
@@ -72,7 +72,7 @@ const playerStatProjections = async (
   const projDiff = Math.max(Math.min(parseFloat(projectionDifference), 10), -10);
   const projectionScore = ((projDiff + 10) / 20) * 100; // -10 => 0, +10 => 100
   
-  const opponentScore = ((parseInt(oppRank) - 1) / 29) * 100; // rank 1 => 0, rank 30 => 100
+  // const opponentScore = ((parseInt(oppRank) - 1) / 29) * 100; // rank 1 => 0, rank 30 => 100
   
   const l3 = parseFloat(latest3Percentage);
   const l5 = parseFloat(latest5Percentage);
@@ -82,7 +82,7 @@ const playerStatProjections = async (
   
   const rating =
     Math.round(projectionScore * 0.4 +
-    opponentScore * 0.2 +
+    // opponentScore * 0.2 +
     hitRateScore * 0.5);
 
 

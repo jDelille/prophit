@@ -1,3 +1,5 @@
+@use '../../../scss/variables.scss' as var;
+
 .trendingPlayerCard {
   display: flex;
   align-items: center;
@@ -84,7 +86,7 @@
 
       .under,
       .highRank {
-        color: #c9372c;
+        color: var.$red;
       }
 
       &:nth-of-type(1) {

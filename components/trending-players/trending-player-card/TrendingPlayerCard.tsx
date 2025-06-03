@@ -82,7 +82,7 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
             alt={player.name}
             className={styles.playerHeadshot}
           />
-          <img src={player.teamData.team.logos[0].href} alt="" className={styles.teamLogo}/>
+          {/* <img src={player.teamData.team.logos[0].href} alt="" className={styles.teamLogo}/> */}
         </div>
 
         <div className={styles.flexCol}>
@@ -90,7 +90,7 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
           <div className={styles.flex}>
             <p className={styles.playerPosition}>{player.position} -</p>
             <p className={styles.playerTeam}>
-              {player.teamData.team.nextEvent[0].shortName}
+              {/* {player.teamData.team.nextEvent[0].shortName} */}
             </p>
           </div>
         </div>
@@ -117,9 +117,9 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
           </div>
         </div>
         <div className={styles.value}>
-          <p className={getRankClass(player.teamStats.ranks[0])}>
+          {/* <p className={getRankClass(player.teamStats.ranks[0])}>
             {getOrdinalSuffix(player.teamStats.ranks[0])}
-          </p>
+          </p> */}
         </div>
         <div
           className={`${styles.value} ${getPercentageClass(

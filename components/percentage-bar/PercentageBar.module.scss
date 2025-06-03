@@ -1,20 +1,23 @@
 .percentageBar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  width: 100%;
+  padding: 0 5px;
+  position: relative;
+  left: -4px;
+  border-radius: 12px;
+
+  .barBackground {
+    background-color: lightgray;
+    height: 3px;
     width: 100%;
-    padding: 0 5px;
-    position: relative;
-    left: -4px;
-    .barBackground {
-        background-color: lightgray;
-        height: 3px;
-        width: 100%;
-    }
-    .bar {
-        height: 3px;
-        width: 100%;
-        border-radius: 12px;
-    }
+    border-radius: 12px;
+  }
+  .bar {
+    height: 3px;
+    width: 100%;
+    border-radius: 12px;
+  }
 }
