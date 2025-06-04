@@ -9,10 +9,9 @@ import { PlayerStats } from "@/types/player-stats";
 
 type TrendingPlayersListProps = {
   prop: string;
-  setPropCount: (count: number) => void;
 };
 
-const TrendingPlayersList: React.FC<TrendingPlayersListProps> = ({ prop, setPropCount }) => {
+const TrendingPlayersList: React.FC<TrendingPlayersListProps> = ({ prop }) => {
   const [players, setPlayers] = useState<TrendingPlayer[]>([]);
   const [playerStats, setPlayerStats] = useState<Record<string, any>>({});
   const [loading, setLoading] = useState(true);

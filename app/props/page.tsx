@@ -24,14 +24,13 @@ const options = [
 
 const Page: React.FC<PageProps> = () => {
   const [prop, setProp] = useState<string>("Points");
-  const [propCount, setPropCount] = useState(0);
   const labelList = getLabelsByLeague("nba");
   return (
     <div className="page">
       <div className="main">
         <Header setProp={setProp} activeProp={prop} options={options} />
         <Labels labels={labelList} />
-        <TrendingPlayersList setPropCount={propCount} prop={prop} />
+        <TrendingPlayersList prop={prop} />
       </div>
     </div>
   );

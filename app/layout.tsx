@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Oswald } from "next/font/google";
 import Navbar from "@/components/navbar/Navbar";
+import { ThemeProvider } from "next-themes";
 import "../scss/globals.scss";
 
 const oswald = Oswald({
@@ -20,12 +21,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={oswald.variable} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={oswald.variable}
+      suppressHydrationWarning
+    >
       <body className="layout">
-        <div className="side">
-          <Navbar />
-        </div>
-        {children}
+        <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem>
+          <div className="side">
+            <Navbar />
+          </div>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

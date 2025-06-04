@@ -1,0 +1,20 @@
+@use "./variables.scss" as vars;
+
+:root {
+  --bg-color: #{vars.$white};
+  --text-color: #{vars.$black};
+  --secondary-text-color: #{vars.$accent};
+  --gray: #{vars.$gray};
+  --offwhite: #{vars.$offwhite};
+  --borderColor: #ebeef4;
+}
+
+[data-theme="dark"] {
+  --bg-color: #{vars.$black};
+  --text-color: #{vars.$white};
+  --secondary-text-color: #{vars.$accent};
+  --gray: #{vars.$gray};
+  --offwhite: #{vars.$offwhite};
+    --borderColor: #ebeef4;
+
+}

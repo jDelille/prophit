@@ -25,28 +25,28 @@
     list-style-type: none;
     font-size: 14px;
     font-weight: 500;
-    color: var.$gray;
+    color: var(--gray);
     li {
       a {
-        color: var.$gray;
+        color: var(--gray);
         text-decoration: none;
         cursor: pointer;
 
         &:hover {
-          color: var.$offwhite;
+          color: var(--text-color);
         }
       }
     }
 
     .activeLink {
-      color: var.$white;
+      color: var(--text-color);
       position: relative;
       &::after {
         content: "";
         position: absolute;
         width: 25px;
         height: 2px;
-        background-color: var.$white;
+        background-color: var(--text-color);
         left: -35px;
         top: 10px;
       }
@@ -63,14 +63,14 @@
     .circle {
       width: 55px;
       height: 55px;
-      background-color: var.$offwhite;
+      background-color: var(--offwhite);
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 22px;
       margin-top: 3rem;
-      color: var.$black;
+      color: var(--text-color);
     }
   }
 }
