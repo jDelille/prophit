@@ -9,8 +9,10 @@
   .logo {
     margin-bottom: 1.5rem;
     p {
+      text-transform: uppercase;
       font-size: 30px;
       font-weight: 500;
+      color: vars(--text-color);
       position: relative;
       top: -10px;
     }

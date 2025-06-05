@@ -63,8 +63,7 @@ const Navbar: React.FC<NavbarProps> = () => {
   }, []);
 
   const isActiveLink = (path: string) => {
-    if (pathname === path) return styles.activeLink;
-    if (pathname !== path) return styles.link;
+    return pathname.startsWith(path) ? styles.activeLink : styles.link;
   };
 
   return (

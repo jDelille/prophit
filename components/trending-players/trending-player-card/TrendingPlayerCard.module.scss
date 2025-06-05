@@ -5,6 +5,7 @@
   align-items: center;
   position: relative;
   height: 59px;
+  font-family: var(--font-roboto), sans-serif !important;
   &:hover {
     background-color: var(--bg-color);
     border-radius: 4px;
@@ -67,9 +68,10 @@
       justify-content: center;
       width: 80px;
       height: 100%;
-      font-weight: 400;
+      font-weight: 500;
       font-size: 13px;
       flex-direction: column;
+      gap: 1px;
       span {
         font-size: 12px;
       }

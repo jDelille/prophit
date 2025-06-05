@@ -103,7 +103,7 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
         <div className={styles.value}>
           {playerStats.values.projectedPoints}{" "}
           <span className={getOUClass(isOver)}>
-            {playerStats.values.propPick}
+            {playerStats.values.propPick.toLowerCase()}
           </span>
         </div>
         <div className={styles.value}>

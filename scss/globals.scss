@@ -4,8 +4,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Oswald", sans-serif;
   font-optical-sizing: auto;
+}
+
+body {
+  font-family: var(--font-oswald), sans-serif;
 }
 
 .layout {
@@ -38,7 +41,5 @@
     height: fit-content;
     padding-bottom: 2rem;
     position: relative;
-    
   }
-  
 }
