@@ -5,7 +5,7 @@ export default async function getTeamStats(
   league: string,
   teamId: string
 ): Promise<TrendingPlayer[]> {
-  const res = await fetch(`/api/espn/teams?sport=${sport}&league=${league}`);
+  const res = await fetch(`/api/espn/teamstats?sport=${sport}&league=${league}`);
 
   if (!res.ok) return [];
 

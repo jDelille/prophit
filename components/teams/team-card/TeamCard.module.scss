@@ -1,0 +1,17 @@
+.team {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  padding: 15px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: auto 100%;
+  background-position: center;
+  max-width: 178px;
+  width: 178px;
+  max-height: 300px;
+  height: 300px;
+  border-radius: 6px;
+  border: 1px solid var(--borderColor);
+}

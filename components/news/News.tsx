@@ -36,25 +36,25 @@ const News: React.FC = () => {
 
   // GSAP Animation on news load
   useEffect(() => {
-  if (!news || cardsRef.current.length === 0) return;
+    if (!news || cardsRef.current.length === 0) return;
 
-  gsap.set(cardsRef.current, {y: 50, opacity: 0})
+    gsap.set(cardsRef.current, { y: 50, opacity: 0 });
 
-  const tl = gsap.timeline();
+    const tl = gsap.timeline();
 
-  // Stagger in each card from the left with fade-in
-  tl.to(cardsRef.current, {
-    y: 0,
-    opacity: 1,
-    duration: 0.6,
-    ease: "power3.out",
-    stagger: 0.15,
-  });
+    // Stagger in each card from the left with fade-in
+    tl.to(cardsRef.current, {
+      y: 0,
+      opacity: 1,
+      duration: 0.6,
+      ease: "power3.out",
+      stagger: 0.15,
+    });
 
-  return () => {
-    tl.kill(); // Clean up timeline on unmount or dependency change
-  };
-}, [news]);
+    return () => {
+      tl.kill(); // Clean up timeline on unmount or dependency change
+    };
+  }, [news]);
 
   function htmlToText(html: string) {
     const tempDiv = document.createElement("div");
@@ -75,7 +75,9 @@ const News: React.FC = () => {
             return (
               <div
                 key={article.id}
-                ref={(el) => (cardsRef.current[index] = el)}
+                ref={(el) => {
+                  cardsRef.current[index] = el;
+                }}
                 className={styles.article}
                 style={{
                   backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.8)), url(${article.images[0].url})`,
