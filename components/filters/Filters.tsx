@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React from "react";
 import styles from "./Filters.module.scss";
 import { usePathname } from "next/navigation";
 import { getTabsByPage } from "@/constants/tabs";

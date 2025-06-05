@@ -1,17 +1,18 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import styles from "./Labels.module.scss";
-import { Labels as LabelsType } from "@/constants/labels";
+import { getLabelsByLeague} from "@/constants/labels";
 import { SortIcon } from "@/icons";
 import gsap from "gsap";
+import apiStore from "@/store/apiStore";
+import styles from "./Labels.module.scss";
 
-type LabelsProps = {
-  labels: LabelsType[];
-};
+type LabelsProps = {};
 
-const Labels: React.FC<LabelsProps> = ({ labels }) => {
+const Labels: React.FC<LabelsProps> = () => {
   const labelsRef = useRef<HTMLDivElement>(null);
+
+  const labels = getLabelsByLeague(apiStore.league);
 
   useEffect(() => {
     if (!labelsRef.current) return;
