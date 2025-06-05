@@ -3,10 +3,13 @@ export type Filters = {
   name: string;
 };
 
-export const getFiltersByLeague = (league: string): Filters[] => {
-  const lowerLeague = league.toLowerCase();
+export const getTabsByPage = (path: string): Filters[] => {
 
-  const leagueFilters: Record<string, Filters[]> = {
+  if(!path) return [];
+
+  const key = path.toLowerCase();
+
+  const tabs: Record<string, Filters[]> = {
     nba: [
       { id: 1, name: "All" },
       { id: 2, name: "Points" },
@@ -31,7 +34,12 @@ export const getFiltersByLeague = (league: string): Filters[] => {
       { id: 9, name: "Singles" },
       { id: 10, name: "Stolen Bases" },
     ],
+    settings: [
+      {id: 1, name: "My Account"},
+      {id: 2, name: "Email Preferences"},
+      {id: 3, name: "Logout"}
+    ]
   };
 
-  return leagueFilters[lowerLeague] || [];
+  return tabs[key] || [];
 };

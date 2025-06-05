@@ -1,4 +1,22 @@
-@use "./theme.scss" as theme;
+@use "./variables.scss" as vars;
+
+:root {
+  --bg-color: #{vars.$white};
+  --text-color: #{vars.$black};
+  --secondary-text-color: #{vars.$accent};
+  --gray: #{vars.$gray};
+  --offwhite: #{vars.$offwhite};
+  --borderColor: #ebeef4;
+}
+
+[data-theme="dark"] {
+  --bg-color: #{vars.$black};
+  --text-color: #{vars.$white};
+  --secondary-text-color: #{vars.$accent};
+  --gray: #{vars.$gray};
+  --offwhite: #{vars.$offwhite};
+  --borderColor: #ebeef4;
+}
 
 * {
   margin: 0;
@@ -12,13 +30,13 @@ body {
 }
 
 .layout {
-  background-color: theme(--bg-color);
+  background-color: var(--bg-color);
   padding: 0rem 7rem;
   display: flex;
   justify-content: space-between;
   height: 100vh;
   width: 100vw;
-  color: theme(--text-color);
+  color: var(--text-color);
   overflow-y: auto;
   overflow-x: hidden;
   .side {

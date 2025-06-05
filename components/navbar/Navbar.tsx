@@ -23,7 +23,6 @@ const Navbar: React.FC<NavbarProps> = () => {
     )
       return;
 
-    // Reset to hidden state
     gsap.set(logoRef.current, { x: -30, opacity: 0 });
     gsap.set(linksRef.current.querySelectorAll("li"), { x: -50, opacity: 0 });
     gsap.set(userLinksRef.current.querySelectorAll("li"), {

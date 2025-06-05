@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 import styles from "./Filters.module.scss";
-import { getFiltersByLeague } from "@/constants/filterOptions";
 import { usePathname } from "next/navigation";
+import { getTabsByPage } from "@/constants/tabs";
 
 type FiltersProps = {
   setProp: (val: string) => void;
@@ -9,9 +9,12 @@ type FiltersProps = {
 };
 
 const Filters: React.FC<FiltersProps> = ({ setProp, activeProp }) => {
-  const pathname = usePathname().split("/")[2];
+  const pathname = usePathname();
+  const segments = pathname.split("/").filter(Boolean);
+  const pageKey =
+    segments[0] === "props" ? segments[1] ?? "" : segments[0] ?? "";
 
-  const options = getFiltersByLeague(pathname);
+  const options = getTabsByPage(pageKey);
 
   const handlePropClick = (prop: string) => {
     setProp(prop);
