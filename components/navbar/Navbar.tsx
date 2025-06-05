@@ -81,7 +81,7 @@ const Navbar: React.FC<NavbarProps> = () => {
           </Link>
         </li>
         <li>
-          <Link href={"/props"} className={isActiveLink("/props")}>
+          <Link href={"/props/mlb"} className={isActiveLink("/props")}>
             Props
           </Link>
         </li>

@@ -15,7 +15,7 @@ export async function GET(request: Request) {
       return NextResponse.json(cache);
     }
 
-    const espnURL = `https://site.web.api.espn.com/apis/common/v3/sports/${sport}/${league}/statistics/byathlete?region=us&lang=en&contentorigin=espn&isqualified=true&page=1&limit=25`;
+    const espnURL = `https://site.web.api.espn.com/apis/common/v3/sports/${sport}/${league}/statistics/byathlete?region=us&lang=en&contentorigin=espn&isqualified=true&page=1&limit=40`;
 
     const res = await fetch(espnURL, { cache: "no-store" });
     if (!res.ok) throw new Error(`Error fetching ESPN: ${res.status}`);

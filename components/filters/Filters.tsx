@@ -1,14 +1,18 @@
 import React, { Dispatch, SetStateAction } from "react";
 import styles from "./Filters.module.scss";
+import { getFiltersByLeague } from "@/constants/filterOptions";
+import { usePathname } from "next/navigation";
 
 type FiltersProps = {
   setProp: (val: string) => void;
   activeProp: string;
-  options: string[];
 };
 
+const Filters: React.FC<FiltersProps> = ({ setProp, activeProp }) => {
+  const pathname = usePathname().split("/")[2];
 
-const Filters: React.FC<FiltersProps> = ({ setProp, activeProp, options}) => {
+  const options = getFiltersByLeague(pathname);
+
   const handlePropClick = (prop: string) => {
     setProp(prop);
   };
@@ -18,11 +22,11 @@ const Filters: React.FC<FiltersProps> = ({ setProp, activeProp, options}) => {
       <ul>
         {options.map((option) => (
           <li
-            key={option}
-            onClick={() => handlePropClick(option)}
-            className={activeProp === option ? styles.active : ""}
+            key={option.name}
+            onClick={() => handlePropClick(option.name)}
+            className={activeProp === option.name ? styles.active : ""}
           >
-            {option}
+            {option.name}
           </li>
         ))}
       </ul>

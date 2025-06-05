@@ -15,9 +15,9 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
   player,
   playerStats,
 }) => {
-  if (player?.selections?.[0]?.points === undefined) {
-    return;
-  }
+  // if (player?.selections?.[0]?.points === undefined) {
+  //   return;
+  // }
 
   if (playerStats.values.seasonPercentage === "0") {
     return;
@@ -39,7 +39,7 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
   };
 
   const isOver = playerStats.values.propPick === "Over";
-  const selection = isOver ? player.selections[0] : player.selections[1];
+  // const selection = isOver ? player.selections[0] : player.selections[1];
 
   function getOrdinalSuffix(rank: number): string {
     const j = rank % 10,
@@ -98,7 +98,7 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
       <div className=""></div>
       <div className={styles.values}>
         <div className={styles.value}>
-          {player?.selections?.[0].points} <span>{player.propType}</span>
+          {/* {player?.selections?.[0].points} <span>{player.propType}</span> */}
         </div>
         <div className={styles.value}>
           {playerStats.values.projectedPoints}{" "}
@@ -149,10 +149,10 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
         >
           {playerStats.values.seasonPercentage}%
         </div>
-        <div className={styles.pick}>
+        {/* <div className={styles.pick}>
           {isOver ? "O" : "U"} {selection?.points}{" "}
           <span className={styles.odds}> ({selection?.odds})</span>
-        </div>
+        </div> */}
         {/* <div className={styles.analyze}>
           <button>
             <PipeChartIcon size={20} color="black" />

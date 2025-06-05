@@ -9,10 +9,9 @@ import { usePathname } from "next/navigation";
 type HeaderProps = {
   setProp: (val: string) => void;
   activeProp: string;
-  options: string[];
 };
 
-const Header: React.FC<HeaderProps> = ({ setProp, activeProp, options }) => {
+const Header: React.FC<HeaderProps> = ({ setProp, activeProp }) => {
   const titleRef = useRef<HTMLDivElement>(null);
   const filtersRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
@@ -55,7 +54,7 @@ const Header: React.FC<HeaderProps> = ({ setProp, activeProp, options }) => {
       </div>
 
       <div ref={filtersRef}>
-        <Filters setProp={setProp} activeProp={activeProp} options={options} />
+        <Filters setProp={setProp} activeProp={activeProp} />
       </div>
     </div>
   );

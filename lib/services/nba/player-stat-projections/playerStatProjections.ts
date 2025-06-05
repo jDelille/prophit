@@ -44,18 +44,18 @@ const playerStatProjections = async (
   const { latest3Avg, latest5Avg, latest15Avg } =
     getLatestPPGAverages(combinedStats);
 
-  const venueStats = getHomeAwayGameIds(
-    gamelogs.events,
-    gamelogs.seasonTypes,
-    venueRole === "HomePlayer",
-    prop,
-    league
-  );
+  // const venueStats = getHomeAwayGameIds(
+  //   gamelogs.events,
+  //   gamelogs.seasonTypes,
+  //   venueRole === "HomePlayer",
+  //   prop,
+  //   league
+  // );
 
   const { projectedPoints, projectionDifference } = getProjectedPoints(
     [parseFloat(latest3Avg), parseFloat(latest5Avg), parseFloat(latest15Avg)],
     postseasonAverage,
-    venueStats,
+    // venueStats,
     currentPropValue
   );
 
