@@ -12,7 +12,7 @@ export const calculateAveragePPG = (
 export const calculateProjectedPoints = (
   latestPPG: number[],
   averagePoints: number,
-  // homeGamePoints: number | undefined
+  homeGamePoints: number | undefined
 ) => {
 
   const recentAndSeasonAvg =
@@ -21,11 +21,11 @@ export const calculateProjectedPoints = (
     latestPPG[2] * 0.2 +
     averagePoints * 0.09;
 
-  // const avgHomePPG = homeGamePoints;
+  const avgHomePPG = homeGamePoints;
 
   const projectedPoints = recentAndSeasonAvg  * 0.1;
 
-  //+ (avgHomePPG as number)
+  + (avgHomePPG as number)
 
   return projectedPoints.toFixed(1);
 };

@@ -28,7 +28,6 @@ const TrendingPlayersList: React.FC<TrendingPlayersListProps> = ({ prop }) => {
         const { players, playerStats, propCount } = await vm.fetchPlayersAndStats();
         setPlayers(players);
         setPlayerStats(playerStats);
-        // setPropCount(propCount)
       } catch (e) {
         console.error(e);
         setError("Failed to fetch players or stats.");
@@ -43,6 +42,7 @@ const TrendingPlayersList: React.FC<TrendingPlayersListProps> = ({ prop }) => {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
+  
 
   return (
     <div className={styles.trendingPlayersList}>

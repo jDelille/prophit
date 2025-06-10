@@ -6,6 +6,7 @@ type PercentageBarProps = {
   percentage: number;
 };
 const PercentageBar: React.FC<PercentageBarProps> = ({ percentage }) => {
+
   return (
     <div className={styles.percentageBar}>
       <p>{percentage}%</p>

@@ -1,15 +1,16 @@
 import { calculateProjectedPoints } from "@/lib/utils/nba/calculateAveragePPG";
-//  venueStats: number,
+//  ,
 
 export const getProjectedPoints = (
   ppgAverages: number[],
   seasonAvg: number,
-  currentPropValue: number
+  currentPropValue: number,
+  venueStats: number
 ) => {
 
-  const projected = calculateProjectedPoints(ppgAverages, seasonAvg);
+  const projected = calculateProjectedPoints(ppgAverages, seasonAvg, venueStats);
 
-  //venueStats
+  
 
   return {
     projectedPoints: projected,

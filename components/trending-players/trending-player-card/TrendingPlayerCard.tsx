@@ -3,7 +3,6 @@ import styles from "./TrendingPlayerCard.module.scss";
 import { TrendingPlayer } from "@/types";
 import { PlayerStats } from "@/types/player-stats";
 import playerStore from "@/store/playerStore";
-import { PipeChartIcon } from "@/icons";
 import PercentageBar from "@/components/percentage-bar/PercentageBar";
 
 type TrendingPlayerCardProps = {
@@ -15,13 +14,15 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
   player,
   playerStats,
 }) => {
+  console.log(player);
+
   // if (player?.selections?.[0]?.points === undefined) {
   //   return;
   // }
 
-  if (playerStats.values.seasonPercentage === "0") {
-    return;
-  }
+  // if (playerStats.values.seasonPercentage === "0") {
+  //   return;
+  // }
 
   const handleAddPlayerToStore = () => {
     playerStore.setPlayer(player);
@@ -69,6 +70,8 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
     return "Weak";
   };
 
+  console.log(playerStats)
+
   return (
     <div
       className={styles.trendingPlayerCard}
@@ -82,15 +85,20 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
             alt={player.name}
             className={styles.playerHeadshot}
           />
-          {/* <img src={player.teamData.team.logos[0].href} alt="" className={styles.teamLogo}/> */}
+          <img
+            src={player.teamData.team.logos[0].href}
+            alt=""
+            className={styles.teamLogo}
+          />
         </div>
 
         <div className={styles.flexCol}>
           <h3 className={styles.playerName}>{player.name}</h3>
           <div className={styles.flex}>
-            <p className={styles.playerPosition}>{player.position} -</p>
+            <p className={styles.playerPosition}>{player.position}</p>
+            <span>-</span>
             <p className={styles.playerTeam}>
-              {/* {player.teamData.team.nextEvent[0].shortName} */}
+              {player.teamData.team.nextEvent[0].shortName}
             </p>
           </div>
         </div>
@@ -98,7 +106,8 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
       <div className=""></div>
       <div className={styles.values}>
         <div className={styles.value}>
-          {/* {player?.selections?.[0].points} <span>{player.propType}</span> */}
+          {player?.selections?.[0]?.points ?? "-"}
+          <span>{player.propType}</span>
         </div>
         <div className={styles.value}>
           {playerStats.values.projectedPoints}{" "}
@@ -117,9 +126,9 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
           </div>
         </div>
         <div className={styles.value}>
-          {/* <p className={getRankClass(player.teamStats.ranks[0])}>
+          <p className={getRankClass(player.teamStats.ranks[0])}>
             {getOrdinalSuffix(player.teamStats.ranks[0])}
-          </p> */}
+          </p>
         </div>
         <div
           className={`${styles.value} ${getPercentageClass(

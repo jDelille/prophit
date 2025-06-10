@@ -18,17 +18,17 @@ export default async function getTrendingPlayers(
     data.athletes.map(async (athlete: any) => {
       const playerName = athlete.athlete.displayName;
 
-      // const teamRes = await fetch(`/api/espn/team?sport=${sport}&league=${league}&teamId=${athlete.athlete.teamId}`);
-      // const teamData = teamRes.ok ? await teamRes.json() : null;
+      const teamRes = await fetch(`/api/espn/team?sport=${sport}&league=${league}&teamId=${athlete.athlete.teamId}`);
+      const teamData = teamRes.ok ? await teamRes.json() : null;
 
-      // const playerTeamId = teamData.team.id;
-      // const competitors = teamData.team.nextEvent?.[0]?.competitions?.[0]?.competitors || [];
+      const playerTeamId = teamData.team.id;
+      const competitors = teamData.team.nextEvent?.[0]?.competitions?.[0]?.competitors || [];
 
-      // const opponentTeamId = competitors.find(
-      //   (competitor: any) => competitor.team.id !== playerTeamId
-      // )?.team.id;
+      const opponentTeamId = competitors.find(
+        (competitor: any) => competitor.team.id !== playerTeamId
+      )?.team.id;
 
-      // const teamStats = await getTeamStats(sport, league, opponentTeamId);
+      const teamStats = await getTeamStats(sport, league, opponentTeamId);
 
       const selections = draftkingsData[playerName] || [];
 
@@ -39,9 +39,9 @@ export default async function getTrendingPlayers(
         propType: prop,
         value: athlete.categories[1]?.totals?.[0] ?? null,
         position: athlete.athlete?.position?.abbreviation ?? '',
-        // teamData, 
+        teamData, 
         selections,
-        // teamStats
+        teamStats
 
       };
     })

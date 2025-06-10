@@ -31,12 +31,14 @@ export class TrendingPlayersListVM {
       this.prop
     );
 
-    if (!players || players.length === 0) {
-      return { players: [], playerStats: [], propCount: 0 };
-    }
+    // if (!players || players.length === 0) {
+    //   return { players: [], playerStats: [], propCount: 0 };
+    // }
 
     const validPlayers = players.filter(
-      (player) => player?.selections?.[0]?.points !== undefined
+      (player) =>
+        player?.selections?.length > 0 &&
+        player.selections[0].points !== undefined
     );
 
     this.setPropCount(validPlayers.length);
@@ -53,7 +55,7 @@ export class TrendingPlayersListVM {
           venueRole,
           this.sport,
           this.league,
-          // player.teamStats.ranks?.[0]
+          player.teamStats.ranks?.[0]
         );
 
         return { [player.id]: stats };
@@ -62,6 +64,10 @@ export class TrendingPlayersListVM {
 
     const playerStats = Object.assign({}, ...statsData);
 
-    return { players, playerStats, propCount: this.propCount };
+    return {
+      players: validPlayers,
+      playerStats,
+      propCount: this.propCount,
+    };
   }
 }

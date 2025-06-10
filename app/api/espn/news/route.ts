@@ -47,8 +47,6 @@ export async function GET(request: Request) {
 
     const details = await Promise.all(detailsPromises);
 
-    console.log(details);
-
     const combinedArticles = articles.map((article: any) => {
       const detailObj = details.find((d) =>
         d?.headlines?.some(

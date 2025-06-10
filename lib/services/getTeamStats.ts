@@ -16,7 +16,7 @@ export default async function getTeamStats(
   if (!team) return [];
 
   const opponentOffensiveCategory = team.categories.find(
-    (cat: any) => cat.displayName === "Opponent Offensive"
+    (cat: any) => cat.displayName === "Own Pitching"
   );
 
   if (!opponentOffensiveCategory) return [];
