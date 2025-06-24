@@ -29,6 +29,7 @@ export const extractCombinedStats = (
     league: string,
     seasonType: "postseason" | "regular"
   ) => {
+
     const statIndex = mapPropToStat(prop, league)?.index ?? 0;
   
     const targetSeason = seasonTypes.find((s) =>

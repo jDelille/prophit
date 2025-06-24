@@ -54,7 +54,5 @@ export async function getDraftkingsData(
     data: groupedSelections,
   };
 
-  console.log(groupedSelections)
-
   return groupedSelections;
 }

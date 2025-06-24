@@ -8,7 +8,7 @@ import TrendingPlayersList from "@/components/trending-players/TrendingPlayersLi
 type PageProps = {};
 
 const Page: React.FC<PageProps> = () => {
-  const [prop, setProp] = useState<string>("Home Runs");
+  const [prop, setProp] = useState<string>("Hits");
   return (
     <div className="page">
       <div className="main">

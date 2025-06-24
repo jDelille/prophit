@@ -14,7 +14,6 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
   player,
   playerStats,
 }) => {
-  console.log(player);
 
   // if (player?.selections?.[0]?.points === undefined) {
   //   return;
@@ -70,7 +69,6 @@ const TrendingPlayerCard: React.FC<TrendingPlayerCardProps> = ({
     return "Weak";
   };
 
-  console.log(playerStats)
 
   return (
     <div

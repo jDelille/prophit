@@ -10,8 +10,6 @@ export const getProjectedPoints = (
 
   const projected = calculateProjectedPoints(ppgAverages, seasonAvg, venueStats);
 
-  
-
   return {
     projectedPoints: projected,
     projectionDifference: (parseFloat(projected) - currentPropValue).toFixed(1)

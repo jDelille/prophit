@@ -52,9 +52,11 @@ const playerStatProjections = async (
     league
   );
 
+  console.log(seasonAverage)
+
   const { projectedPoints, projectionDifference } = getProjectedPoints(
     [parseFloat(latest3Avg), parseFloat(latest5Avg), parseFloat(latest15Avg)],
-    postseasonAverage,
+    seasonAverage,
     venueStats,
     currentPropValue
   );

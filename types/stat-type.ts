@@ -16,8 +16,9 @@ export enum NBAStatType {
 }
 
 export enum MLBStatType {
-    HITS_OU = "HITS O/U",
-    TOTAL_BASES = "TOTAL BASES"
+  HITS_OU = "HITS O/U",
+  HITS = "Hits",
+  HOME_RUNS = "Home Runs",
 }
 
 export type StatType = NBAStatType | MLBStatType;
@@ -43,7 +44,8 @@ const nbaStatIndexMap: Record<NBAStatType, number> = {
 // --- MLB Stat Index Mapping ---
 const mlbStatIndexMap: Record<MLBStatType, number> = {
   [MLBStatType.HITS_OU]: 0,
-  [MLBStatType.TOTAL_BASES]: 1,
+  [MLBStatType.HITS]: 2,
+  [MLBStatType.HOME_RUNS]: 5,
 };
 
 type StatMapping = {
@@ -57,9 +59,18 @@ export const mapPropToStat = (
 ): StatMapping | null => {
   if (league === "nba") {
     const nbaMap: Record<string, StatMapping> = {
-      Pts: { statType: NBAStatType.PTS, index: nbaStatIndexMap[NBAStatType.PTS] },
-      Reb: { statType: NBAStatType.REB, index: nbaStatIndexMap[NBAStatType.REB] },
-      Ast: { statType: NBAStatType.AST, index: nbaStatIndexMap[NBAStatType.AST] },
+      Pts: {
+        statType: NBAStatType.PTS,
+        index: nbaStatIndexMap[NBAStatType.PTS],
+      },
+      Reb: {
+        statType: NBAStatType.REB,
+        index: nbaStatIndexMap[NBAStatType.REB],
+      },
+      Ast: {
+        statType: NBAStatType.AST,
+        index: nbaStatIndexMap[NBAStatType.AST],
+      },
     };
     return nbaMap[prop] || null;
   }
@@ -70,9 +81,13 @@ export const mapPropToStat = (
         statType: MLBStatType.HITS_OU,
         index: mlbStatIndexMap[MLBStatType.HITS_OU],
       },
-      "TOTAL BASES": {
-        statType: MLBStatType.TOTAL_BASES,
-        index: mlbStatIndexMap[MLBStatType.TOTAL_BASES],
+      "Hits": {
+        statType: MLBStatType.HITS,
+        index: mlbStatIndexMap[MLBStatType.HITS],
+      },
+      "Home Runs": {
+        statType: MLBStatType.HOME_RUNS,
+        index: mlbStatIndexMap[MLBStatType.HOME_RUNS],
       },
     };
     return mlbMap[prop] || null;

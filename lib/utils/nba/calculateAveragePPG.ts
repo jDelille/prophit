@@ -23,9 +23,7 @@ export const calculateProjectedPoints = (
 
   const avgHomePPG = homeGamePoints;
 
-  const projectedPoints = recentAndSeasonAvg  * 0.1;
-
-  + (avgHomePPG as number)
+  const projectedPoints = recentAndSeasonAvg + (avgHomePPG as number)  * 0.1;
 
   return projectedPoints.toFixed(1);
 };
