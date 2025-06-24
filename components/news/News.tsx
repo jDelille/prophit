@@ -80,7 +80,7 @@ const News: React.FC = () => {
                 }}
                 className={styles.article}
                 style={{
-                  backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.8)), url(${article.images[0].url})`,
+                  backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(${article.images[0].url})`,
                 }}
               >
                 <p className={styles.headline}>{article.headline}</p>

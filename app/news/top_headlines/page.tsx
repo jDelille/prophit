@@ -7,16 +7,14 @@ import React, { useState } from "react";
 
 type PageProps = {};
 
-const options = ["Top Headlines", "Todays Top Odds", "Injuries", "Favorites"];
-
 const Page: React.FC<PageProps> = () => {
-  const [prop, setProp] = useState<string>("Points");
+  const [prop, setProp] = useState<string>("Top Headlines");
   const [propCount, setPropCount] = useState(0);
   const labelList = getLabelsByLeague("nba");
   return (
     <div className="page">
       <div className="main">
-        <Header setProp={setProp} activeProp={prop} options={options} />
+        <Header setProp={setProp} activeProp={prop} />
         <News />
       </div>
     </div>

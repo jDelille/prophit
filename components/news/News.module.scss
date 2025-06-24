@@ -1,9 +1,7 @@
 @use "../../scss/variables.scss" as var;
 
 .newsContainer {
-  // overflow-y: scroll;
-  height: 82vh;
-
+  height: fit-content;
   .articles {
     display: flex;
     gap: 10px;
@@ -22,10 +20,15 @@
       max-height: 300px;
       height: 300px;
       border-radius: 6px;
+      &:hover {
+        cursor: pointer;
+      }
       .headline {
         margin-top: auto;
         margin-bottom: 1rem;
         font-weight: 500;
+        color: var(--bg-color);
+        text-align: start;
       }
     }
   }

@@ -7,7 +7,7 @@ import Teams from "@/components/teams/Teams";
 type PageProps = {};
 
 const Page: React.FC<PageProps> = () => {
-  const [prop, setProp] = useState<string>("Points");
+  const [prop, setProp] = useState<string>("All Teams");
 
   return (
     <div className="page">
