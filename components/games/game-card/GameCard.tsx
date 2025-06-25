@@ -24,9 +24,9 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
       gsap.killTweensOf(ref.current);
       gsap.fromTo(
         ref.current,
-        { x: -3 },
+        { y: -1 },
         {
-          x: 3,
+          y: 1,
           duration: 0.1,
           repeat: 5,
           yoyo: true,
@@ -35,7 +35,7 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
       );
     }
   };
-  
+
   return (
     <div className={styles.gameCard}>
       <div className={styles.team}>
