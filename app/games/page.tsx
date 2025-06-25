@@ -1,5 +1,7 @@
 "use client";
 
+import GameCard from "@/components/games/game-card/GameCard";
+import Games from "@/components/games/Games";
 import Header from "@/components/header/Header";
 import React, { useState } from "react";
 
@@ -11,6 +13,7 @@ const Page: React.FC<PageProps> = () => {
     <div className="page">
       <div className="main">
         <Header setProp={setProp} activeProp={prop}/>
+        <Games />
       </div>
     </div>
   );

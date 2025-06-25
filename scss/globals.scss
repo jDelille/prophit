@@ -3,19 +3,23 @@
 :root {
   --bg-color: #{vars.$white};
   --text-color: #{vars.$black};
-  --secondary-text-color: #{vars.$accent};
+  --accent: #{vars.$accent};
   --gray: #{vars.$gray};
   --offwhite: #{vars.$offwhite};
   --borderColor: #ebeef4;
+  --secondary-bg-color: #fafafb;
+  --accent_dark: #{vars.$accent_dark};
 }
 
 [data-theme="dark"] {
   --bg-color: #{vars.$black};
+  --secondary-bg-color: #{vars.$lightBlack};
   --text-color: #{vars.$white};
-  --secondary-text-color: #{vars.$accent};
+  --accent: #{vars.$accent};
   --gray: #{vars.$gray};
   --offwhite: #{vars.$offwhite};
   --borderColor: #333333;
+  --accent_dark: #{vars.$accent_dark};
 }
 
 * {

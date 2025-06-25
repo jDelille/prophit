@@ -1,0 +1,63 @@
+.gameCard {
+  width: 1000px;
+  border: 1px solid var(--borderColor);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+
+  .team {
+    height: 55px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 10px;
+    .name {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      width: 160px;
+      img {
+        max-width: 25px;
+        max-height: 25px;
+      }
+      p {
+        display: flex;
+        gap: 8px;
+        span {
+          font-size: 11px;
+          color: var(--gray);
+        }
+      }
+    }
+    .loserScore,
+    .winnerScore {
+      width: 45px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .winnerScore {
+      color: var(--accent_dark);
+    }
+  }
+
+  .footer {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    align-items: center;
+    background-color: var(--secondary-bg-color);
+    padding: 10px 10px;
+    .live {
+      background-color: var(--accent_dark);
+      padding: 3px 5px;
+      border-radius: 3px;
+    }
+    .links {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      margin-left: auto;
+      font-size: 14px;
+    }
+  }
+}
