@@ -1,6 +1,8 @@
 "use client";
 
 import Header from "@/components/header/Header";
+import EmailSubscription from "@/components/settings/email-preferences/EmailPreferences";
+import MyAccount from "@/components/settings/my-account/MyAccount";
 import ToggleThemeButton from "@/components/toggle-theme-button/ToggleThemeButton";
 import React, { useState } from "react";
 
@@ -13,7 +15,9 @@ const Page: React.FC<PageProps> = () => {
     <div className="page">
       <div className="main">
         <Header setProp={setProp} activeProp={prop} />
-        <ToggleThemeButton />
+        {/* <ToggleThemeButton /> */}
+        {prop === "My Account" && <MyAccount />}
+        {prop === "Email Preferences" && <EmailSubscription />}
       </div>
     </div>
   );

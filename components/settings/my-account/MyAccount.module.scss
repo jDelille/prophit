@@ -1,0 +1,54 @@
+.setting {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  color: var(--text-color);
+  }
+  .listTitle {
+    font-size: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: baseline;
+    color: var(--text-color);
+    span {
+      font-size: 16px;
+    }
+  }
+  .accent {
+    color: var(--accent_dark);
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+  .profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+
+ 
+
+    ul {
+      padding-left: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 18px;
+    }
+  }
+  .message {
+    font-size: 18px;
+    width: 40%;
+  }
+     .title {
+      font-size: 27px;
+      font-weight: 600;
+      color: var(--text-color);
+    }
+  .connections {
+    font-weight: 400;
+    color: var(--gray);
+  }
+
+
