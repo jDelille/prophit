@@ -1,5 +1,19 @@
 @use "../../scss/variables.scss" as var;
 
+/**
+  1 = Player
+  2 = Prop
+  3 = Proj
+  4 = Diff
+  5 = Rating
+  6 = Opp Rank
+  7 = L-3
+  8 = L-5
+  9 = L=15
+  10 = Season
+  11 = Pick
+**/
+
 .labels {
   display: flex;
   width: 100%;
@@ -26,6 +40,9 @@
       justify-content: flex-start;
       margin-right: 1.5rem;
     }
+
+  
+    
     &:nth-of-type(2),
     &:nth-of-type(5) {
       padding-right: 1rem;
@@ -33,13 +50,13 @@
     &:nth-of-type(2),
     &:nth-of-type(3),
     &:nth-of-type(4),
-    &:nth-of-type(6),
     &:nth-of-type(7),
     &:nth-of-type(8),
     &:nth-of-type(10),
     &:nth-of-type(9) {
       width: 80px;
     }
+
 
     &:nth-of-type(5),
     &:nth-of-type(6),

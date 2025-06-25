@@ -41,7 +41,7 @@ const Labels: React.FC<LabelsProps> = () => {
       {labels.map((label, i) => (
         <div key={label.id} className={styles.label}>
           {label.name}
-          {label.canSort && <SortIcon size={14} color="white" />}
+          {label.canSort && <SortIcon size={14} color="gray" />}
         </div>
       ))}
     </div>

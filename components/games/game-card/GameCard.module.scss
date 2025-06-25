@@ -16,6 +16,10 @@
       gap: 8px;
       align-items: center;
       width: 160px;
+      &:hover {
+        color: var(--gray);
+        cursor: pointer;
+      }
       img {
         max-width: 25px;
         max-height: 25px;
@@ -47,6 +51,7 @@
     align-items: center;
     background-color: var(--secondary-bg-color);
     padding: 10px 10px;
+    border-top: 1px solid var(--borderColor);
     .live {
       background-color: var(--accent_dark);
       padding: 3px 5px;
