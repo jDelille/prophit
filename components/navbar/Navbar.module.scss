@@ -60,19 +60,4 @@
     margin-top: auto;
     gap: 1rem;
   }
-
-  .favorites {
-    .circle {
-      width: 55px;
-      height: 55px;
-      background-color: var(--offwhite);
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 22px;
-      margin-top: 3rem;
-      color: var(--text-color);
-    }
-  }
 }

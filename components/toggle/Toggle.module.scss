@@ -1,0 +1,36 @@
+.toggleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+  margin-top: 3rem;
+}
+
+.label {
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.toggleInput {
+  display: none;
+}
+
+.track {
+  width: 40px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 20px;
+  position: relative;
+}
+
+.knob {
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  will-change: transform;
+}

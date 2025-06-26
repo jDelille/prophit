@@ -4,6 +4,8 @@ import styles from "./Navbar.module.scss";
 import gsap from "gsap";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Toggle from "../toggle/Toggle";
+import { useTheme } from "next-themes";
 
 type NavbarProps = {};
 
@@ -13,6 +15,8 @@ const Navbar: React.FC<NavbarProps> = () => {
   const userLinksRef = useRef<HTMLUListElement>(null);
   const favoritesRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+  const { theme, setTheme } = useTheme();
+
 
   useEffect(() => {
     if (
@@ -65,6 +69,10 @@ const Navbar: React.FC<NavbarProps> = () => {
     return pathname.startsWith(path) ? styles.activeLink : styles.link;
   };
 
+   const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
   return (
     <div className={styles.navbar}>
       <div className={styles.logo} ref={logoRef}>
@@ -73,7 +81,6 @@ const Navbar: React.FC<NavbarProps> = () => {
 
       <ul className={styles.links} ref={linksRef}>
         <li>
-          {" "}
           <Link href={"/games"} className={isActiveLink("/games")}>
             Games
           </Link>
@@ -120,9 +127,7 @@ const Navbar: React.FC<NavbarProps> = () => {
         <li>Sign Out</li>
       </ul>
 
-      <div className={styles.favorites} ref={favoritesRef}>
-        <div className={styles.circle}>+</div>
-      </div>
+      <Toggle checked={theme === "light"} onChange={toggleTheme} label="Mode"/>
     </div>
   );
 };
